@@ -44,7 +44,7 @@
                 
                 <!-- Password -->
                 {{ Form::label('password', 'Password') }}
-                {{ Form::text('password', Input::old('password'), array('class' => 'form-group form-control', 'placeholder' => 'Password')) }}
+                {{ Form::password('password', array('class' => 'form-group form-control', 'placeholder' => 'Password')) }}
                 {{ $errors->first('password', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <span class="help-block pull-left"><p class="text-warning p"><a href="#">Forgot Password?</a></p></span>
