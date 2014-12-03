@@ -29,8 +29,11 @@ $app = new Illuminate\Foundation\Application;
 // ));
 
 $env = $app->detectEnvironment(array(
-    'local' => ['*.dev'],
-    'production' => 'apply.codeup.com'
+
+    //'local' => array('homestead'),
+
+    'local' => array('*.dev', gethostname()),
+    'production' => array('*.com', '*.net', 'www.somedomain.com')
 ));
 
 /*
