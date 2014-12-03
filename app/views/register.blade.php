@@ -9,7 +9,7 @@
 
             <h2 class="page-header text-center">New User Registration</h2>
 
-            {{ Form::open(array('url'=>'users/create', 'class'=>'form', 'role'=>'form')) }}
+            {{ Form::model(array('action' => array('UsersController@store'), 'class'=>'form', 'role'=>'form', 'method' => 'PUT')) }}
                 
                 <!-- Refactor to use individual error messages. -->
                 <ul>
@@ -40,15 +40,15 @@
                 
                 <!-- Password -->
                 {{ Form::label('password', 'Password') }}
-                {{ Form::text('password', Input::old('password'), array('class' => 'form-group form-control', 'placeholder' => 'Password')) }}
+                {{ Form::password('password', array('class' => 'form-group form-control', 'placeholder' => 'Password')) }}
                 {{ $errors->first('password', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Password Confirm -->
                 {{ Form::label('password2', 'Confirm Password') }}
-                {{ Form::text('password2', Input::old('password2'), array('class' => 'form-group form-control', 'placeholder' => 'Confirm Password')) }}
+                {{ Form::password('password2', array('class' => 'form-group form-control', 'placeholder' => 'Confirm Password')) }}
                 {{ $errors->first('password2', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
-                {{ Form::submit('Register', array('class' => 'btn btn-default btn-success btn-block disabled')) }}
+                {{ Form::submit('Register', array('class' => 'btn btn-default btn-success btn-block')) }}
                 {{ Form::close() }}
 
         </div> <!-- End Column -->
