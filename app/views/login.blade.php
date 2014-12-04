@@ -39,12 +39,12 @@
 
                 <!-- Email -->
                 {{ Form::label('email', 'Email') }}
-                {{ Form::text('email', Input::old('email'), array('class' => 'form-group form-control', 'placeholder' => 'Email')) }}
+                {{ Form::text('email', null, array('class' => 'form-group form-control', 'placeholder' => 'Email')) }}
                 {{ $errors->first('email', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
                 
                 <!-- Password -->
                 {{ Form::label('password', 'Password') }}
-                {{ Form::password('password', array('class' => 'form-group form-control', 'placeholder' => 'Password')) }}
+                {{ Form::password('password', array('id' => 'password', 'class' => 'form-group form-control', 'placeholder' => 'Password')) }}
                 {{ $errors->first('password', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <span class="help-block pull-left"><p class="text-warning p"><a href="#">Forgot Password?</a></p></span>
@@ -52,15 +52,44 @@
 
                 <div class="clearfix"></div>
 
-                {{ Form::submit('Login', array('class' => 'btn btn-default btn-success btn-block disabled')) }}
+                {{ Form::submit('Login', array('id' => 'loginBtn', 'class' => 'btn btn-default btn-success btn-block disabled')) }}
                 {{ Form::close() }}                
 
-<!--                 <a class="btn btn-default btn-info pull-left" href="/register">Register</a>
- -->
         </div> <!-- End Column -->
     </div> <!-- End Row -->
 </div> <!-- End Container -->
 
+@stop
 
+@section('footer')
+<script type="text/javascript">
+
+    var email;
+    var password;
+
+    //  Validate email & password after capturing value.
+    //  If input valid, then btnCheck()
+
+    function btnCheck(){
+        if (email && password) {
+            $('#loginBtn').removeClass('disabled');
+        };
+    }
+
+    $('#email').on('keyup', function() {
+        email = $(this).val();
+        btnCheck();
+        // console.log(email);
+    });
+
+    $('#password').on('keyup', function() {
+        password = $(this).val();
+        btnCheck();
+        // console.log(password);
+    });
+
+
+
+</script>
 @stop
 
