@@ -18,9 +18,12 @@ class UsersTable extends Migration {
 		    $user->increments('id');
 		    $user->string('first');
 		    $user->string('last');
+		    $user->string('fullname');
 		    $user->string('email')->unique();
 		    $user->string('phone');
 		    $user->string('password');
+		    $user->string('img_path');
+		    $user->string('remember_token', 64);
 		    $user->timestamps();
 		});
 	}
