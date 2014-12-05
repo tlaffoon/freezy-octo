@@ -2,9 +2,8 @@
 
 class UsersController extends \BaseController {
 
-
 	/**
-	 * Display a listing of the resource.
+	 * Return user login form.
 	 *
 	 * @return Response
 	 */
@@ -15,7 +14,7 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Display a listing of the resource.
+	 * Log user out and return to login form.
 	 *
 	 * @return Response
 	 */
@@ -31,7 +30,7 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Display a listing of the resource.
+	 * Handle user logins.
 	 *
 	 * @return Response
 	 */
@@ -49,7 +48,7 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Display a listing of the resource.
+	 * Display authenticate user's profile.
 	 *
 	 * @return Response
 	 */
@@ -66,9 +65,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		
 		$users = User::all();
-
 		return View::make('users.index')->with(array('users' => $users));
 	}
 
@@ -80,7 +77,6 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
 		return View::make('users.create');
 	}
 
@@ -127,10 +123,13 @@ class UsersController extends \BaseController {
 		    	$user->save();
 		    }
 
-		    Session::flash('message', 'User saved successfully.');
+		    // Session::flash('message', 'User saved successfully.');
 		    //return Redirect::action('UsersController@show', $user->id);
-		    $users = User::all();
-		    return View::make('users.index')->with(array('users' => $users));
+		    // $users = User::all();
+		    // return View::make('users.index')->with(array('users' => $users));
+
+	        Auth::login($user);
+	        return Redirect::to('/profile');
 		}
 	}
 
