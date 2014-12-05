@@ -28,7 +28,7 @@
 
             <img class="img-responsive img-rounded" src="/includes/img/codeup-logo.jpg">
 
-            {{ Form::open(array('url'=>'login', 'method' => 'post', 'class'=>'form', 'role'=>'form')) }}                
+            {{ Form::open(array('url' => 'login', 'method' => 'post', 'class'=>'form', 'role'=>'form')) }}                
             
             <!-- Refactor to use individual error messages. -->
             <ul>
