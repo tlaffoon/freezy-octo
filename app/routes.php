@@ -29,11 +29,9 @@ Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'
 // User Get Profile
 Route::get('/profile', function() {
 
-    if(Auth::check())
-    {   
+    if(Auth::check()) {   
         return View::make('users.profile');
-    } else
-    {
+    } else {
         return View::make('users.login');
     }
 
@@ -42,7 +40,7 @@ Route::get('/profile', function() {
 // Main Registration
 Route::get('/register', function()
 {
-    return View::make('register');
+    return View::make('users.create');
 });
 
 // Post Route for Registration
