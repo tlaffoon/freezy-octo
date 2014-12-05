@@ -64,31 +64,33 @@
 @section('footer')
 <script type="text/javascript">
 
-    var email;
-    var password;
+    $(document).ready(function() {
+        
+        var email = '';
+        var password = '';
 
-    //  Validate email & password after capturing value.
-    //  If input valid, then btnCheck()
+        //  Validate email & password after capturing value.
+        //  If input valid, then btnCheck()
 
-    function btnCheck(){
-        if (email && password) {
-            $('#loginBtn').removeClass('disabled');
-        };
-    }
+        function btnCheck(){
+            if (email && password.length >= 8) {
+                $('#loginBtn').removeClass('disabled');
+            } 
+            else if (email && password.length < 8) {
+                $('#loginBtn').addClass('disabled');  
+            }
+        }
 
-    $('#email').on('keyup', function() {
-        email = $(this).val();
-        btnCheck();
-        // console.log(email);
+        $('#email').on('keyup', function() {
+            email = $(this).val();
+            btnCheck();
+        });
+
+        $('#password').on('keyup', function() {
+            password = $(this).val();
+            btnCheck();
+        });
     });
-
-    $('#password').on('keyup', function() {
-        password = $(this).val();
-        btnCheck();
-        // console.log(password);
-    });
-
-
 
 </script>
 @stop
