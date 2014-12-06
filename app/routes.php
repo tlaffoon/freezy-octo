@@ -17,8 +17,18 @@ Route::get('/', function()
 	return View::make('users.login');
 });
 
+/* -------------------------------- */
+
+//  Users Resource Route
+Route::resource('users', 'UsersController');
+
+/* -------------------------------- */
+
 // User Get Login Route
-Route::get('login', array('as' => 'login', 'uses' => 'UsersController@login'));
+Route::get('/login', function()
+{
+    return View::make('users.login');
+});
 
 // User Post Login Route
 Route::post('/login', array('as' => 'login', 'uses' => 'UsersController@handleLogin'));
@@ -29,10 +39,13 @@ Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'
 // User Get Profile
 Route::get('/profile', function() {
 
-    if(Auth::check()) {   
-        return View::make('users.profile');
+    if(Auth::check()) {
+        // On successful authentication, show user profile by default.
+        $user = User::find(Auth::id());
+        return View::make('users.profile')->with('user', $user);
     } else {
-        return View::make('users.login');
+        // Needs logic on failed auth attempt, so you can prompt user to login again.
+        return View::make('users.login'); // ->with('alert', 'Please login to continue.');
     }
 
 });
@@ -46,7 +59,4 @@ Route::get('/register', function()
 // Post Route for Registration
 Route::post('/register', 'UsersController@store');
 
-/* -------------------------------- */
 
-//  Users Resource Route
-Route::resource('users', 'UsersController');
