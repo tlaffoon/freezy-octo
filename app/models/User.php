@@ -31,11 +31,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public static $rules = array(
 
-		'firstname'			=>	'required|alpha|min:2',
-		'lastname'			=>	'required|alpha|min:2',
-		'email'				=>	'required|email|unique:users',
-		'password'			=>	'required|alpha_num|between:6,12|confirmed',
-		'password_confirm'	=>	'required|alpha_num|between:6,12'
+		'firstname'				=>	'required|alpha|min:2',
+		'lastname'				=>	'required|alpha|min:2',
+		'email'					=>	'required|email|unique:users',
+		'password'				=>	'required|alpha_num|between:6,12|confirmed',
+		'password_confirmation'	=>	'required|alpha_num|between:6,12'
 	);
 
 
@@ -78,7 +78,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function setPhoneAttribute($value)
 	{
-		$this->attributes['phone'] = '(' . substr($value, 0 , 3 ) . ')' . '-' . substr($value, 3 , 3 ) . '-' . substr($value, 6 , 4 );
+		// Refactor into custom validator rule, eventually.  http://laravel.com/docs/4.2/validation#custom-validation-rules
+		// $value = trim($value);
+		// $value = str_replace(' ', '-', $value);
+		// $value = preg_replace('/[^A-Za-z0-9\-]/', '', $value);
+		// $value = '(' . substr($value, 0 , 3 ) . ')' . ' ' . substr($value, 3 , 3 ) . '-' . substr($value, 6 , 4 );
+
+		$this->attributes['phone'] = $value;
 	}
 
 
