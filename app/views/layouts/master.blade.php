@@ -45,12 +45,18 @@
                 </div>
             </nav>
         </div>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-12">
                     @if(Session::has('message'))
                     <div class="alert-box success">
                         <h2>{{ Session::get('message') }}</h2>
+                    </div>
+                    @endif
+
+                    @if(Session::has('alert'))
+                    <div class="alert-box alert">
+                        <h2>{{ Session::get('alert') }}</h2>
                     </div>
                     @endif
                 </div>
