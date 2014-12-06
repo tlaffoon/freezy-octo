@@ -12,14 +12,14 @@
             {{ Form::open(array('action' => array('UsersController@store'), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
                 
                 <!-- First Name -->
-                {{ Form::label('first', 'First Name') }}
-                {{ Form::text('first', Input::old('first'), array('class' => 'form-group form-control', 'placeholder' => 'First Name')) }}
-                {{ $errors->first('first', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                {{ Form::label('firstname', 'First Name') }}
+                {{ Form::text('firstname', Input::old('firstname'), array('class' => 'form-group form-control', 'placeholder' => 'First Name')) }}
+                {{ $errors->first('firstname', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Last Name -->
-                {{ Form::label('last', 'Last Name') }}
-                {{ Form::text('last', Input::old('last'), array('class' => 'form-group form-control', 'placeholder' => 'Last Name')) }}
-                {{ $errors->first('last', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                {{ Form::label('lastname', 'Last Name') }}
+                {{ Form::text('lastname', Input::old('lastname'), array('class' => 'form-group form-control', 'placeholder' => 'Last Name')) }}
+                {{ $errors->first('lastname', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Email -->
                 {{ Form::label('email', 'Email') }}
@@ -28,7 +28,7 @@
                 
                 <!-- Phone -->
                 {{ Form::label('phone', 'Phone') }}
-                {{ Form::text('phone', Input::old('phone'), array('class' => 'form-group form-control', 'placeholder' => '#')) }}
+                {{ Form::text('phone', Input::old('phone'), array('class' => 'form-group form-control', 'placeholder' => 'Phone')) }}
                 {{ $errors->first('phone', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
  
                 <!-- Password -->
@@ -37,11 +37,11 @@
                 {{ $errors->first('password', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Password Confirm -->
-                {{ Form::label('password_confirm', 'Confirm Password') }}
-                {{ Form::password('password_confirm', array('class' => 'form-group form-control', 'placeholder' => 'Confirm Password')) }}
-                {{ $errors->first('password_confirm', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                {{ Form::label('password_confirmation', 'Confirm Password') }}
+                {{ Form::password('password_confirmation', array('class' => 'form-group form-control', 'placeholder' => 'Confirm Password')) }}
+                {{ $errors->first('password_confirmation', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
-                {{ Form::submit('Register', array('id' => 'registerBtn', 'class' => 'btn btn-default btn-success btn-block disabled')) }}
+                {{ Form::submit('Register', array('id' => 'registerBtn', 'class' => 'btn btn-default btn-success btn-block')) }}
             
             {{ Form::close() }}
 
@@ -54,57 +54,57 @@
 @section('footer')
 <script type="text/javascript">
     
-    $(document).ready(function() {
+    // $(document).ready(function() {
         
-        var first = '';
-        var last = '';
-        var phone = '';
-        var email = '';
-        var password = '';
-        var password_confirm = '';
+    //     var first = '';
+    //     var last = '';
+    //     var phone = '';
+    //     var email = '';
+    //     var password = '';
+    //     var password_confirmation = '';
 
-        function btnCheck(){
-            if (first && last && phone && email && password.length >= 8) {
-                if (password === password_confirm) {
-                    $('#registerBtn').removeClass('disabled');
-                };
+    //     function btnCheck(){
+    //         if (first && last && phone && email && password.length >= 8) {
+    //             if (password === password_confirmation) {
+    //                 $('#registerBtn').removeClass('disabled');
+    //             };
 
-            } 
-            else if (password.length < 8 || password !== password_confirm) {
-                $('#registerBtn').addClass('disabled');  
-            }
-        }
+    //         } 
+    //         else if (password.length <= 7 || password !== password_confirmation) {
+    //             $('#registerBtn').addClass('disabled');  
+    //         }
+    //     }
 
-        $('#first').on('keyup', function() {
-            first = $(this).val();
-            btnCheck();
-        });
+    //     $('#first').on('keyup', function() {
+    //         first = $(this).val();
+    //         btnCheck();
+    //     });
 
-        $('#last').on('keyup', function() {
-            last = $(this).val();
-            btnCheck();
-        });
+    //     $('#last').on('keyup', function() {
+    //         last = $(this).val();
+    //         btnCheck();
+    //     });
 
-        $('#email').on('keyup', function() {
-            email = $(this).val();
-            btnCheck();
-        });
+    //     $('#email').on('keyup', function() {
+    //         email = $(this).val();
+    //         btnCheck();
+    //     });
 
-        $('#phone').on('keyup', function() {
-            phone = $(this).val();
-            btnCheck();
-        });
+    //     $('#phone').on('keyup', function() {
+    //         phone = $(this).val();
+    //         btnCheck();
+    //     });
 
-        $('#password').on('keyup', function() {
-            password = $(this).val();
-            btnCheck();
-        });
+    //     $('#password').on('keyup', function() {
+    //         password = $(this).val();
+    //         btnCheck();
+    //     });
 
-        $('#password_confirm').on('keyup', function() {
-            password_confirm = $(this).val();
-            btnCheck();
-        });
-    });
+    //     $('#password_confirmation').on('keyup', function() {
+    //         password_confirmation = $(this).val();
+    //         btnCheck();
+    //     });
+    // });
 
 </script>
 
