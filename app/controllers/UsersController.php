@@ -2,6 +2,10 @@
 
 class UsersController extends \BaseController {
 
+	public function __construct() {
+	    $this->beforeFilter('csrf', array('on'=>'post'));
+	}
+
 	/**
 	 * Return user login form.
 	 *
@@ -25,7 +29,7 @@ class UsersController extends \BaseController {
 		}
 		
 		// Needs flash message to confirm logout.
-		return Redirect::route('login');
+		return Redirect::to('login');
 	}
 
 
@@ -39,7 +43,13 @@ class UsersController extends \BaseController {
 
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
             // Redirect to profile after user login.
-            return Redirect::to('/profile');
+        	$id = Auth::id();
+        	$user = User::find($id);
+        	return Redirect::to('/profile')->with('user', $user);
+
+        	// return Redirect::route('profile', array('user' => $user));
+        	// return Redirect::action('UsersController@show', array('$id' => $id));
+        	// return $this->profile($id);
         }
 
         // Needs flash message included to instruct "Try again."
@@ -48,13 +58,15 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Display authenticate user's profile.
+	 * Display the specified user's profile.
 	 *
+	 * @param  int  $id
 	 * @return Response
 	 */
-	public function profile()
+	public function profile($id)
 	{
-		return View::make('users.profile');
+
+		return View::make('users.profile')->with('user', User::find($id));
 	}
 
 
@@ -93,7 +105,7 @@ class UsersController extends \BaseController {
 
 		// attempt validation
 		if ($validator->fails()) {
-			Session::flash('errorMessage', 'There were errors submitting your form.  Did you include all fields?');
+			Session::flash('alert', 'There were errors submitting your form.  Did you include all fields?');
 
 		    // validation failed, redirect to the user create page with validation errors and old inputs
 		    return Redirect::back()->withInput()->withErrors($validator);
@@ -102,9 +114,9 @@ class UsersController extends \BaseController {
 		else {
 		    $user = new User();
 		    
-		    $user->first 		= Input::get('first');
-		    $user->last 		= Input::get('last');
-		    $user->fullname 	= $user->first . ' ' . $user->last;
+		    $user->firstname 	= Input::get('firstname');
+		    $user->lastname 	= Input::get('lastname');
+		    $user->fullname 	= $user->firstname . ' ' . $user->lastname;
 		    $user->phone		= Input::get('phone');
 		    $user->email 		= Input::get('email');
 		    $user->password 	= Input::get('password');
@@ -118,14 +130,14 @@ class UsersController extends \BaseController {
 		        $user->save();
 		    }
 
-		    else {
-		    	$user->img_path = '/includes/img/placeholder-user.png';
-		    	$user->save();
-		    }
+		    // else {
+		    // 	$user->img_path = '/includes/img/placeholder-user.png';
+		    // 	$user->save();
+		    // }
 
-		    // Session::flash('message', 'User saved successfully.');
-		    //return Redirect::action('UsersController@show', $user->id);
-		    // $users = User::all();
+		    Session::flash('message', 'User account created successfully.');
+
+ 		    // $users = User::all();
 		    // return View::make('users.index')->with(array('users' => $users));
 
 	        Auth::login($user);
@@ -142,8 +154,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
-		return View::make('users.show')->with('user', User::find($id));
+		return View::make('users.profile')->with('user', User::find($id));
 	}
 
 	/**
@@ -186,8 +197,8 @@ class UsersController extends \BaseController {
 		else {
 			$user = new User();
 			
-			$user->first 		= Input::get('first');
-			$user->last 		= Input::get('last');
+			$user->firstname 	= Input::get('firstname');
+			$user->lastname 	= Input::get('lastname');
 			$user->fullname 	= $user->first . ' ' . $user->last;
 			$user->phone		= Input::get('phone');
 			$user->email 		= Input::get('email');
