@@ -23,11 +23,11 @@ class UsersTableSeeder extends Seeder {
         DB::table('users')->delete();
 
         $user = new User();
-        $user->first = 'Thomas';
-        $user->last = 'Laffoon';
+        $user->firstname = 'Thomas';
+        $user->lastname = 'Laffoon';
         $user->fullname = 'Thomas J. Laffoon';
         $user->email = 'thomas@codeup.com';
-        $user->phone = '(210) 391-7470';
+        $user->phone = '2103917470';
         $user->password = 'password';
         $user->save();
 
