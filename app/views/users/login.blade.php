@@ -30,29 +30,23 @@
 
             {{ Form::open(array('url' => 'login', 'method' => 'post', 'class'=>'form', 'role'=>'form')) }}                
             
-            <!-- Refactor to use individual error messages. -->
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+                <!-- Email -->
+                {{ Form::label('email', 'Email') }}
+                {{ Form::text('email', null, array('class' => 'form-group form-control', 'placeholder' => 'Email')) }}
+                {{ $errors->first('email', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                
+                <!-- Password -->
+                {{ Form::label('password', 'Password') }}
+                {{ Form::password('password', array('id' => 'password', 'class' => 'form-group form-control', 'placeholder' => 'Password')) }}
+                {{ $errors->first('password', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
-            <!-- Email -->
-            {{ Form::label('email', 'Email') }}
-            {{ Form::text('email', null, array('class' => 'form-group form-control', 'placeholder' => 'Email')) }}
-            {{ $errors->first('email', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                <span class="help-block pull-left"><p class="text-warning p"><a href="#">Forgot Password?</a></p></span>
+                <span class="help-block pull-right"><p class="text-warning p"><a href="/register">Register As A New User</a></p></span>
+
+                <div class="clearfix"></div>
+
+                {{ Form::submit('Login', array('id' => 'loginBtn', 'class' => 'btn btn-default btn-success btn-block')) }}
             
-            <!-- Password -->
-            {{ Form::label('password', 'Password') }}
-            {{ Form::password('password', array('id' => 'password', 'class' => 'form-group form-control', 'placeholder' => 'Password')) }}
-            {{ $errors->first('password', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
-
-            <span class="help-block pull-left"><p class="text-warning p"><a href="#">Forgot Password?</a></p></span>
-            <span class="help-block pull-right"><p class="text-warning p"><a href="/register">Register As A New User</a></p></span>
-
-            <div class="clearfix"></div>
-
-            {{ Form::submit('Login', array('id' => 'loginBtn', 'class' => 'btn btn-default btn-success btn-block disabled')) }}
             {{ Form::close() }}                
 
         </div> <!-- End Column -->
@@ -64,33 +58,33 @@
 @section('footer')
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    // $(document).ready(function() {
         
-        var email = '';
-        var password = '';
+    //     var email = '';
+    //     var password = '';
 
-        //  Validate email & password after capturing value.
-        //  If input valid, then btnCheck()
+    //     //  Validate email & password after capturing value.
+    //     //  If input valid, then btnCheck()
 
-        function btnCheck(){
-            if (email && password.length >= 8) {
-                $('#loginBtn').removeClass('disabled');
-            } 
-            else if (email && password.length < 8) {
-                $('#loginBtn').addClass('disabled');  
-            }
-        }
+    //     function btnCheck(){
+    //         if (email && password.length >= 8) {
+    //             $('#loginBtn').removeClass('disabled');
+    //         } 
+    //         else if (email && password.length <= 7) {
+    //             $('#loginBtn').addClass('disabled');  
+    //         }
+    //     }
 
-        $('#email').on('keyup', function() {
-            email = $(this).val();
-            btnCheck();
-        });
+    //     $('#email').on('keyup', function() {
+    //         email = $(this).val();
+    //         btnCheck();
+    //     });
 
-        $('#password').on('keyup', function() {
-            password = $(this).val();
-            btnCheck();
-        });
-    });
+    //     $('#password').on('keyup', function() {
+    //         password = $(this).val();
+    //         btnCheck();
+    //     });
+    // });
 
 </script>
 @stop
