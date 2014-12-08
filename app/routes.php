@@ -11,6 +11,20 @@
 |
 */
 
+
+
+/* -------------------------------- */
+// RESOURCES
+
+//  Users Resource Route
+Route::resource('users', 'UsersController');
+
+
+
+/* -------------------------------- */
+// MAIN ROUTES
+
+
 // Homepage
 Route::get('/', function()
 {
@@ -22,12 +36,6 @@ Route::get('/', function()
     }
 });
 
-/* -------------------------------- */
-
-//  Users Resource Route
-Route::resource('users', 'UsersController');
-
-/* -------------------------------- */
 
 // User Get Login Route
 Route::get('/login', function()
@@ -41,11 +49,14 @@ Route::get('/login', function()
 
 });
 
+
 // User Post Login Route
 Route::post('/login', array('as' => 'login', 'uses' => 'UsersController@handleLogin'));
 
+
 // User Get Logout Route
 Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'));
+
 
 // User Get Profile
 Route::get('/profile', function() {
@@ -62,11 +73,13 @@ Route::get('/profile', function() {
 
 });
 
+
 // Main Registration
 Route::get('/register', function()
 {
     return View::make('users.create');
 });
+
 
 // Post Route for Registration
 Route::post('/register', 'UsersController@store');
