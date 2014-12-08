@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.master')
 
 @section('content')
 
@@ -12,9 +12,12 @@
 
                 <tr>
                     <th>Name</th>
-                    <!-- <th>Status</th> -->
                     <th>Phone</th>
                     <th>Email</th>
+                    <th>Status</th>
+                    <th>Math</th>
+                    <th>Logic</th>
+                    <th>Prework</th>
                     <!-- <th>Address</th> -->
                     <!-- <th>Github Url</th> -->
                     <th>Actions</th>
@@ -26,6 +29,10 @@
                         <td>{{ $user->fullname }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->status }}</td>
+                        <td> ## </td>
+                        <td> ## </td>
+                        <td> ## </td>
                         <td>
 
                             <div class="btn-group">
@@ -47,6 +54,10 @@
                 <?php endforeach ?>
 
             </table>
+
+            <div class="text-center">
+                {{ $users->links() }}
+            </div>
 
         <?php endif ?>
     </div>

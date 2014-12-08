@@ -41,7 +41,7 @@
                 {{ Form::password('password_confirmation', array('class' => 'form-group form-control', 'placeholder' => 'Confirm Password')) }}
                 {{ $errors->first('password_confirmation', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
-                {{ Form::submit('Register', array('id' => 'registerBtn', 'class' => 'btn btn-default btn-success btn-block')) }}
+                {{ Form::submit('Register', array('id' => 'registerBtn', 'class' => 'btn btn-success btn-block')) }}
             
             {{ Form::close() }}
 
