@@ -4,6 +4,7 @@ class UsersController extends \BaseController {
 
 	public function __construct() {
 	    $this->beforeFilter('csrf', array('on'=>'post'));
+	    $this->beforeFilter('auth', array('except'=>array('login', 'handleLogin', 'store')));
 	}
 
 	/**
@@ -11,7 +12,7 @@ class UsersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function login() 
+	public function login()
 	{
 		return View::make('users.login');
 	}
@@ -41,19 +42,27 @@ class UsersController extends \BaseController {
 	public function handleLogin() {
 		$data = Input::only(['email', 'password']);
 
-        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
-            // Redirect to profile after user login.
-        	$id = Auth::id();
-        	$user = User::find($id);
-        	return Redirect::to('/profile')->with('user', $user);
+		if (Input::has('remember_me')) {
+		
+			$logIn = Auth::attempt(['email' => $data['email'], 'password' => $data['password']], true);
 
-        	// return Redirect::route('profile', array('user' => $user));
-        	// return Redirect::action('UsersController@show', array('$id' => $id));
-        	// return $this->profile($id);
-        }
+		} else {
+			$logIn = Auth::attempt(['email' => $data['email'], 'password' => $data['password']]);
+		}
 
-        // Needs flash message included to instruct "Try again."
-        return Redirect::route('login')->withInput();
+
+		if ($logIn) {
+			# code...
+		    // Redirect to profile after user login.
+			$id = Auth::id();
+			$user = User::find($id);
+			return Redirect::to('/profile')->with('user', $user);
+		} else {
+        
+        	Session::flash('alert', 'Please login to continue.');
+        	return Redirect::route('login')->withInput();
+		
+		}
 	}
 
 
@@ -65,7 +74,6 @@ class UsersController extends \BaseController {
 	 */
 	public function profile($id)
 	{
-
 		return View::make('users.profile')->with('user', User::find($id));
 	}
 
@@ -77,7 +85,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$users = User::all();
+		$users = User::paginate(5);
 		return View::make('users.index')->with(array('users' => $users));
 	}
 
