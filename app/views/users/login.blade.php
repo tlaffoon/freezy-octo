@@ -18,6 +18,10 @@
         right: 170px;
     }*/
 
+    #loginBtn {
+        font-size: 18px;
+    }
+
 </style>
 @stop
 
@@ -37,15 +41,21 @@
                 
                 <!-- Password -->
                 {{ Form::label('password', 'Password') }}
-                {{ Form::password('password', array('id' => 'password', 'class' => 'form-group form-control', 'placeholder' => 'Password')) }}
+                {{ Form::password('password', array('class' => 'form-group form-control', 'placeholder' => 'Password')) }}
                 {{ $errors->first('password', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
-                <span class="help-block pull-left"><p class="text-warning p"><a href="#">Forgot Password?</a></p></span>
-                <span class="help-block pull-right"><p class="text-warning p"><a href="/register">Register As A New User</a></p></span>
+
+                <span class="help-block pull-left"><a href="#">Forgot Password?</a></span>
+                <span class="help-block pull-right"><a href="/register">Register As A New User</a></span>
+
+                {{ Form::submit('Login', array('id' => 'loginBtn', 'class' => 'btn btn-success btn-block')) }}
+
+                <div class="pull-right">
+                    {{ Form::label('remember_me', 'Keep Me Logged In') }}
+                    {{ Form::checkbox('remember_me', null, false) }}
+                </div>
 
                 <div class="clearfix"></div>
-
-                {{ Form::submit('Login', array('id' => 'loginBtn', 'class' => 'btn btn-default btn-success btn-block')) }}
             
             {{ Form::close() }}                
 
