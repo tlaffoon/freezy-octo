@@ -14,7 +14,12 @@
 // Homepage
 Route::get('/', function()
 {
-	return View::make('users.login');
+    if (Auth::check()) {
+        $user = User::find(Auth::id());
+        return View::make('users.show')->with('user', $user);
+    } else {
+        return View::make('users.login');
+    }
 });
 
 /* -------------------------------- */
@@ -28,7 +33,8 @@ Route::resource('users', 'UsersController');
 Route::get('/login', function()
 {
     if (Auth::check()) {
-        return View::make('users.show');
+        $user = User::find(Auth::id());
+        return View::make('users.show')->with('user', $user);
     } else {
         return View::make('users.login');
     }
