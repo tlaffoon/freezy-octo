@@ -191,14 +191,10 @@ class UsersController extends \BaseController {
 			$user = User::findOrFail($id);
 		}
 
-		else {
-			$user = new User();
-		}
-
 		$validator = Validator::make(Input::all(), User::$rules);
 
 		if ($validator->fails()) {
-			Session::flash('errorMessage', 'There were errors submitting your form.  Did you include all fields?');
+			Session::flash('alert', 'There were errors submitting your form.  Did you include all fields?');
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
 
