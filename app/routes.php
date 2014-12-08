@@ -43,7 +43,7 @@ Route::get('/profile', function() {
     if(Auth::check()) {
         // On successful authentication, show user profile by default.
         $user = User::find(Auth::id());
-        return View::make('users.profile')->with('user', $user);
+        return View::make('users.show')->with('user', $user);
     } else {
         // Needs logic on failed auth attempt, so you can prompt user to login again.
         return Redirect::to('/login')->with('alert', 'Please login to continue.');
