@@ -39,13 +39,14 @@ Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'
 // User Get Profile
 Route::get('/profile', function() {
 
+    // Not sure that any of this is even necessary anymore, since routes are protected in controller.
     if(Auth::check()) {
         // On successful authentication, show user profile by default.
         $user = User::find(Auth::id());
         return View::make('users.profile')->with('user', $user);
     } else {
         // Needs logic on failed auth attempt, so you can prompt user to login again.
-        return View::make('users.login'); // ->with('alert', 'Please login to continue.');
+        return Redirect::to('/login')->with('alert', 'Please login to continue.');
     }
 
 });
