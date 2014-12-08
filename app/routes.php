@@ -27,7 +27,13 @@ Route::resource('users', 'UsersController');
 // User Get Login Route
 Route::get('/login', function()
 {
-    return View::make('users.login');
+
+    if (Auth::(check())) {
+        return View::make('users.show');
+    } else {
+        return View::make('users.login');
+    }
+
 });
 
 // User Post Login Route
