@@ -52,7 +52,7 @@
 
                 <div class="pull-right">
                     {{ Form::label('remember_me', 'Keep Me Logged In') }}
-                    {{ Form::checkbox('remember_me', null, false) }}
+                    {{ Form::checkbox('remember_me', null, true) }}
                 </div>
 
                 <div class="clearfix"></div>
