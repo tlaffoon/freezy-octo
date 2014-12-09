@@ -162,7 +162,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return View::make('users.profile')->with('user', User::find($id));
+		return View::make('users.show')->with('user', User::find($id));
 	}
 
 	/**
@@ -173,7 +173,6 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
 		return View::make('users.edit')->with('user', User::find($id));
 	}
 
@@ -186,7 +185,6 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
 		if ($id != null) {
 			$user = User::findOrFail($id);
 		}
@@ -199,7 +197,7 @@ class UsersController extends \BaseController {
 		}
 
 		else {
-			$user = new User();
+			// $user = new User();
 			
 			$user->firstname 	= Input::get('firstname');
 			$user->lastname 	= Input::get('lastname');
