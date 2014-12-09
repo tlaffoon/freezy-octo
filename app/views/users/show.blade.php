@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('header')
+@section('topscript')
 <style type="text/css">
     .user-info {
         font-size: 18px;

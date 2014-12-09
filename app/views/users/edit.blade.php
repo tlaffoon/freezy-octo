@@ -59,7 +59,7 @@
 
 @stop
 
-@section('footer')
+@section('bottomscript')
 <script type="text/javascript">
     //
 </script>
