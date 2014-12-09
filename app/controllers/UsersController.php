@@ -200,8 +200,9 @@ class UsersController extends \BaseController {
 			$user->firstname 	= Input::get('firstname');
 			$user->lastname 	= Input::get('lastname');
 			$user->fullname 	= $user->firstname . ' ' . $user->lastname;
+			
 			$user->phone		= Input::get('phone');
-			// $user->email 	= Input::get('email');
+			$user->email 		= Input::get('email');
 			$user->password 	= Input::get('password');
 			
 			$user->save();
