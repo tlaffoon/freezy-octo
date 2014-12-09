@@ -22,6 +22,7 @@ class UsersTable extends Migration {
 		    $user->string('email')->unique();
 		    $user->string('phone');
 		    $user->string('password');
+		    $user->string('role');
 		    $user->string('img_path');
 		    $user->string('remember_token', 64);
 		    $user->timestamps();

@@ -13,10 +13,6 @@
         padding-top: 70px;
     }
 
-    .alert-info {
-        font-size: 18px;
-    }
-
     .message-info {
         font-size: 18px;
     }
@@ -91,7 +87,9 @@
         $(document).ready(function() {
             $('.close').click(function(){
                 // Consider autofading out alert messages.
-                $(this).parent().fadeOut();
+                console.log('clicked.');
+                console.log($(this).parent());
+                $(this).parent().slideUp();
             });
         })
 

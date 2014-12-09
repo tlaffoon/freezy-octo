@@ -7,7 +7,7 @@
 
             <img class="img-responsive img-rounded" src="/includes/img/codeup-logo.jpg">
 
-            <h2 class="page-header">Register An Account</h2>
+            <h2 class="page-header">Update Your Information</h2>
 
             {{ Form::model($user, array('action' => array('UsersController@update', $user->id), 'class'=>'form', 'role'=>'form', 'method' => 'PUT' )) }}
 
