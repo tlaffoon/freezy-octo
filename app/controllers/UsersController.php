@@ -52,7 +52,6 @@ class UsersController extends \BaseController {
 
 
 		if ($logIn) {
-			# code...
 		    // Redirect to profile after user login.
 			$id = Auth::id();
 			$user = User::find($id);
@@ -197,11 +196,10 @@ class UsersController extends \BaseController {
 		}
 
 		else {
-			// $user = new User();
 			
 			$user->firstname 	= Input::get('firstname');
 			$user->lastname 	= Input::get('lastname');
-			$user->fullname 	= $user->first . ' ' . $user->last;
+			$user->fullname 	= $user->firstname . ' ' . $user->lastname;
 			$user->phone		= Input::get('phone');
 			$user->email 		= Input::get('email');
 			$user->password 	= Input::get('password');
@@ -215,10 +213,10 @@ class UsersController extends \BaseController {
 		        $user->save();
 		    }
 
-		    else {
-		    	$user->img_path = 'http://placehold.it/160x160';
-		    	$user->save();
-		    }
+		    // else {
+		    // 	$user->img_path = 'http://placehold.it/160x160';
+		    // 	$user->save();
+		    // }
 
 		    Session::flash('message', 'User saved successfully.');
 		}
