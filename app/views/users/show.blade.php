@@ -16,16 +16,16 @@
     <div class="col-md-12">
         @if(Auth::check())
             
-            <h2 class="page-header">Contact Information</h2>
+            <h2 class="page-header">Contact Information <a class="pull-right" href="{{ action('UsersController@edit', $user->id) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> </h2>
 
             @if($user->img_path)
 
-                <img src="{{$user->img_path }}">
+                <img src="{{$user->img_path }}" class="img-responsive img-rounded pull-right">
 
             @else 
-
+            
                 <div class="pull-right">
-                    <a href="#" class="btn btn-default">Upload An Image</a>
+                    <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-default">Upload An Image</a>
                 </div>
 
             @endif
