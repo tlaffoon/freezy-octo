@@ -20,11 +20,6 @@
                 {{ Form::label('lastname', 'Last Name') }}
                 {{ Form::text('lastname', Input::old('lastname'), array('class' => 'form-group form-control', 'placeholder' => 'Last Name')) }}
                 {{ $errors->first('lastname', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
-
-                <!-- Email -->
-                {{ Form::label('email', 'Email') }}
-                {{ Form::text('email', Input::old('email'), array('class' => 'form-group form-control', 'placeholder' => 'Email')) }}
-                {{ $errors->first('email', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
                 
                 <!-- Phone -->
                 {{ Form::label('phone', 'Phone') }}
