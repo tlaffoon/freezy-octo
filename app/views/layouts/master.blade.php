@@ -35,9 +35,13 @@
         filter: alpha(opacity=0);
     }
 
+    .actions-column {
+        width: 156px;
+    }
+
     </style>
 
-    @yield('header')
+    @yield('topscript')
 
 </head>
 <body>
@@ -98,7 +102,7 @@
     <!-- Bootstrap Javascript -->
     {{HTML::script('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')}}
 
-    @yield('footer')
+    @yield('bottomscript')
 
     <script type="text/javascript">
 
