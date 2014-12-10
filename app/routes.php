@@ -25,6 +25,13 @@ Route::resource('users', 'UsersController');
 // MAIN ROUTES
 
 
+// Email Verification Route
+Route::get('register/verify/{confirmationCode}', [
+    'as' => 'confirmation_path',
+    'uses' => 'RegistrationController@confirm'
+]);
+
+
 // Homepage
 Route::get('/', function()
 {

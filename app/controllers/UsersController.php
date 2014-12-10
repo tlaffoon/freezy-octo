@@ -7,6 +7,7 @@ class UsersController extends \BaseController {
 	    $this->beforeFilter('auth', array('except'=>array('login', 'handleLogin', 'store')));
 	}
 
+
 	/**
 	 * Return user login form.
 	 *
