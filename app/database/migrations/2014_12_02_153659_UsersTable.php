@@ -12,7 +12,6 @@ class UsersTable extends Migration {
 	 */
 	public function up()
 	{
-		//
 		Schema::create('users', function($user)
 		{
 		    $user->increments('id');
@@ -32,7 +31,7 @@ class UsersTable extends Migration {
 		    $user->integer('age');
 
 		    $user->string('img_path');
-		    
+
 		    $user->boolean('confirmed')->default(0);
 		    $user->string('confirmation_code')->nullable();
 		    
