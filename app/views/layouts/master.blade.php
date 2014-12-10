@@ -107,7 +107,7 @@
     <script type="text/javascript">
 
         $(document).ready(function() {
-            $('.close').click(function(){
+            $('.message-info').click(function(){
                 // Consider autofading out alert messages.
                 console.log('clicked.');
                 console.log($(this).parent());

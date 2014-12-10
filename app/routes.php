@@ -28,6 +28,7 @@ Route::resource('users', 'UsersController');
 // Homepage
 Route::get('/', function()
 {
+    //  If user is already authenticated, redirect to their main view - else login view.
     if (Auth::check()) {
         $user = User::find(Auth::id());
         return View::make('users.show')->with('user', $user);
@@ -40,11 +41,24 @@ Route::get('/', function()
 // User Get Login Route
 Route::get('/login', function()
 {
+    //  If user is already authenticated, redirect to their main view - else login view.
     if (Auth::check()) {
         $user = User::find(Auth::id());
         return View::make('users.show')->with('user', $user);
     } else {
         return View::make('users.login');
+    }
+
+});
+
+Route::get('/apply', function()
+{
+    //  If user is already authenticated, redirect to their main view - else login view.
+    if (Auth::check()) {
+        $user = User::find(Auth::id());
+        return View::make('users.show')->with('user', $user);
+    } else {
+        return View::make('users.apply');
     }
 
 });

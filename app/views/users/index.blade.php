@@ -45,7 +45,7 @@
                                     <span class="glyphicon glyphicon-edit"></span>
                                 </a>
 
-                                <a href="" class="deleteUser btn btn-default btn-lg btn-danger" data-userid="{{ $user->id }}">
+                                <a href="" class="deleteUser btn btn-default btn-lg btn-danger" data-userid="{{$user->id}}">
                                     <span class="glyphicon glyphicon-remove-sign"></span>
                                 </a>
                             </div>    

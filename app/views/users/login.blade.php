@@ -1,26 +1,7 @@
 @extends('layouts.master')
 
-@section('header')
+@section('topscript')
 <style type="text/css">
-
-/*    body {
-        background-image: url('/includes/img/class_resized.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-    }
-
-    #login_form {
-        background-color: white;
-        padding-bottom: 20px;
-        position: relative;
-        top: 140px;
-        right: 170px;
-    }*/
-
-    #loginBtn {
-        font-size: 18px;
-    }
 
 </style>
 @stop
@@ -48,15 +29,13 @@
                 <span class="help-block pull-left"><a href="#">Forgot Password?</a></span>
                 <span class="help-block pull-right"><a href="/register">Register As A New User</a></span>
 
-                {{ Form::submit('Login', array('id' => 'loginBtn', 'class' => 'btn btn-success btn-block')) }}
+                {{ Form::submit('Login', array('class' => 'btn btn-success btn-block')) }}
 
                 <div class="pull-right">
                     {{ Form::label('remember_me', 'Keep Me Logged In') }}
                     {{ Form::checkbox('remember_me', null, true) }}
                 </div>
-
-                <div class="clearfix"></div>
-            
+           
             {{ Form::close() }}                
 
         </div> <!-- End Column -->
@@ -65,36 +44,8 @@
 
 @stop
 
-@section('footer')
+@section('bottomscript')
 <script type="text/javascript">
-
-    // $(document).ready(function() {
-        
-    //     var email = '';
-    //     var password = '';
-
-    //     //  Validate email & password after capturing value.
-    //     //  If input valid, then btnCheck()
-
-    //     function btnCheck(){
-    //         if (email && password.length >= 8) {
-    //             $('#loginBtn').removeClass('disabled');
-    //         } 
-    //         else if (email && password.length <= 7) {
-    //             $('#loginBtn').addClass('disabled');  
-    //         }
-    //     }
-
-    //     $('#email').on('keyup', function() {
-    //         email = $(this).val();
-    //         btnCheck();
-    //     });
-
-    //     $('#password').on('keyup', function() {
-    //         password = $(this).val();
-    //         btnCheck();
-    //     });
-    // });
 
 </script>
 @stop
