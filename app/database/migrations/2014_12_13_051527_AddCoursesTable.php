@@ -18,15 +18,16 @@ class AddCoursesTable extends Migration {
 		    
 		    $table->string('name')->unique();
 		    $table->string('description');
-		    $table->integer('duration');
-		    $table->integer('current_students');
-		    $table->integer('max_students');
-		    $table->integer('cost');
 
 		    $table->date('start_date');
 		    $table->date('end_date');
 		    $table->date('demo_date')->nullable();
 
+		    $table->integer('duration');
+		    $table->integer('current_students');
+		    $table->integer('max_students');
+		    $table->integer('cost');
+		    
 		    $table->timestamps();
 		});
 	}
