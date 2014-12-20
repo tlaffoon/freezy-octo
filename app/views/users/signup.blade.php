@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('css')
+@section('topscript')
 <style type="text/css">
 
     #enter_email {

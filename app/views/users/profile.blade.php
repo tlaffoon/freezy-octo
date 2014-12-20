@@ -1,12 +1,15 @@
 @extends('layouts.master')
 
-@section('header')
+@section('topscript')
 <style type="text/css">
     .user-info {
         font-size: 18px;
     }
     .application-info {
         font-size: 18px;
+    }
+    .user-img {
+        height: 200px;
     }
 </style>
 @stop
@@ -18,22 +21,32 @@
             
             <h2 class="page-header">Contact Information</h2>
 
-            @if($user->img_path)
+            <div class="col-md-6">
 
-                <img src="{{$user->img_path }}">
+                <p class="user-info">{{ $user->fullname }}</p>
+                <p class="user-info">{{ $user->email }}</p>
+                <p class="user-info">{{ $user->phone }}</p>
+                <p class="user-info">{{ $user->address }}</p>
 
-            @else 
+            </div>
 
-                <div class="pull-right">
-                    <a href="#" class="btn btn-default">Upload An Image</a>
-                </div>
+            <div class="col-md-4"></div>
+            
+            <div class="col-md-2">
 
-            @endif
+                @if($user->img_path)
 
-            <p class="user-info">{{ $user->fullname }}</p>
-            <p class="user-info">{{ $user->email }}</p>
-            <p class="user-info">{{ $user->phone }}</p>
-            <p class="user-info">{{ $user->address }}</p>
+                    <img class="img-responsive" src="{{$user->img_path }}">
+
+                @else 
+
+                    <div class="pull-right">
+                        <a href="#" class="btn btn-default">Upload An Image</a>
+                    </div>
+
+                @endif
+
+            </div>
 
         @endif
     </div>
