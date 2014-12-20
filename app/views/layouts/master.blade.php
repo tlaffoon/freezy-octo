@@ -7,10 +7,14 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
+    <!-- Include Lato Font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    
     <style type="text/css">
 
     body {
         padding-top: 70px;
+        font-family: 'Lato', sans-serif;
     }
 
     .message-info {
@@ -39,6 +43,8 @@
         width: 156px;
     }
 
+    @yield('css')
+
     </style>
 
     @yield('topscript')
@@ -63,7 +69,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             @if (Auth::check())
                             <li><a href="/logout">Log Out</a></li>
-                            <li><a href="/profile">{{ Auth::user()->firstname }}</a></li>
+                            <li><a href="/profile">{{ Confide::user()->firstname }}</a></li>
                             @else
                             <li><a href="/login">Login</a></li>
                             <li><a href="/register">Sign Up</a></li>
