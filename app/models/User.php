@@ -1,13 +1,11 @@
 <?php
 
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
+use Zizaco\Confide\ConfideUser; 
+use Zizaco\Confide\ConfideUserInterface; 
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements ConfideUserInterface {
 
-	use UserTrait, RemindableTrait;
+	use ConfideUser;
 
 	/**
 	 * The database table used by the model.
@@ -21,7 +19,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('first', 'last', 'email', 'phone', 'password', 'password_confirm');
+	protected $hidden = ['first', 'last', 'username', 'email', 'phone', 'password', 'password_confirm'];
 
 
 	/**
@@ -85,6 +83,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		// $value = '(' . substr($value, 0 , 3 ) . ')' . ' ' . substr($value, 3 , 3 ) . '-' . substr($value, 6 , 4 );
 
 		$this->attributes['phone'] = $value;
+	}
+
+	public function applications() {
+		return $this->hasMany('Application');
 	}
 
 
