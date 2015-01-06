@@ -15,6 +15,7 @@ class AddApplicationsTable extends Migration {
 		Schema::create('applications', function($table)
 		{
 		    $table->increments('id');
+		    $table->string('application_status')->default('pending');
 		    $table->string('employment_status');
 		    $table->string('resume_path');
 		    $table->string('financing_status');
