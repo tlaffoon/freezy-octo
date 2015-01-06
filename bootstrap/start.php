@@ -24,17 +24,15 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-// $env = $app->detectEnvironment(array(
-// 	'local' => array('homestead'),
-// ));
+$env = $app->detectEnvironment(function()
+{
 
-$env = $app->detectEnvironment(array(
+    if (!empty($_SERVER['LARAVEL_ENV'])) {
+        return $_SERVER['LARAVEL_ENV'];
+    }
 
-    //'local' => array('homestead'),
-
-    'local' => array('*.dev', gethostname()),
-    'production' => array('*.com', '*.net', 'www.somedomain.com')
-));
+    return 'local';
+});
 
 /*
 |--------------------------------------------------------------------------

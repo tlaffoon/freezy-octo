@@ -23,15 +23,19 @@ class AddUsersTable extends Migration
             $table->string('gender');
             $table->date('dob');
             $table->integer('age');
-            $table->string('img_path');           
-            
+            $table->string('img_path');
+            $table->string('street');
+            $table->string('city');
+            $table->string('state');
+            $table->string('zip');
+
             $table->boolean('financing')->default(0);
             $table->boolean('application_completed')->default(0);
 
             $table->string('confirmation_code');
             $table->string('remember_token')->nullable();
             $table->boolean('confirmed')->default(false);
-            
+
             $table->timestamps();
         });
 
