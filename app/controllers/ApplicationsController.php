@@ -38,8 +38,6 @@ class ApplicationsController extends \BaseController {
 		if ($validator->fails())
 		{
 			Session::flash('alert', 'There were errors submitting your form.  Did you include all fields?');
-
-		    // validation failed, redirect to the user create page with validation errors and old inputs
 		    return Redirect::back()->withInput()->withErrors($validator);
 		} 
 
@@ -48,9 +46,9 @@ class ApplicationsController extends \BaseController {
 			// Update user fields which correspond with application.
 			$user = User::findOrFail(Auth::id());
 
-			$user->firstname = Input::get('firstname');
-			$user->lastname = Input::get('lastname');
-			$user->fullname = $user->firstname . ' ' . $user->lastname;
+			$user->first = Input::get('firstname');
+			$user->last = Input::get('lastname');
+			$user->fullname = $user->first . ' ' . $user->last;
 			$user->gender = Input::get('gender');
 			$user->dob = Input::get('dob');
 			$user->phone = Input::get('phone');
@@ -84,8 +82,18 @@ class ApplicationsController extends \BaseController {
 			    $app->save();
 			}
 
-			$applications = Application::paginate(5);
-			return View::make('applications.index')->with('applications', $applications);
+			// Put application in pending status.
+				// Handled automatically when created.
+
+			// Send email confirmation to Jenni with attached resume.
+			// Mail::send('email.view', $data, function($message){});
+
+			// Return their profile view with success message.
+
+			// This was for testing only.
+				// Define applications and return index view.
+				// $applications = Application::paginate(5);
+				// return View::make('applications.index')->with('applications', $applications);
 
 		}
 
