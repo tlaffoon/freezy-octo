@@ -30,10 +30,11 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-    //'local' => array('homestead'),
+    if (!empty($_SERVER['LARAVEL_ENV'])) {
+        return $_SERVER['LARAVEL_ENV'];
+    }
 
-    'local' => array('*.dev', gethostname()),
-    'production' => array('*.com', '*.net', 'www.somedomain.com')
+    return 'local';
 ));
 
 /*
