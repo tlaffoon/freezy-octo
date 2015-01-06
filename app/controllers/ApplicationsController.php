@@ -89,11 +89,9 @@ class ApplicationsController extends \BaseController {
 			// Put application in pending status.
 				// Handled automatically when created.
 			
-			$data['email'] = $user->email;
-			$data['fullname'] = $user->fullname;
-			
 			// This is how you get an object into the array for Mail.  Blammo.
 			$data['application'] = $application;
+			$data['user'] = $user;
 
 			// Send email confirmation to info@codeup.com with attached resume.
 			Mail::send('emails.application.new', $data, function($message) use ($data) {
