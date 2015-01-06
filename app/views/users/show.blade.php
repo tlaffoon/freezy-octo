@@ -5,6 +5,10 @@
     .user-info {
         font-size: 18px;
     }
+
+    #small-text {
+        margin-right: 5px;
+    }
 /*    .application-info {
         font-size: 18px;
     }*/
@@ -16,7 +20,7 @@
     <div class="col-md-12">
         @if(Auth::check())
             
-            <h2 class="page-header">Contact Information <a class="pull-right" href="{{ action('UsersController@edit', $user->id) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> </h2>
+            <h2 class="page-header">Contact Information <a class="pull-right" href="{{ action('UsersController@edit', $user->id) }}"><small id="small-text">Edit this information</small><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> </h2>
 
             <div class="col-md-6">
 

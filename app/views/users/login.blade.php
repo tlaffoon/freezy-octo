@@ -27,7 +27,7 @@
 
 
                 <span class="help-block pull-left"><a href="#">Forgot Password?</a></span>
-                <span class="help-block pull-right"><a href="/register">Register As A New User</a></span>
+                <span class="help-block pull-right"><a href="/signup">Register As A New User</a></span>
 
                 {{ Form::submit('Login', array('class' => 'btn btn-success btn-block')) }}
 
