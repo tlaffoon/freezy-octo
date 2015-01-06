@@ -32,6 +32,10 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function store()
 	{
+
+		// Get all the input and store it inside variable.
+		$data = Input::all();
+
 		// create the validator
 		$validator = Validator::make(Input::all(), Application::$rules);
 
@@ -62,33 +66,46 @@ class ApplicationsController extends \BaseController {
 			$user->save();
 
 			// Store submitted application data.
-			$app = new Application();
-			$app->course_id = Input::get('course_id');
-			$app->employment_status = Input::get('employment_status');
-			$app->financing_status = Input::get('financing_status');
-			$app->referred_by = Input::get('referred_by');
+			$application = new Application();
+			$application->course_id = Input::get('course_id');
+			$application->employment_status = Input::get('employment_status');
+			$application->financing_status = Input::get('financing_status');
+			$application->referred_by = Input::get('referred_by');
 			
-			// Uses setter in model to add paragraph breaks
-			$app->bg_info = Input::get('bg_info');
-			$app->questions = Input::get('questions');
+			// Uses setter in model to add paragraph breaks on new lines for readability.
+			$application->bg_info = Input::get('bg_info');
+			$application->questions = Input::get('questions');
 
-			$app->user_id = Auth::id();
-			$app->save();
+			$application->user_id = Auth::id();
+			$application->save();
 
 			// handle resume upload
 			if (Input::hasFile('resume') && Input::file('resume')->isValid())
 			{
-			    $app->addUploadedResume(Input::file('resume'));
-			    $app->save();
+			    $application->addUploadedResume(Input::file('resume'));
+			    $application->save();
 			}
 
 			// Put application in pending status.
 				// Handled automatically when created.
+			
+			$data['email'] = $user->email;
+			$data['fullname'] = $user->fullname;
+			
+			// This is how you get an object into the array for Mail.  Blammo.
+			$data['application'] = $application;
 
-			// Send email confirmation to Jenni with attached resume.
-			// Mail::send('email.view', $data, function($message){});
+			// Send email confirmation to info@codeup.com with attached resume.
+			Mail::send('emails.application.new', $data, function($message) use ($data) {
+		    	$message->from($data['email'] , $data['fullname']);
+				$message->to('thomas@codeup.com', 'Staff');
+				$message->subject('New Application Submitted');
+			});
 
 			// Return their profile view with success message.
+			return View::make('users.show')
+				->with('message', 'Thanks for applying! We will get in touch with you within the next 24 hours.')
+				->with('user', $user);
 
 			// This was for testing only.
 				// Define applications and return index view.
