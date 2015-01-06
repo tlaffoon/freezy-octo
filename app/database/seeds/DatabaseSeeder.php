@@ -32,12 +32,12 @@ class UsersTableSeeder extends Seeder {
             'email' => 'thomas@codeup.com',
             'gender' => 'male',
             // 'address' => '339 Mahogany Chest',
-            'firstname' => 'Thomas',
-            'lastname' => 'Laffoon',
+            'first' => 'Thomas',
+            'last' => 'Laffoon',
             'fullname' => 'Thomas J. Laffoon',
             'phone' => '210 391 7470',
             'role' => 'admin',
-            'password' => 'password'
+            'password' => 'password',
         ];
 
         DB::table('users')->insert($admin);
@@ -52,18 +52,19 @@ class UsersTableSeeder extends Seeder {
         // Create random users.
         for ($i = 0; $i < 100; $i++)
         {
-          $user = array(
-            'username' => $faker->userName,
-            'firstname' => $faker->firstName,
-            'lastname' => $faker->lastName,
-            'email' => $faker->email,
-            'password' => $faker->word,
-            'fullname' => $faker->firstName . ' ' . $faker->lastName,
-            'phone' => $faker->phoneNumber ,
-            'gender' =>  $gender[array_rand($gender)],
-            'role' => 'user',
-            // 'address' => $faker->address
-          );
+
+            $user = array(
+                'username' => $faker->userName,
+                'first' => $faker->firstName,
+                'last' => $faker->lastName,
+                'email' => $faker->email,
+                'password' => $faker->word,
+                'fullname' => $faker->firstName . ' ' . $faker->lastName,
+                'phone' => $faker->phoneNumber ,
+                'gender' =>  $gender[array_rand($gender)],
+                'role' => 'user',
+                // 'address' => $faker->address
+            );
           
           // Insert user into the database.
           DB::table('users')->insert($user);
