@@ -42,7 +42,7 @@ class Application extends Eloquent {
         $this->resume_path = '/' . $this->docDir . '/' . $resumeName;
     }
 
-    //
+    // Formats background information.
     public function setBGInfo($string) {
         
         $array = explode("\n", $string);
@@ -54,7 +54,7 @@ class Application extends Eloquent {
         $this->attributes['bg_info'] = $formattedInput;
     }
 
-    //
+    // Formats questions submitted.
     public function setQuestions($string) {
         
         $array = explode("\n", $string);
