@@ -19,4 +19,8 @@ class Course extends Eloquent {
         return $this->hasMany('Application');
     }
 
+    public function setDuration() {
+        //$this->duration = $this->start_date && $this->end_date;
+    }
+
 }
