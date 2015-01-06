@@ -3,6 +3,9 @@
     <title>apply.codeup.com</title>
     <!-- Latest compiled and minified CSS -->
     {{HTML::style('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')}}
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
     <style type="text/css">
 
@@ -10,9 +13,35 @@
         padding-top: 70px;
     }
 
+    .message-info {
+        font-size: 18px;
+    }
+
+    .fileUpload {
+        position: relative;
+        overflow: hidden;
+        margin: 0px;
+        padding: 2px;
+    }
+    .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+    .actions-column {
+        width: 156px;
+    }
+
     </style>
 
-    @yield('header')
+    @yield('topscript')
 
 </head>
 <body>
@@ -34,7 +63,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             @if (Auth::check())
                             <li><a href="/logout">Log Out</a></li>
-                            <li><a href="/profile">{{ Auth::user()->first_name }}</a></li>
+                            <li><a href="/profile">{{ Auth::user()->firstname }}</a></li>
                             @else
                             <li><a href="/login">Login</a></li>
                             <li><a href="/register">Sign Up</a></li>
@@ -45,12 +74,20 @@
                 </div>
             </nav>
         </div>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-12">
                     @if(Session::has('message'))
-                    <div class="alert-box success">
-                        <h2>{{ Session::get('message') }}</h2>
+                    <div class="alert bg-success">
+                        <button class="close" data-dismiss="alert">×</button>
+                        <p class="message-info">{{ Session::get('message') }}</p>
+                    </div>
+                    @endif
+
+                    @if(Session::has('alert'))
+                    <div class="alert bg-warning">
+                        <button class="close" data-dismiss="alert">×</button>
+                        <p class="message-info">{{ Session::get('alert') }}</p>
                     </div>
                     @endif
                 </div>
@@ -65,7 +102,20 @@
     <!-- Bootstrap Javascript -->
     {{HTML::script('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')}}
 
-    @yield('footer')
+    @yield('bottomscript')
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('.message-info').click(function(){
+                // Consider autofading out alert messages.
+                console.log('clicked.');
+                console.log($(this).parent());
+                $(this).parent().slideUp();
+            });
+        })
+
+    </script>
 
 </body>
 </html>

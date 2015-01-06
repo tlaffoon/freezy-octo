@@ -1,22 +1,7 @@
 @extends('layouts.master')
 
-@section('header')
+@section('topscript')
 <style type="text/css">
-
-/*    body {
-        background-image: url('/includes/img/class_resized.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-    }
-
-    #login_form {
-        background-color: white;
-        padding-bottom: 20px;
-        position: relative;
-        top: 140px;
-        right: 170px;
-    }*/
 
 </style>
 @stop
@@ -30,29 +15,27 @@
 
             {{ Form::open(array('url' => 'login', 'method' => 'post', 'class'=>'form', 'role'=>'form')) }}                
             
-            <!-- Refactor to use individual error messages. -->
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+                <!-- Email -->
+                {{ Form::label('email', 'Email') }}
+                {{ Form::text('email', null, array('class' => 'form-group form-control', 'placeholder' => 'Email')) }}
+                {{ $errors->first('email', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                
+                <!-- Password -->
+                {{ Form::label('password', 'Password') }}
+                {{ Form::password('password', array('class' => 'form-group form-control', 'placeholder' => 'Password')) }}
+                {{ $errors->first('password', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
-            <!-- Email -->
-            {{ Form::label('email', 'Email') }}
-            {{ Form::text('email', null, array('class' => 'form-group form-control', 'placeholder' => 'Email')) }}
-            {{ $errors->first('email', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
-            
-            <!-- Password -->
-            {{ Form::label('password', 'Password') }}
-            {{ Form::password('password', array('id' => 'password', 'class' => 'form-group form-control', 'placeholder' => 'Password')) }}
-            {{ $errors->first('password', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
-            <span class="help-block pull-left"><p class="text-warning p"><a href="#">Forgot Password?</a></p></span>
-            <span class="help-block pull-right"><p class="text-warning p"><a href="/register">Register As A New User</a></p></span>
+                <span class="help-block pull-left"><a href="#">Forgot Password?</a></span>
+                <span class="help-block pull-right"><a href="/register">Register As A New User</a></span>
 
-            <div class="clearfix"></div>
+                {{ Form::submit('Login', array('class' => 'btn btn-success btn-block')) }}
 
-            {{ Form::submit('Login', array('id' => 'loginBtn', 'class' => 'btn btn-default btn-success btn-block disabled')) }}
+                <div class="pull-right">
+                    {{ Form::label('remember_me', 'Keep Me Logged In') }}
+                    {{ Form::checkbox('remember_me', null, true) }}
+                </div>
+           
             {{ Form::close() }}                
 
         </div> <!-- End Column -->
@@ -61,36 +44,8 @@
 
 @stop
 
-@section('footer')
+@section('bottomscript')
 <script type="text/javascript">
-
-    $(document).ready(function() {
-        
-        var email = '';
-        var password = '';
-
-        //  Validate email & password after capturing value.
-        //  If input valid, then btnCheck()
-
-        function btnCheck(){
-            if (email && password.length >= 8) {
-                $('#loginBtn').removeClass('disabled');
-            } 
-            else if (email && password.length < 8) {
-                $('#loginBtn').addClass('disabled');  
-            }
-        }
-
-        $('#email').on('keyup', function() {
-            email = $(this).val();
-            btnCheck();
-        });
-
-        $('#password').on('keyup', function() {
-            password = $(this).val();
-            btnCheck();
-        });
-    });
 
 </script>
 @stop

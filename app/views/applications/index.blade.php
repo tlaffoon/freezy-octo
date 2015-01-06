@@ -15,12 +15,9 @@
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Status</th>
-                    <th>Math</th>
-                    <th>Logic</th>
-                    <th>Prework</th>
                     <!-- <th>Address</th> -->
                     <!-- <th>Github Url</th> -->
-                    <th class="actions-column">Actions</th>
+                    <th>Actions</th>
                 </tr>
                 
                 <?php foreach ($users as $key => $user): ?>
@@ -37,15 +34,15 @@
 
                             <div class="btn-group">
 
-                                <a href="{{ action('UsersController@show', $user->id) }}" class="btn btn-default btn-lg btn-info">
+                                <button class="btn btn-default btn-success" type="{{ action('UsersController@show', $user->id) }}">
                                     <span class="glyphicon glyphicon-search"></span>
-                                </a>
+                                </button>
                                 
-                                <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-default btn-lg btn-warning">
+                                <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-default btn-warning">
                                     <span class="glyphicon glyphicon-edit"></span>
                                 </a>
 
-                                <a href="" class="deleteUser btn btn-default btn-lg btn-danger" data-userid="{{$user->id}}">
+                                <a href="#" class="deleteUser btn btn-default btn-danger" data-userid="{{ $user->id }}">
                                     <span class="glyphicon glyphicon-remove-sign"></span>
                                 </a>
                             </div>    
