@@ -1,11 +1,13 @@
 <?php
 
-use Zizaco\Confide\ConfideUser; 
-use Zizaco\Confide\ConfideUserInterface; 
+use Illuminate\Auth\UserTrait;
+use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\Reminders\RemindableTrait;
+use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements ConfideUserInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	use ConfideUser;
+	use UserTrait, RemindableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -19,8 +21,7 @@ class User extends Eloquent implements ConfideUserInterface {
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['first', 'last', 'username', 'email', 'phone', 'password', 'password_confirm'];
-
+	protected $fillable = ['username', 'email', 'password', 'password_confirmation'];
 
 	/**
 	 * The required fields on users.create form submission.
@@ -28,10 +29,8 @@ class User extends Eloquent implements ConfideUserInterface {
 	 * @var array
 	 */
 	public static $rules = array(
-
-		// 'firstname'				=>	'required|alpha|min:2',
-		// 'lastname'				=>	'required|alpha|min:2',
-		'email'					=>	'required|email|unique:users',
+		'username'				=>  'required',
+		'email'					=>  'required|email',
 		'password'				=>	'required|alpha_num|between:6,12|confirmed',
 		'password_confirmation'	=>	'required|alpha_num|between:6,12'
 	);
@@ -58,6 +57,9 @@ class User extends Eloquent implements ConfideUserInterface {
 	    $this->img_path = '/' . $this->imgDir . '/' . $imageName;
 	}
 
+	public function applications() {
+		return $this->hasMany('Application');
+	}
 
 	/**
 	 * The function to format password on user creation.
@@ -85,9 +87,6 @@ class User extends Eloquent implements ConfideUserInterface {
 		$this->attributes['phone'] = $value;
 	}
 
-	public function applications() {
-		return $this->hasMany('Application');
-	}
 
 
 }
