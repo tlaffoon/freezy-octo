@@ -30,10 +30,52 @@ class UsersController extends \BaseController {
 		  Auth::logout();
 		}
 		
-		// Needs flash message to confirm logout.
-		return Redirect::to('login');
+		return Redirect::to('login')->with('message', 'You have successfully logged out.');
 	}
 
+
+	public function doLogin()
+	{
+		// validate the info, create rules for the inputs
+		$rules = array(
+		    'email'    => 'required|email', // make sure the email is an actual email
+		    'password' => 'required|alphaNum|min:3' // password can only be alphanumeric and has to be greater than 3 characters
+		);
+
+		// run the validation rules on the inputs from the form
+		$validator = Validator::make(Input::all(), $rules);
+
+		// if the validator fails, redirect back to the form
+		if ($validator->fails()) {
+		    return Redirect::to('login')
+		        ->withErrors($validator) // send back all errors to the login form
+		        ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+		} else {
+
+		    // create our user data for the authentication
+		    $userdata = array(
+		        'email'     => Input::get('email'),
+		        'password'  => Input::get('password')
+		    );
+
+		    // attempt to do the login
+		    if (Auth::attempt($userdata)) {
+
+		        // validation successful!
+		        // redirect them to the secure section or whatever
+		        // return Redirect::to('secure');
+		        // for now we'll just echo success (even though echoing in a controller is bad)
+		        echo 'SUCCESS!';
+
+		    } else {        
+
+		        // validation not successful, send back to form 
+		        return Redirect::to('login');
+
+		    }
+
+		}
+	}
 
 	/**
 	 * Handle user logins.
@@ -43,12 +85,16 @@ class UsersController extends \BaseController {
 	public function handleLogin() {
 		$data = Input::only(['email', 'password']);
 
+
+
 		if (Input::has('remember_me')) {
 		
 			$logIn = Auth::attempt(['email' => $data['email'], 'password' => $data['password']], true);
 
 		} else {
+			
 			$logIn = Auth::attempt(['email' => $data['email'], 'password' => $data['password']]);
+		
 		}
 
 
@@ -58,10 +104,8 @@ class UsersController extends \BaseController {
 			$user = User::find($id);
 			return Redirect::to('/profile')->with('user', $user);
 		} else {
-        
         	Session::flash('alert', 'Please login to continue.');
         	return Redirect::route('login')->withInput();
-		
 		}
 	}
 
@@ -85,7 +129,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$users = User::paginate(5);
+		$users = User::paginate(10);
 		return View::make('users.index')->with(array('users' => $users));
 	}
 
@@ -122,10 +166,11 @@ class UsersController extends \BaseController {
 		else {
 		    $user = new User();
 		    
-		    $user->firstname 	= Input::get('firstname');
-		    $user->lastname 	= Input::get('lastname');
-		    $user->fullname 	= $user->firstname . ' ' . $user->lastname;
-		    $user->phone		= Input::get('phone');
+		    $user->username 	= Input::get('username');
+		    // $user->first 		= Input::get('firstname');
+		    // $user->last 		= Input::get('lastname');
+		    // $user->fullname 	= $user->first . ' ' . $user->last;
+		    // $user->phone		= Input::get('phone');
 		    $user->email 		= Input::get('email');
 		    $user->password 	= Input::get('password');
 		    
@@ -138,18 +183,11 @@ class UsersController extends \BaseController {
 		        $user->save();
 		    }
 
-		    // else {
-		    // 	$user->img_path = '/includes/img/placeholder-user.png';
-		    // 	$user->save();
-		    // }
+		    // Session::flash('message', 'User account created successfully.');
 
-		    Session::flash('message', 'User account created successfully.');
-
- 		    // $users = User::all();
-		    // return View::make('users.index')->with(array('users' => $users));
-
-	        Auth::login($user);
-	        return Redirect::to('/profile');
+		    // Login user on creation and redirect to profile.
+	        //Auth::login($user);
+	        return Redirect::to('/login')->with('message', 'Account created successfully!  Please login below.');
 		}
 	}
 
@@ -189,7 +227,13 @@ class UsersController extends \BaseController {
 			$user = User::findOrFail($id);
 		}
 
-		$validator = Validator::make(Input::all(), User::$rules);
+		$rules = array(
+				// 'username'				=>  'required',
+				'password'				=>	'required|alpha_num|between:6,12|confirmed',
+				'password_confirmation'	=>	'required|alpha_num|between:6,12'
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
 
 		if ($validator->fails()) {
 			Session::flash('alert', 'There were errors submitting your form.  Did you include all fields?');
@@ -198,14 +242,18 @@ class UsersController extends \BaseController {
 
 		else {
 			
-			$user->firstname 	= Input::get('firstname');
-			$user->lastname 	= Input::get('lastname');
-			$user->fullname 	= $user->firstname . ' ' . $user->lastname;
+			$user->first 		= Input::get('firstname');
+			$user->last 		= Input::get('lastname');
+			$user->fullname 	= $user->first . ' ' . $user->last;
 			
 			$user->phone		= Input::get('phone');
-			$user->email 		= Input::get('email');
+
+			// Optional user email update.
+			if (Input::has('email')) {
+				$user->email 	= Input::get('email'); 
+			}
+
 			$user->password 	= Input::get('password');
-			
 			$user->save();
 
 		    // If there is an image to upload, then upload them.
@@ -215,12 +263,7 @@ class UsersController extends \BaseController {
 		        $user->save();
 		    }
 
-		    // else {
-		    // 	$user->img_path = 'http://placehold.it/160x160';
-		    // 	$user->save();
-		    // }
-
-		    Session::flash('message', 'User saved successfully.');
+		    Session::flash('message', 'Update successful.');
 		}
 		
 		return Redirect::action('UsersController@show', $user->id);

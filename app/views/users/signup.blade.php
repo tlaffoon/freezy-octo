@@ -1,13 +1,6 @@
 @extends('layouts.master')
 
-@section('css')
-<style type="text/css">
-
-    #enter_email {
-        margin-bottom: 10px;
-    }
-
-</style>
+@section('topscript')
 @stop
 
 @section('content')
@@ -17,10 +10,9 @@
 
             <img class="img-responsive img-rounded" src="/includes/img/codeup-logo.jpg">
 
-            <h4 id="enter_email">Please provide your information to continue: </h4>
-            <hr>
+            <h2 class="page-header">Register An Account</h2>
 
-            {{ Form::open(array('url' => 'login', 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
+            {{ Form::open(array('action' => 'UsersController@store', 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
 
                 <!-- Username -->
                 {{ Form::label('username', 'Username') }}

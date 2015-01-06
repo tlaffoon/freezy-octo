@@ -21,8 +21,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('first', 'last', 'email', 'phone', 'password', 'password_confirm');
-
+	protected $fillable = ['username', 'email', 'password', 'password_confirmation'];
 
 	/**
 	 * The required fields on users.create form submission.
@@ -30,10 +29,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	public static $rules = array(
-
-		// 'firstname'				=>	'required|alpha|min:2',
-		// 'lastname'				=>	'required|alpha|min:2',
-		'email'					=>	'required|email|unique:users',
+		'username'				=>  'required',
+		'email'					=>  'required|email',
 		'password'				=>	'required|alpha_num|between:6,12|confirmed',
 		'password_confirmation'	=>	'required|alpha_num|between:6,12'
 	);
@@ -60,6 +57,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    $this->img_path = '/' . $this->imgDir . '/' . $imageName;
 	}
 
+	public function applications() {
+		return $this->hasMany('Application');
+	}
 
 	/**
 	 * The function to format password on user creation.
@@ -86,6 +86,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		$this->attributes['phone'] = $value;
 	}
+
 
 
 }

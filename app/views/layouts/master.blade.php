@@ -1,16 +1,21 @@
 <html>
 <head>
     <title>apply.codeup.com</title>
+    
     <!-- Latest compiled and minified CSS -->
-    {{HTML::style('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')}}
+    {{ HTML::style('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css') }}
     
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
+    <!-- Include Lato Font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    
     <style type="text/css">
 
     body {
         padding-top: 70px;
+        font-family: 'Lato', sans-serif;
     }
 
     .message-info {
@@ -39,6 +44,8 @@
         width: 156px;
     }
 
+    @yield('css')
+
     </style>
 
     @yield('topscript')
@@ -62,11 +69,12 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             @if (Auth::check())
-                            <li><a href="/logout">Log Out</a></li>
-                            <li><a href="/profile">{{ Auth::user()->firstname }}</a></li>
+                                <li><a href="/profile">Your Profile</a></li>
+                                <li><a href="/logout">Log Out</a></li>
+                                <li><a href="action('ApplicationsController@create')">Apply Now!</a></li>
                             @else
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/register">Sign Up</a></li>
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/signup">Sign Up</a></li>
                             @endif
                         </ul>
 
@@ -84,10 +92,24 @@
                     </div>
                     @endif
 
+                    @if(Session::has('notice'))
+                    <div class="alert bg-info">
+                        <button class="close" data-dismiss="alert">×</button>
+                        <p class="message-info">{{ Session::get('notice') }}</p>
+                    </div>
+                    @endif
+
                     @if(Session::has('alert'))
                     <div class="alert bg-warning">
                         <button class="close" data-dismiss="alert">×</button>
                         <p class="message-info">{{ Session::get('alert') }}</p>
+                    </div>
+                    @endif
+
+                    @if(Session::has('error'))
+                    <div class="alert bg-warning">
+                        <button class="close" data-dismiss="alert">×</button>
+                        <p class="message-info">{{ Session::get('error') }}</p>
                     </div>
                     @endif
                 </div>
@@ -113,7 +135,7 @@
                 console.log($(this).parent());
                 $(this).parent().slideUp();
             });
-        })
+        });
 
     </script>
 

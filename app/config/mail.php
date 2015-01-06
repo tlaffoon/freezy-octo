@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.gmail.org',
+	'host' => 'smtp.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'info@codeup.com', 'name' => 'Codeup'),
+	'from' => array('address' => 'info@codeup.com', 'name' => 'Codeup Team'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'info@codeup.com',
+	'username' => 'postmaster@sandboxf830d5c071a6425f845420c622b5ce99.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'codeup2014',
+	'password' => '5ff746594e8630831827b5d5615f9c02',
 
 	/*
 	|--------------------------------------------------------------------------

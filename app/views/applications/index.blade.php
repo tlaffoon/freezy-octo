@@ -1,66 +1,92 @@
 @extends('layouts.master')
 
+@section('css')
+    .application-box {
+        border: solid #eee 1px;
+        padding-top: 5px;
+        margin-bottom: 10px;
+    }
+    .contact-info {
+        height: 200px; 
+        width: 200px;
+        border: dotted #eee 1px;
+        float: right;
+    }
+    .btn-box {
+        <!-- position: relative; -->
+        <!-- top: 0px; -->
+        <!-- right: 0px; -->
+    }
+@stop
+
 @section('content')
 
     <div class="container">
 
-        <h2 class="page-header">User Index Page</h2>
+        <h2 class="page-header">Application Index Page</h2>
 
-        <?php if ($users): ?>
+        @if ($applications)
 
-            <table class="table table-striped table-hover table-bordered">
+        <div class="text-center">
+            {{ $applications->links() }}
+        </div>
 
-                <tr>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                    <!-- <th>Address</th> -->
-                    <!-- <th>Github Url</th> -->
-                    <th>Actions</th>
-                </tr>
+            @foreach ($applications as $key => $application)
+                <div class="col-md-12 application-box">
+
+                    <div class="btn-group pull-right">
+
+                            <a href="{{ action('ApplicationsController@show', $application->id) }}" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a>
+                            
+                            <a href="{{ action('ApplicationsController@edit', $application->id) }}" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+
+                            <a href="" class="deleteApp btn btn-default btn-sm" data-userid="{{ $application->id }}">
+                                <span class="glyphicon glyphicon-remove-sign"></span>
+                            </a>
+
+                    </div>
+
+                    <h3 class="page-header">{{ $application->user->fullname }} | Application #{{ $application->id }}</h3>
+
+                    @if ($application->user->img_path)
+                        <div class="">
+                            <img class="img-responsive" src="{{$user->img_path }}">
+                        </div>
+                    @endif
+                    
+                    <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
+                    <p> <strong> Applying to: </strong>  {{ $application->course->name }}                              </p>
+                    
+                    <p> <strong> Phone: </strong> {{ $application->user->phone }}     </p>
+                    <p> <strong> Email: </strong> {{ $application->user->email }}     </p>
+                    <p> <strong> Address: </strong> {{ $application->user->address }}    </p>
+
+                    <p> <strong> Employment status: </strong> {{ ucfirst($application->employment_status) }}   </p>
+                    
+                    @if ($application->resume_path)
+                        <p> <strong> Link to resume: </strong> {{ $application->resume_path }} </p>
+                    @else 
+                        <p> <strong> Link to resume: </strong> No resume uploaded. </p>
+                    @endif
+
+                    <p> <strong> Financing: </strong> {{ ucfirst($application->financing_status) }}            </p>
+                    <p> <strong> Referred by: </strong> {{ ucfirst($application->referred_by) }}               </p>
+                    <p> <strong> Background Info: </strong> {{ $application->bg_info }}                        </p>
+                    <p> <strong> Questions: </strong> {{ $application->questions }}                            </p>
                 
-                <?php foreach ($users as $key => $user): ?>
+                </div> <!-- End end application block -->
+            @endforeach
 
-                    <tr>
-                        <td>{{ $user->fullname }}</td>
-                        <td>{{ $user->phone }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->status }}</td>
-                        <td> ## </td>
-                        <td> ## </td>
-                        <td> ## </td>
-                        <td>
+                <div class="text-center">
+                    {{ $applications->links() }}
+                </div>
+    @endif
 
-                            <div class="btn-group">
-
-                                <button class="btn btn-default btn-success" type="{{ action('UsersController@show', $user->id) }}">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                                
-                                <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-default btn-warning">
-                                    <span class="glyphicon glyphicon-edit"></span>
-                                </a>
-
-                                <a href="#" class="deleteUser btn btn-default btn-danger" data-userid="{{ $user->id }}">
-                                    <span class="glyphicon glyphicon-remove-sign"></span>
-                                </a>
-                            </div>    
-                        </td>
-                    </tr>
-
-                <?php endforeach ?>
-
-            </table>
-
-            <div class="text-center">
-                {{ $users->links() }}
-            </div>
-
-        <?php endif ?>
-    </div>
-
-    {{ Form::open(array('action' => 'UsersController@destroy', 'id' => 'deleteForm', 'method' => 'DELETE')) }}
+    {{ Form::open(array('action' => 'ApplicationsController@destroy', 'id' => 'deleteForm', 'method' => 'DELETE')) }}
     {{ Form::close() }}
 
 @stop
@@ -68,7 +94,7 @@
 @section('bottomscript')
 
 <script type="text/javascript">
-    $(".deleteUser").click(function() {
+    $(".deleteApp").click(function() {
         var userID = $(this).data('userid');
         $("#deleteForm").attr('action', '/users/' + userID);
         if (confirm("Are you sure you want to delete this user?")) {

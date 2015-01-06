@@ -19,18 +19,14 @@
 //  Users Resource Route
 Route::resource('users', 'UsersController');
 
+//  Applications Resource Route
+Route::resource('applications', 'ApplicationsController');
 
+//  Courses Resource Route
+Route::resource('courses', 'CoursesController');
 
 /* -------------------------------- */
 // MAIN ROUTES
-
-
-// Email Verification Route
-Route::get('register/verify/{confirmationCode}', [
-    'as' => 'confirmation_path',
-    'uses' => 'RegistrationController@confirm'
-]);
-
 
 // Homepage
 Route::get('/', function()
@@ -44,8 +40,7 @@ Route::get('/', function()
     }
 });
 
-
-// User Get Login Route
+// // User Get Login Route
 Route::get('/login', function()
 {
     //  If user is already authenticated, redirect to their main view - else login view.
@@ -58,26 +53,27 @@ Route::get('/login', function()
 
 });
 
-Route::get('/apply', function()
-{
-    //  If user is already authenticated, redirect to their main view - else login view.
-    if (Auth::check()) {
-        $user = User::find(Auth::id());
-        return View::make('users.show')->with('user', $user);
-    } else {
-        return View::make('users.apply');
-    }
-
-});
-
-
 // User Post Login Route
 Route::post('/login', array('as' => 'login', 'uses' => 'UsersController@handleLogin'));
-
 
 // User Get Logout Route
 Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'));
 
+// User Get Signup Route
+Route::get('/signup', function()
+{
+    //  If user is already authenticated, redirect to their main view - else signup view.
+    if (Auth::check()) {
+        $user = User::find(Auth::id());
+        return View::make('users.show')->with('user', $user);
+    } else {
+        return View::make('users.signup');
+    }
+
+});
+
+// User Post Signup Route
+Route::post('/signup', array('as' => 'login', 'uses' => 'UsersController@store'));
 
 // User Get Profile
 Route::get('/profile', function() {
@@ -94,15 +90,6 @@ Route::get('/profile', function() {
 
 });
 
-
-// Main Registration
-Route::get('/register', function()
-{
-    return View::make('users.create');
+Route::get('register', function() {
+    return Redirect::to('/signup');
 });
-
-
-// Post Route for Registration
-Route::post('/register', 'UsersController@store');
-
-
