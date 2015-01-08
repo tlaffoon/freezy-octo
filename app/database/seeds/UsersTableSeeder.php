@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder {
             'last' => $_ENV['ADMIN_LASTNAME'],
             'fullname' => $_ENV['ADMIN_FULLNAME'],
             'phone' => $_ENV['ADMIN_PHONE'],
-            'password' => Hash::make($_ENV['ADMIN_PASS']),
+            'password' => Hash::make($_ENV['ADMIN_PASS']),  
             'street' => '112 E. Pecan',
             'city' => 'San Antonio',
             'state' => 'Texas',
