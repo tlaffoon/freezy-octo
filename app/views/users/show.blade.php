@@ -28,6 +28,10 @@
         bottom: 10px;
     }
 
+    .panel-header {
+        text-indent: 10px;
+    }
+
 </style>
 @stop
 
@@ -85,27 +89,28 @@
 
         <div class="panel panel-default">
 
+            <!-- Check for Existing Applications -->
+            @if ($user->applications)
+
+            <div class="panel-header">
+                @if (count($user->applications) == 1)
+
+                    <h4>  You currently have 1 active application. </h4>
+                    
+                @elseif (count($user->applications) > 1)
+
+                    <h4>  You currently have {{ count($user->applications) }} active applications. </h4>
+
+                @else 
+
+                    <h4>  You don't have any active applications.</h4>
+
+                @endif
+            </div>
+            
             <table class="table table-striped">
                 <tr>
                     <td>
-                        <!-- Check for Existing Applications -->
-                        @if ($user->applications)
-                            
-                            @if (count($user->applications) == 1)
-
-                                <h3>You currently have 1 active application. </h3>
-                                
-                            @elseif (count($user->applications) > 1)
-
-                                <h3>You currently have {{ count($user->applications) }} active applications. </h3>
-
-                            @else 
-
-                                <h3>You don't have any active applications.</h3>
-
-                            @endif
-
-
                             @foreach ($user->applications as $application)
 
                                 <div class="col-md-12 profile-application-header">
@@ -156,31 +161,31 @@
                 </tr>
                 
                 <? // Perform logic check on whether or not math test submitted, then open logic test. ?>
-                <tr>
+           <!--      <tr>
                     <td>
-                        <!-- <p class="application-info">Math Test: <span class="btn btn-default pull-right">Incomplete</span></p> -->
+                        <p class="application-info">Math Test: <span class="btn btn-default pull-right">Incomplete</span></p>
                     </td>
                 </tr>
 
                 <? // Perform logic check on whether or not logic test submitted, then open instructor interview scheduling. ?>
                 <tr>
                     <td>
-                        <!-- <p class="application-info">Logic Test: <span class="btn btn-default pull-right">Incomplete</span></p> -->
+                        <p class="application-info">Logic Test: <span class="btn btn-default pull-right">Incomplete</span></p>
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                        <!-- <p class="application-info">Prework Test: <span class="btn btn-default pull-right">Incomplete</span></p> -->
+                        <p class="application-info">Prework Test: <span class="btn btn-default pull-right">Incomplete</span></p>
                     </td>
                 </tr>
 
                 <? // Jenni will schedule these. ?>
                 <tr>
                     <td>
-                        <!-- <p class="application-info">Instructor Interview: <span class="btn btn-default pull-right">Incomplete</span></p> -->
+                        <p class="application-info">Instructor Interview: <span class="btn btn-default pull-right">Incomplete</span></p>
                     </td>
-                </tr>
+                </tr> -->
 
             </table>
 
