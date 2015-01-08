@@ -1,11 +1,6 @@
 @extends('layouts.master')
 
 @section('css')
-    .application-box {
-        border: solid #eee 1px;
-        padding-top: 5px;
-        margin-bottom: 10px;
-    }
     .contact-info {
         height: 200px; 
         width: 200px;

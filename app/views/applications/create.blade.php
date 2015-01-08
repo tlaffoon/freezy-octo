@@ -14,10 +14,13 @@
             <!-- Logic on whether or not user already has an application submitted?
 
                 Either form model, or form open for new.
-                Main difference, Input::old vs $user->whatever_field 
+                Main difference, Input::old vs $user->whatever_field
+
+                Currently the issue is that, if a user has already updated their contact information
+                 - it won't populate the application submit form with Form::open...
             -->
 
-            {{ Form::open(array('action' => array('ApplicationsController@store'), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
+            {{ Form::open(array('action' => array('ApplicationsController@store'), 'class'=>'form', 'role'=>'form', 'method' => 'POST', 'files' => true)) }}
 
                 <!-- Select A Course -->
                 {{ Form::label('course_id', 'Select A Course: ') }}
@@ -76,7 +79,7 @@
                 {{ $errors->first('questions', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Upload Resume -->
-                {{ Form::label('resume', 'Upload your resume or CSV') }}
+                {{ Form::label('resume', 'Upload your resume or CV') }}
                 {{ Form::file('resume', array('class' => 'form-group customBtn')) }}
 
                 {{ Form::submit('Apply!', array('class' => 'btn btn-success btn-block')) }}
