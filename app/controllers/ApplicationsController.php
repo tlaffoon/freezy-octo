@@ -116,6 +116,20 @@ class ApplicationsController extends \BaseController {
 
 
 	/**
+	 * Approve the specified application.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function approve($id)
+	{
+		$application = Application::findOrFail($id);
+		$application->status = 'approved';
+		return Redirect::back();
+	}
+
+
+	/**
 	 * Display the specified resource.
 	 *
 	 * @param  int  $id
