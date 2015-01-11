@@ -44,6 +44,13 @@
         width: 156px;
     }
 
+    .application-box {
+        border: solid #eee 1px;
+        padding-top: 5px;
+        margin-bottom: 10px;
+        background-color: white;
+    }
+
     @yield('css')
 
     </style>

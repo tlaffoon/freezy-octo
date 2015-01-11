@@ -27,55 +27,12 @@ class UsersController extends \BaseController {
 	public function logout()
 	{
 		if(Auth::check()){
-		  Auth::logout();
+			Auth::logout();
 		}
 		
 		return Redirect::to('login')->with('message', 'You have successfully logged out.');
 	}
 
-
-	public function doLogin()
-	{
-		// validate the info, create rules for the inputs
-		$rules = array(
-		    'email'    => 'required|email', // make sure the email is an actual email
-		    'password' => 'required|alphaNum|min:3' // password can only be alphanumeric and has to be greater than 3 characters
-		);
-
-		// run the validation rules on the inputs from the form
-		$validator = Validator::make(Input::all(), $rules);
-
-		// if the validator fails, redirect back to the form
-		if ($validator->fails()) {
-		    return Redirect::to('login')
-		        ->withErrors($validator) // send back all errors to the login form
-		        ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
-		} else {
-
-		    // create our user data for the authentication
-		    $userdata = array(
-		        'email'     => Input::get('email'),
-		        'password'  => Input::get('password')
-		    );
-
-		    // attempt to do the login
-		    if (Auth::attempt($userdata)) {
-
-		        // validation successful!
-		        // redirect them to the secure section or whatever
-		        // return Redirect::to('secure');
-		        // for now we'll just echo success (even though echoing in a controller is bad)
-		        echo 'SUCCESS!';
-
-		    } else {        
-
-		        // validation not successful, send back to form 
-		        return Redirect::to('login');
-
-		    }
-
-		}
-	}
 
 	/**
 	 * Handle user logins.
@@ -83,10 +40,10 @@ class UsersController extends \BaseController {
 	 * @return Response
 	 */
 	public function handleLogin() {
+		// Capture input from form.
 		$data = Input::only(['email', 'password']);
 
-
-
+		// Check remember_me token.
 		if (Input::has('remember_me')) {
 		
 			$logIn = Auth::attempt(['email' => $data['email'], 'password' => $data['password']], true);
@@ -97,13 +54,33 @@ class UsersController extends \BaseController {
 		
 		}
 
-
+		// If login successful, continue.
 		if ($logIn) {
-		    // Redirect to profile after user login.
-			$id = Auth::id();
-			$user = User::find($id);
-			return Redirect::to('/profile')->with('user', $user);
+
+			// Define $user.
+			$user = User::find(Auth::id());
+
+			// Check for user role.
+			if (Auth::user()->role == 'staff') {
+
+				// Send staff to dashboard.
+			    return Redirect::to('/dashboard')->with('user', $user);
+
+			    // Redirect to action within user's controller for admin dashboard.
+			    // Redirect::action('UsersController@profile', array('user' => $user));
+			}
+
+			elseif (Auth::user()->role == 'user') {
+			    
+			    // Send users to their profile
+			    return Redirect::to('/profile')->with('user', $user);
+
+			    // Redirect to action within user's controller for user profile.
+			    // Redirect::action('UsersController@profile', array('user' => $user));
+			}
+
 		} else {
+			// Alert and send back to login page.
         	Session::flash('alert', 'Please login to continue.');
         	return Redirect::route('login')->withInput();
 		}
@@ -123,13 +100,25 @@ class UsersController extends \BaseController {
 
 
 	/**
+	 * Display the specified user's admin dashboard.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function dashboard($id)
+	{
+		return View::make('users.dashboard')->with('user', User::find($id));
+	}
+
+
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$users = User::paginate(10);
+		$users = User::orderBy('fullname', 'ASC')->paginate(10);
 		return View::make('users.index')->with(array('users' => $users));
 	}
 
@@ -167,10 +156,6 @@ class UsersController extends \BaseController {
 		    $user = new User();
 		    
 		    $user->username 	= Input::get('username');
-		    // $user->first 		= Input::get('firstname');
-		    // $user->last 		= Input::get('lastname');
-		    // $user->fullname 	= $user->first . ' ' . $user->last;
-		    // $user->phone		= Input::get('phone');
 		    $user->email 		= Input::get('email');
 		    $user->password 	= Input::get('password');
 		    
@@ -183,10 +168,6 @@ class UsersController extends \BaseController {
 		        $user->save();
 		    }
 
-		    // Session::flash('message', 'User account created successfully.');
-
-		    // Login user on creation and redirect to profile.
-	        //Auth::login($user);
 	        return Redirect::to('/login')->with('message', 'Account created successfully!  Please login below.');
 		}
 	}
@@ -228,7 +209,6 @@ class UsersController extends \BaseController {
 		}
 
 		$rules = array(
-				// 'username'				=>  'required',
 				'password'				=>	'required|alpha_num|between:6,12|confirmed',
 				'password_confirmation'	=>	'required|alpha_num|between:6,12'
 		);
@@ -242,8 +222,8 @@ class UsersController extends \BaseController {
 
 		else {
 			
-			$user->first 		= Input::get('firstname');
-			$user->last 		= Input::get('lastname');
+			$user->first 		= Input::get('first');
+			$user->last 		= Input::get('last');
 			$user->fullname 	= $user->first . ' ' . $user->last;
 			
 			$user->phone		= Input::get('phone');

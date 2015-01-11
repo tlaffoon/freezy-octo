@@ -9,7 +9,7 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$applications = Application::paginate(5);
+		$applications = Application::orderBy('id', 'DESC')->paginate(5);
 		return View::make('applications.index')->with('applications', $applications);
 	}
 
@@ -89,29 +89,27 @@ class ApplicationsController extends \BaseController {
 			// Put application in pending status.
 				// Handled automatically when created.
 			
-			$data['email'] = $user->email;
-			$data['fullname'] = $user->fullname;
-			
 			// This is how you get an object into the array for Mail.  Blammo.
 			$data['application'] = $application;
+			$data['user'] = $user;
 
 			// Send email confirmation to info@codeup.com with attached resume.
 			Mail::send('emails.application.new', $data, function($message) use ($data) {
-		    	$message->from($data['email'] , $data['fullname']);
+		    	$message->from($data['user']['email'] , $data['user']['fullname']);
 				$message->to('thomas@codeup.com', 'Staff');
 				$message->subject('New Application Submitted');
+				$message->attach($data['application']['resume_path']);
 			});
 
+			
+			Session::flash('message', 'Thanks for applying! We will get in touch with you within the next 24 hours.');
 			// Return their profile view with success message.
-			return View::make('users.show')
-				->with('message', 'Thanks for applying! We will get in touch with you within the next 24 hours.')
-				->with('user', $user);
+			return Redirect::to('profile');
 
 			// This was for testing only.
 				// Define applications and return index view.
 				// $applications = Application::paginate(5);
 				// return View::make('applications.index')->with('applications', $applications);
-
 		}
 
 	}

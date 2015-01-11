@@ -12,14 +12,14 @@
             {{ Form::model($user, array('action' => array('UsersController@update', $user->id), 'class'=>'form', 'role'=>'form', 'files' => true, 'method' => 'PUT' )) }}
 
                 <!-- First Name -->
-                {{ Form::label('firstname', 'First Name') }}
-                {{ Form::text('firstname', Input::old('firstname'), array('class' => 'form-group form-control', 'placeholder' => 'First Name')) }}
-                {{ $errors->first('firstname', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                {{ Form::label('first', 'First Name') }}
+                {{ Form::text('first', Input::old('first'), array('class' => 'form-group form-control', 'placeholder' => 'First Name')) }}
+                {{ $errors->first('first', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Last Name -->
-                {{ Form::label('lastname', 'Last Name') }}
-                {{ Form::text('lastname', Input::old('lastname'), array('class' => 'form-group form-control', 'placeholder' => 'Last Name')) }}
-                {{ $errors->first('lastname', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                {{ Form::label('last', 'Last Name') }}
+                {{ Form::text('last', Input::old('last'), array('class' => 'form-group form-control', 'placeholder' => 'Last Name')) }}
+                {{ $errors->first('last', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Email -->
                 {{ Form::label('email', 'Email') }}

@@ -7,7 +7,7 @@
         
         <!-- Include application information, with resume and "approve application" link. -->
         
-        <h3 class="page-header">{{ $fullname }} | Application #{{ $application->id }}</h3>
+        <h3 class="page-header">{{ $user->fullname }} | Application #{{ $application->id }}</h3>
 
         @if ($application->user->img_path)
             <div class="">
@@ -16,16 +16,16 @@
         @endif
         
         <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
-        <p> <strong> Applying to: </strong>  {{ $application->course->name }}                              </p>
+        <p> <strong> Applying to: </strong>  {{ $application->course->name }}</p>
         
-        <p> <strong> Phone: </strong> {{ $application->user->phone }}     </p>
-        <p> <strong> Email: </strong> {{ $application->user->email }}     </p>
-        <p> <strong> Address: </strong> {{ $application->user->address }}    </p>
+        <p> <strong> Phone: </strong> {{ $user->phone }}</p>
+        <p> <strong> Email: </strong> {{ $user->email }}</p>
+        <p> <strong> Address: </strong> {{ $user->address }}</p>
 
-        <p> <strong> Employment status: </strong> {{ ucfirst($application->employment_status) }}   </p>
+        <p> <strong> Employment status: </strong> {{ ucfirst($application->employment_status) }}</p>
         
         @if ($application->resume_path)
-            <p> <strong> Link to resume: </strong> {{ $application->resume_path }} </p>
+            <p> <strong> Link to resume: </strong> <a href="http://{{ $_ENV['URL'] . $application->resume_path }}"> Here. </a></p>
         @else 
             <p> <strong> Link to resume: </strong> No resume uploaded. </p>
         @endif

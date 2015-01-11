@@ -31,26 +31,33 @@ Route::resource('courses', 'CoursesController');
 // Homepage
 Route::get('/', function()
 {
-    //  If user is already authenticated, redirect to their main view - else login view.
-    if (Auth::check()) {
-        $user = User::find(Auth::id());
-        return View::make('users.show')->with('user', $user);
-    } else {
-        return View::make('users.login');
-    }
+    return Redirect::to('login');
 });
 
 // // User Get Login Route
 Route::get('/login', function()
 {
-    //  If user is already authenticated, redirect to their main view - else login view.
+    //  Check for user authentication
     if (Auth::check()) {
-        $user = User::find(Auth::id());
-        return View::make('users.show')->with('user', $user);
-    } else {
-        return View::make('users.login');
-    }
 
+        // Define $user.
+        $user = User::find(Auth::id());
+
+        // Check for user role.
+        if (Auth::user()->role == 'staff') {
+            return View::make('users.dashboard')->with('user', $user);
+        }
+
+        elseif (Auth::user()->role == 'user') {
+            return View::make('users.show')->with('user', $user);
+        }
+        
+    } 
+
+    // Redirect to login page.
+    else {
+        return View::make('users.login')->with('alert', 'Please login to continue.');
+    }
 });
 
 // User Post Login Route
@@ -73,23 +80,37 @@ Route::get('/signup', function()
 });
 
 // User Post Signup Route
-Route::post('/signup', array('as' => 'login', 'uses' => 'UsersController@store'));
+Route::post('/signup', array('as' => 'signup', 'uses' => 'UsersController@store'));
 
 // User Get Profile
-Route::get('/profile', function() {
-
-    // Not sure that any of this is even necessary anymore, since routes are protected in controller.
+Route::get('profile', function()
+{
     if(Auth::check()) {
-        // On successful authentication, show user profile by default.
+        
         $user = User::find(Auth::id());
         return View::make('users.show')->with('user', $user);
+
     } else {
-        // Needs logic on failed auth attempt, so you can prompt user to login again.
+        
         return Redirect::to('/login')->with('alert', 'Please login to continue.');
     }
-
 });
 
+// User Get Dashboard Route
+Route::get('dashboard', function()
+{
+    if(Auth::check() && Auth::user()->role == 'staff') {
+        
+        $user = User::find(Auth::id());
+        return View::make('users.dashboard')->with('user', $user);
+
+    } else {
+        
+        return Redirect::back()->with('alert', 'Access denied.');
+    }
+});
+
+// User Get Register Route
 Route::get('register', function() {
     return Redirect::to('/signup');
 });
