@@ -156,10 +156,6 @@ class UsersController extends \BaseController {
 		    $user = new User();
 		    
 		    $user->username 	= Input::get('username');
-		    // $user->first 		= Input::get('firstname');
-		    // $user->last 		= Input::get('lastname');
-		    // $user->fullname 	= $user->first . ' ' . $user->last;
-		    // $user->phone		= Input::get('phone');
 		    $user->email 		= Input::get('email');
 		    $user->password 	= Input::get('password');
 		    
@@ -172,10 +168,6 @@ class UsersController extends \BaseController {
 		        $user->save();
 		    }
 
-		    // Session::flash('message', 'User account created successfully.');
-
-		    // Login user on creation and redirect to profile.
-	        //Auth::login($user);
 	        return Redirect::to('/login')->with('message', 'Account created successfully!  Please login below.');
 		}
 	}
@@ -217,7 +209,6 @@ class UsersController extends \BaseController {
 		}
 
 		$rules = array(
-				// 'username'				=>  'required',
 				'password'				=>	'required|alpha_num|between:6,12|confirmed',
 				'password_confirmation'	=>	'required|alpha_num|between:6,12'
 		);
@@ -231,8 +222,8 @@ class UsersController extends \BaseController {
 
 		else {
 			
-			$user->first 		= Input::get('firstname');
-			$user->last 		= Input::get('lastname');
+			$user->first 		= Input::get('first');
+			$user->last 		= Input::get('last');
 			$user->fullname 	= $user->first . ' ' . $user->last;
 			
 			$user->phone		= Input::get('phone');
