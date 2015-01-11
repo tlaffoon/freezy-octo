@@ -52,11 +52,9 @@
         </h3>
         @foreach ($courses as $course)
             @if ($course->active)
-                <div class="course-box">
+                <div class="course-box img-rounded">
                     <a href="{{ action('CoursesController@edit', $course->id) }}" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="top" title="Edit Course"><span class="glyphicon glyphicon-edit"></span></a>
                     {{ $course->name }}
-                    <br>
-                    Starts on: {{ $course->start_date }}
                 </div>
             @endif
         @endforeach

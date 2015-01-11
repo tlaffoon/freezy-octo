@@ -15,22 +15,26 @@
 @stop
 
 @section('content')
+<div class="container">
+    <div class="col-md-12">
 
-<div class="col-md-12">
+        <h2 class="page-header">Available Courses: </h2>
 
-    <h2 class="page-header">Available Courses: </h2>
-
-    @foreach ($courses as $course)
-        @if ($course->active)
-            <div class="course-box">
-                <a href="" class="btn btn-lg btn-primary pull-right">Apply!</a>
-                {{ $course->name }}
-                <br>
-                Starts on: {{ $course->start_date }}
-            </div>
-        @endif
-    @endforeach
-<hr>
+        @foreach ($courses as $course)
+            @if ($course->active)
+                <div class="course-box img-rounded">
+                    <a href="{{ action('ApplicationsController@create') }}" class="btn btn-lg btn-primary pull-right">Apply!</a>
+                    <p>{{ $course->name }}</p>
+                    <p>Starts on: {{ $course->start_date }}</p>
+                    <p>Ends on: {{ $course->end_date }}</p>
+                    <p>Demo Day on: {{ $course->demo_date }}</p>
+                    <p>{{ $course->description }}</p>
+                </div>
+            @endif
+        @endforeach
+    <hr>
+    
+    </div>
 </div>
 @stop 
 
