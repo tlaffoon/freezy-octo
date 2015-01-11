@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder {
             'city' => 'San Antonio',
             'state' => 'Texas',
             'zip' => '78205',
-            'role' => 'admin',
+            'role' => 'staff',
         ];
 
         DB::table('users')->insert($admin);

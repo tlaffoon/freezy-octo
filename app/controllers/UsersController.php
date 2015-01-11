@@ -105,9 +105,22 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function dashboard($id)
+	public function showDashboard()
 	{
-		return View::make('users.dashboard')->with('user', User::find($id));
+		$id = Auth::id();
+		$user = User::findOrFail($id);
+		$applications = Application::orderBy('id', 'DESC')->paginate(10);
+		$courses = Course::orderBy('id', 'DESC')->paginate(3);
+		// $students = User::all()->where('role', '=', 'user');
+		$students = DB::table('users')->where('role', '=', 'user')->get();
+
+		// $data = array(
+		//     'user'  => $user,
+		//     'applications'   => $applications,
+		//     'courses' => $courses
+		// );
+
+		return View::make('users.dashboard')->with('user', $user)->with('applications', $applications)->with('courses', $courses)->with('students', $students);
 	}
 
 
