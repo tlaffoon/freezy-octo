@@ -11,9 +11,6 @@
 |
 */
 
-
-
-/* -------------------------------- */
 // RESOURCES
 
 //  Users Resource Route
@@ -45,17 +42,13 @@ Route::get('/login', function()
 
         // Check for user role.
         if (Auth::user()->role == 'staff') {
-            // $applications = Application::orderBy('id', 'DESC')->paginate(10);
-            // $courses = Course::orderBy('id', 'DESC')->paginate(3);
-            // return View::make('users.dashboard')->with('user', $user)->with('applications', $applications)->with('courses', $courses);
             return Redirect::action('UsersController@showDashboard');
         }
 
         elseif (Auth::user()->role == 'user') {
-            return View::make('users.show')->with('user', $user);
+            return Redirect::action('UsersController@show', $user->id);
         }
-        
-    } 
+    }
 
     // Redirect to login page.
     else {
@@ -63,20 +56,28 @@ Route::get('/login', function()
     }
 });
 
+Route::get('/profile', array(
+    'as' => 'users.show',
+    'uses' => 'UsersController@showProfile')
+);
+
 // User Dashboard Get Route
 Route::get( '/dashboard', array(
     'as' => 'users.dashboard',
-    'uses' => 'UsersController@showDashboard'
-) );
+    'uses' => 'UsersController@showDashboard')
+);
 
 // User Dashboard Post Route
 Route::post( '/dashboard', array(
     'as' => 'users.dashboard',
-    'uses' => 'UsersController@showDashboard'
-) );
+    'uses' => 'UsersController@showDashboard')
+);
 
 // User Post Login Route
-Route::post('/login', array('as' => 'login', 'uses' => 'UsersController@handleLogin'));
+Route::post('/login', array(
+    'as' => 'login', 
+    'uses' => 'UsersController@handleLogin')
+);
 
 // User Get Logout Route
 Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'));
@@ -98,7 +99,7 @@ Route::get('/signup', function()
 Route::post('/signup', array('as' => 'signup', 'uses' => 'UsersController@store'));
 
 // User Get Profile
-Route::get('profile', function()
+Route::get('/profile', function()
 {
     if(Auth::check()) {
         

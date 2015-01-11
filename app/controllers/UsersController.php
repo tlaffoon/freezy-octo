@@ -93,9 +93,10 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function profile($id)
+	public function showProfile()
 	{
-		return View::make('users.profile')->with('user', User::find($id));
+		$user = User::findOrFail(Auth::id());
+		return View::make('users.profile')->with('user', $user);
 	}
 
 
@@ -111,7 +112,6 @@ class UsersController extends \BaseController {
 		$user = User::findOrFail($id);
 		$applications = Application::orderBy('id', 'DESC')->paginate(10);
 		$courses = Course::orderBy('id', 'DESC')->paginate(3);
-		// $students = User::all()->where('role', '=', 'user');
 		$students = DB::table('users')->where('role', '=', 'user')->get();
 
 		// $data = array(
