@@ -6,11 +6,14 @@
     {{ HTML::style('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css') }}
     
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css') }}
 
     <!-- Include Lato Font -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic') }}
     
+    <!-- Include Font Awesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <style type="text/css">
 
     body {
@@ -98,10 +101,10 @@
                                     @if(Auth::user()->role == 'staff')
                                         <li><a href="{{ action('UsersController@showDashboard') }}" class="text-right">Dashboard <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a></li>
                                         <li><a href="{{ action('CoursesController@index') }}" class="text-right">Courses <span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></li>
-                                        <li><a href="{{ action('UsersController@index') }}" class="text-right">Users <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+                                        <li><a href="{{ action('UsersController@index') }}" class="text-right">Users <i class="fa fa-users"></i></a></li>
                                         <li class="divider"></li>
                                     @endif
-                                    <li><a href="/profile" class="text-right">Your Profile <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+                                    <li><a href="{{ action('UsersController@showProfile') }}" class="text-right">Your Profile <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
                                     <li><a href="/logout" class="text-right">Log Out <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
                                 @else
                                     <li><a href="/login" class="text-right">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
@@ -171,21 +174,6 @@
             // Initialize tooltips
             $(function () {
               $('[data-toggle="tooltip"]').tooltip()
-            });
-
-            // Hide all existing application boxes.
-            $('.profile-application-box').hide();
-
-            // Target display buttons and add event listener.
-            $('.btn-display').click(function(event) {
-                event.preventDefault();
-                
-                var button = this;
-                var id = button.id;
-                var buttonContent = $(this).html();
-                
-                $('#application_' + id).slideToggle();
-                
             });
         });
 

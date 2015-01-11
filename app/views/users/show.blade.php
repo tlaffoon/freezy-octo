@@ -157,4 +157,24 @@
 @stop
 
 @section('bottomscript')
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        // Hide all existing application boxes.
+        $('.profile-application-box').hide();
+
+        // Target display buttons and add event listener.
+        $('.btn-display').click(function(event) {
+            event.preventDefault();
+            
+            var button = this;
+            var id = button.id;
+            var buttonContent = $(this).html();
+            
+            $('#application_' + id).slideToggle();
+            
+        });
+    });
+    
+</script>
 @stop

@@ -2,26 +2,51 @@
 
 @section('topscript')
 <style type="text/css">
-    .profile-application-header {
+    .dashboard-application-header {
         border: solid #eee 1px;
         padding-top: 5px;
         background-color: white;
     }
 
-    .profile-application-box {
+    .dashboard-application-box {
         border: solid #eee 1px;
         padding-top: 5px;
         margin-bottom: 10px;
         background-color: white;
     }
 
-    .btn-group-user-profile {
+    .dashboard-course-header {
+        border: solid white 1px;
+        font-size: 18px;
+        padding-top: 5px;
+        background-color: #E1E7F9;
+        margin-bottom: 2px;
+    }
+
+    .dashboard-course-box {
+        background-color: #E1E7F9;
+        width: 100%;
+        border: solid white 1px;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .btn-group-dashboard {
         position: relative;
         bottom: 10px;
     }
 
     .sidebar-btn {
         margin: 5px;
+    }
+
+    .section-header {
+        margin-top: 10px;
+    }
+
+    .course-description {
+        text-indent: 15px;
     }
 </style>
 @stop
@@ -39,34 +64,62 @@
         <h3 class="page-header">Sidebar</h3>
             <a href="" class="btn btn-default sidebar-btn"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  Applications</a>
             <a href="" class="btn btn-default sidebar-btn"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>  Courses</a>
-            <a href="" class="btn btn-default sidebar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Users</a>
+            <a href="" class="btn btn-default sidebar-btn"><i class="fa fa-users"></i>  Users</a>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-7">
         
         <!-- Courses -->
-        <h3 class="page-header">Courses
+        <h3 class="page-header">Active Courses
             <a class="pull-right" href="{{ action('CoursesController@create') }}">
                 <small class="small-text">Create A New Course</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
             </a> 
         </h3>
         @foreach ($courses as $course)
             @if ($course->active)
-                <div class="course-box img-rounded">
-                    <a href="{{ action('CoursesController@edit', $course->id) }}" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="top" title="Edit Course"><span class="glyphicon glyphicon-edit"></span></a>
-                    {{ $course->name }}
+
+                <div class="col-md-12 dashboard-course-header img-rounded">
+                    <h4> {{ $course->name }}: "{{ $course->designation }}"
+
+                        <div class="btn-group btn-group-dashboard pull-right">
+
+                            <!-- Course Edit Button -->
+                            <a href="{{ action('CoursesController@edit', $course->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit Course">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                            
+                            <!-- Course Toggle Display Button -->
+                            <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Show/Hide Details">
+                                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                            </a>
+
+                        </div>
+                    </h4>
                 </div>
+
+                <div id="course{{$course->id}}" class="col-md-12 dashboard-course-box img-rounded">
+
+                    <p>Currently Enrolled: {{ $course->current_students }} of {{ $course->max_students }}</p>
+                    <p>Starts on: {{ $course->start_date }}</p>
+                    <p>Ends on: {{ $course->end_date }}</p>
+                    <p>Demo Day on: {{ $course->demo_date }}</p>
+                    <p>Duration: {{ $course->duration }} weeks</p>
+                    <hr>
+                    <p class="course-description">{{ $course->description }}</p>
+                </div>
+                
             @endif
         @endforeach
         <!-- End Courses -->
-
+        
 
         <!-- Applications -->
-        <h3 class="page-header">Applications (Pending)
+        <h3 class="page-header">Pending Applications
             <a class="pull-right" href="{{ action('ApplicationsController@index') }}">
                 <small class="small-text">View All Applications</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
             </a> 
         </h3>
+
         <div class="panel panel-default">
             <table class="table table-striped">
                 <tr>
@@ -74,17 +127,23 @@
                         @foreach ($applications as $application)
                         <!-- Begin Individual Application Block -->
                             
+                            @if(count($application->status == 'pending') == 0)
+
+                                <h4> There are no pending applications. </h4>
+
+                            @endif
+
                             @if ($application->status == 'pending')
-                            <div class="col-md-12 profile-application-header">
+                            <div class="col-md-12 dashboard-application-header">
                                 <h4> {{ $application->user->fullname }} | Application #{{ $application->id }}
 
-                                    <div class="btn-group btn-group-user-profile pull-right">
+                                    <div class="btn-group btn-group-dashboard pull-right">
 
-                                        <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Contact">
+                                        <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Contact Info">
                                             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                                         </a>
 
-                                        <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Comment">
+                                        <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Make A Note">
                                             <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                         </a>
 
@@ -95,7 +154,7 @@
                                 </h4>
                             </div>
 
-                            <div id="application_{{$application->id}}" class="col-md-12 profile-application-box">
+                            <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
                                 
                                 <div class="btn-group pull-right">
                                     <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Approve">
@@ -131,6 +190,7 @@
         </div> <!-- End Panel -->
         <!-- End Applications -->
 
+
         <!-- Users -->
         <h3 class="page-header">Users
             <a class="pull-right" href="{{ action('UsersController@index') }}">
@@ -144,9 +204,9 @@
 
     </div> <!-- End Column -->
 
-    <div class="col-md-2">
+    <div class="col-md-3">
         <h3 class="page-header">
-            ...
+            Recent Notes
         </h3>
         <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -187,4 +247,39 @@
 @stop
 
 @section('bottomscript')
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        // Hide all existing application boxes.
+        $('.dashboard-application-box').hide();
+
+        // Target display buttons and add event listener.
+        $('.btn-display').click(function(event) {
+            event.preventDefault();
+            
+            var button = this;
+            var id = button.id;
+            var buttonContent = $(this).html();
+            
+            $('#application_' + id).slideToggle();
+            
+        });
+
+        // Hide all existing course boxes.
+        $('.dashboard-course-box').hide();
+
+        // Target display buttons and add event listener.
+        $('.btn-display').click(function(event) {
+            event.preventDefault();
+            
+            var button = this;
+            var id = button.id;
+            var buttonContent = $(this).html();
+            
+            $('#course' + id).slideToggle();
+            
+        });
+    });
+    
+</script>
 @stop
