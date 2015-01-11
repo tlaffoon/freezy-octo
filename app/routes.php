@@ -45,7 +45,10 @@ Route::get('/login', function()
 
         // Check for user role.
         if (Auth::user()->role == 'staff') {
-            return View::make('users.dashboard')->with('user', $user);
+            // $applications = Application::orderBy('id', 'DESC')->paginate(10);
+            // $courses = Course::orderBy('id', 'DESC')->paginate(3);
+            // return View::make('users.dashboard')->with('user', $user)->with('applications', $applications)->with('courses', $courses);
+            return Redirect::action('UsersController@showDashboard');
         }
 
         elseif (Auth::user()->role == 'user') {
@@ -59,6 +62,18 @@ Route::get('/login', function()
         return View::make('users.login')->with('alert', 'Please login to continue.');
     }
 });
+
+// User Dashboard Get Route
+Route::get( '/dashboard', array(
+    'as' => 'users.dashboard',
+    'uses' => 'UsersController@showDashboard'
+) );
+
+// User Dashboard Post Route
+Route::post( '/dashboard', array(
+    'as' => 'users.dashboard',
+    'uses' => 'UsersController@showDashboard'
+) );
 
 // User Post Login Route
 Route::post('/login', array('as' => 'login', 'uses' => 'UsersController@handleLogin'));
@@ -96,19 +111,19 @@ Route::get('profile', function()
     }
 });
 
-// User Get Dashboard Route
-Route::get('dashboard', function()
-{
-    if(Auth::check() && Auth::user()->role == 'staff') {
+// // User Get Dashboard Route
+// Route::get('dashboard', function()
+// {
+//     if(Auth::check() && Auth::user()->role == 'staff') {
         
-        $user = User::find(Auth::id());
-        return View::make('users.dashboard')->with('user', $user);
+//         $user = User::find(Auth::id());
+//         return View::make('users.dashboard')->with('user', $user);
 
-    } else {
+//     } else {
         
-        return Redirect::back()->with('alert', 'Access denied.');
-    }
-});
+//         return Redirect::back()->with('alert', 'Access denied.');
+//     }
+// });
 
 // User Get Register Route
 Route::get('register', function() {
