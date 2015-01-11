@@ -5,8 +5,7 @@
 
     .course-box {
         width: 100%;
-/*        height: 50px;
-*/        border: dashed #eee 1px;
+        border: dashed #eee 1px;
         margin-bottom: 10px;
         padding: 10px;
         font-size: 18px;

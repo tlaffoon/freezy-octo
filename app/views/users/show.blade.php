@@ -28,10 +28,6 @@
         bottom: 10px;
     }
 
-    .panel-header {
-        text-indent: 10px;
-    }
-
 </style>
 @stop
 
@@ -68,7 +64,7 @@
                 
                     <div class="pull-right">
                         <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-default">
-                            Upload An Image
+                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Upload An Image
                         </a>
                     </div>
 
@@ -83,7 +79,7 @@
 
         <h2 class="page-header">Application Status 
             <a class="pull-right" href="{{ action('ApplicationsController@create') }}">
-                <small class="small-text">Submit A New Application</small><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <small class="small-text">Submit A New Application</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
             </a> 
         </h2>
 
@@ -161,30 +157,4 @@
 @stop
 
 @section('bottomscript')
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        // Initialize tooltips
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip()
-        });
-
-        // Hide all existing application boxes.
-        $('.profile-application-box').hide();
-
-        // Target display buttons and add event listener.
-        $('.btn-display').click(function(event) {
-            event.preventDefault();
-            
-            var button = this;
-            var id = button.id;
-            var buttonContent = $(this).html();
-            
-            $('#application_' + id).slideToggle();
-            
-        });
-    });
-
-</script>
 @stop

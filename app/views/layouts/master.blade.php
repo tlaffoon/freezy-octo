@@ -51,6 +51,19 @@
         background-color: white;
     }
 
+    .course-box {
+        background-color: #E1E7F9;
+        width: 100%;
+        border: dashed #eee 1px;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .small-text {
+        margin-right: 5px;
+    }
+
     @yield('css')
 
     </style>
@@ -75,16 +88,25 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            @if (Auth::check())
-                                <li><a href="/profile">Your Profile</a></li>
-                                <li><a href="/logout">Log Out</a></li>
-                                <li><a href="action('ApplicationsController@create')">Apply Now!</a></li>
-                            @else
-                                <li><a href="/login">Login</a></li>
-                                <li><a href="/signup">Sign Up</a></li>
-                            @endif
+                            <li><a href="{{ action('ApplicationsController@create') }}">Apply Now!</a></li>
                         </ul>
-
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Menu <span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu">
+                                @if (Auth::check())
+                                    @if(Auth::user()->role == 'staff')
+                                        <li><a href="{{ action('UsersController@showDashboard') }}" class="text-right">Dashboard <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a></li>
+                                    @endif
+                                    <li><a href="/profile" class="text-right">Your Profile <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+                                    <li><a href="/logout" class="text-right">Log Out <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+                                @else
+                                    <li><a href="/login" class="text-right">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+                                    <li><a href="/signup" class="text-right">Sign Up <span class="glyphicon glyphicon-register" aria-hidden="true"></span></a></li>
+                                @endif
+                              </ul>
+                            </li>
+                        </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
             </nav>
@@ -137,10 +159,30 @@
 
         $(document).ready(function() {
             $('.message-info').click(function(){
-                // Consider autofading out alert messages.
                 console.log('clicked.');
                 console.log($(this).parent());
                 $(this).parent().slideUp();
+            });
+
+
+            // Initialize tooltips
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            });
+
+            // Hide all existing application boxes.
+            $('.profile-application-box').hide();
+
+            // Target display buttons and add event listener.
+            $('.btn-display').click(function(event) {
+                event.preventDefault();
+                
+                var button = this;
+                var id = button.id;
+                var buttonContent = $(this).html();
+                
+                $('#application_' + id).slideToggle();
+                
             });
         });
 
