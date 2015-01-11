@@ -87,45 +87,41 @@
             </a> 
         </h2>
 
+        <!-- Check for User Applications -->
+            @if (count($user->applications) == 0)
+
+                <div class="bordered">
+                    <h4> You don't have any active applications. </h4>
+                </div>
+
+            @elseif($user->applications && count($user->applications) == 1)
+                
+                <h4>  You currently have 1 active application. </h4>
+
+            @elseif ($user->applications && count($user->applications) > 1)
+
+                <h4>  You currently have {{ count($user->applications) }} active applications. </h4>
+
+            @endif
+        <!-- End Check For User Applications -->
+
+        <!-- Display Applications -->
+
+        @if (count($user->applications) > 0)
         <div class="panel panel-default">
-
-            <!-- Check for Existing Applications -->
-            @if ($user->applications)
-
-            <div class="panel-header">
-                @if (count($user->applications) == 1)
-
-                    <h4>  You currently have 1 active application. </h4>
-                    
-                @elseif (count($user->applications) > 1)
-
-                    <h4>  You currently have {{ count($user->applications) }} active applications. </h4>
-
-                @else 
-
-                    <h4>  You don't have any active applications.</h4>
-
-                @endif
-            </div>
-            
             <table class="table table-striped">
                 <tr>
                     <td>
                             @foreach ($user->applications as $application)
-
+                            <!-- Begin Individual Application Block -->
                                 <div class="col-md-12 profile-application-header">
                                     <h4> Application #{{ $application->id }} | {{ $application->course->name }}
 
-                                        <!-- Add in tooltips to save space and allow buttons to collapse -->
                                         <div class="btn-group btn-group-user-profile pull-right">
 
                                             <a href="{{ action('CoursesController@show', $application->course->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="View Course">
                                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                             </a>
-
-                                            <!-- <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            </a> -->
 
                                             <a id="{{$application->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Show/Hide Application">
                                                 <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
@@ -151,56 +147,21 @@
                                     <p> <strong> Background Info: </strong> {{ $application->bg_info }}                        </p>
                                     <p> <strong> Questions: </strong> {{ $application->questions }}                            </p>
                                 
-                                </div> <!-- End end application block -->
+                                </div> 
+                            <!-- End Individual Application Block -->
                             @endforeach
-                        @else
-                            <p class="application-info">Main Application: <a href="{{ action('ApplicationsController@create') }}" class="btn btn-default pull-right">Incomplete</a></p>
-                        @endif 
-
                     </td>
                 </tr>
-                
-                <? // Perform logic check on whether or not math test submitted, then open logic test. ?>
-           <!--      <tr>
-                    <td>
-                        <p class="application-info">Math Test: <span class="btn btn-default pull-right">Incomplete</span></p>
-                    </td>
-                </tr>
-
-                <? // Perform logic check on whether or not logic test submitted, then open instructor interview scheduling. ?>
-                <tr>
-                    <td>
-                        <p class="application-info">Logic Test: <span class="btn btn-default pull-right">Incomplete</span></p>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <p class="application-info">Prework Test: <span class="btn btn-default pull-right">Incomplete</span></p>
-                    </td>
-                </tr>
-
-                <? // Jenni will schedule these. ?>
-                <tr>
-                    <td>
-                        <p class="application-info">Instructor Interview: <span class="btn btn-default pull-right">Incomplete</span></p>
-                    </td>
-                </tr> -->
-
             </table>
 
-        </div>
-
-    </div>
-</div>
+        </div> <!-- End Panel -->
+        @endif
+    </div> <!-- End Column -->
+</div> <!-- End Content Container -->
 @stop
 
 @section('bottomscript')
 <script type="text/javascript">
-
-    // var displayButtons = $('.btn-display');
-
-    // console.log(displayButtons);
 
     $(document).ready(function () {
 
@@ -215,29 +176,15 @@
         // Target display buttons and add event listener.
         $('.btn-display').click(function(event) {
             event.preventDefault();
+            
             var button = this;
             var id = button.id;
             var buttonContent = $(this).html();
-            // console.log(buttonContent);
-
-            // Change button glyphicon and text
-
-            // console.log($(this).html());
-
-            // if ($(this:contains).html().contains('Display')) {
-            //     console.log('true');
-            //     $(this).html('<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Hide This Application');
-            // };
-
-            // $( "div:contains('John')" )
             
             $('#application_' + id).slideToggle();
             
         });
     });
-
-
-    
 
 </script>
 @stop
