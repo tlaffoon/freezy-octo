@@ -11,7 +11,10 @@
 |
 */
 
-// RESOURCES
+
+
+
+/* ---------------- RESOURCES ---------------- */
 
 //  Users Resource Route
 Route::resource('users', 'UsersController');
@@ -22,16 +25,24 @@ Route::resource('applications', 'ApplicationsController');
 //  Courses Resource Route
 Route::resource('courses', 'CoursesController');
 
-/* -------------------------------- */
-// MAIN ROUTES
+//  Notes Resource Route
+// Route::resource('notes', 'NotesController');
 
+
+
+/* ---------------- MAIN ROUTES ---------------- */
+
+/* ---------------- HOMEPAGE ---------------- */
 // Homepage
 Route::get('/', function()
 {
-    return Redirect::to('login');
+    return View::make('landing');
 });
 
-// // User Get Login Route
+
+/* ---------------- LOGIN/LOGOUT ---------------- */
+
+// User Get Login Route
 Route::get('/login', function()
 {
     //  Check for user authentication
@@ -56,23 +67,6 @@ Route::get('/login', function()
     }
 });
 
-Route::get('/profile', array(
-    'as' => 'users.show',
-    'uses' => 'UsersController@showProfile')
-);
-
-// User Dashboard Get Route
-Route::get( '/dashboard', array(
-    'as' => 'users.dashboard',
-    'uses' => 'UsersController@showDashboard')
-);
-
-// User Dashboard Post Route
-Route::post( '/dashboard', array(
-    'as' => 'users.dashboard',
-    'uses' => 'UsersController@showDashboard')
-);
-
 // User Post Login Route
 Route::post('/login', array(
     'as' => 'login', 
@@ -81,6 +75,9 @@ Route::post('/login', array(
 
 // User Get Logout Route
 Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'));
+
+
+/* ---------------- SIGNUP ---------------- */
 
 // User Get Signup Route
 Route::get('/signup', function()
@@ -112,21 +109,25 @@ Route::get('/profile', function()
     }
 });
 
-// // User Get Dashboard Route
-// Route::get('dashboard', function()
-// {
-//     if(Auth::check() && Auth::user()->role == 'staff') {
-        
-//         $user = User::find(Auth::id());
-//         return View::make('users.dashboard')->with('user', $user);
 
-//     } else {
-        
-//         return Redirect::back()->with('alert', 'Access denied.');
-//     }
-// });
+/* ---------------- PROFILE ---------------- */
 
-// User Get Register Route
-Route::get('register', function() {
-    return Redirect::to('/signup');
-});
+Route::get('/profile', array(
+    'as' => 'users.show',
+    'uses' => 'UsersController@showProfile')
+);
+
+
+/* ---------------- DASHBOARD ---------------- */
+
+// User Dashboard Get Route
+Route::get( '/dashboard', array(
+    'as' => 'users.dashboard',
+    'uses' => 'UsersController@showDashboard')
+);
+
+// User Dashboard Post Route
+Route::post( '/dashboard', array(
+    'as' => 'users.dashboard',
+    'uses' => 'UsersController@showDashboard')
+);
