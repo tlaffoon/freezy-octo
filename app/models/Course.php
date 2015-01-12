@@ -1,6 +1,6 @@
 <?php
 
-class Course extends Eloquent {
+class Course extends \BaseModel {
 
     protected $table = 'courses';
 

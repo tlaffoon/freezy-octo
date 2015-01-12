@@ -7,8 +7,33 @@ class CoursesTableSeeder extends Seeder {
 
     public function run()
     {
-
         DB::table('courses')->delete();
+
+        $course = new Course();
+        $course->active = 0;
+        $course->name = '4-Month Coding Bootcamp (Day)';
+        $course->designation = 'Denali';
+        $course->description = 'Codeup Bootcamp is a 4 to 6 month, in-person program that turns non-techies into entry level Web Developers using a unique, instructor-led approach. Find work, or get 1/2 of your tuition returned.';
+        $course->start_date = '2014-10-5';
+        $course->end_date = '2015-1-13';
+        $course->demo_date = '2015-1-14';
+        $course->duration = 16;
+        $course->max_students = 25;
+        $course->cost = 10000;
+        $course->save();
+
+        $course = new Course();
+        $course->active = 0;
+        $course->name = '4-Month Coding Bootcamp (Day)';
+        $course->designation = 'Everglades';
+        $course->description = 'Codeup Bootcamp is a 4 to 6 month, in-person program that turns non-techies into entry level Web Developers using a unique, instructor-led approach. Find work, or get 1/2 of your tuition returned.';
+        $course->start_date = '2014-11-5';
+        $course->end_date = '2015-2-15';
+        $course->demo_date = '2015-2-15';
+        $course->duration = 16;
+        $course->max_students = 25;
+        $course->cost = 10000;
+        $course->save();
 
         $course = new Course();
         $course->name = '4-Month Coding Bootcamp (Day)';

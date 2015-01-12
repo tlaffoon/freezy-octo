@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserNotesTable extends Migration {
+class AddApplicationNotesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,13 @@ class AddUserNotesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_notes', function($table)
+		Schema::create('application_notes', function($table)
 		{
 		    $table->increments('id');
 		    $table->text('note');
 
-		    $table->integer('user_id')->unsigned();
-		    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+		    $table->integer('application_id')->unsigned();
+		    $table->foreign('application_id')->references('id')->on('applications')->onDelete('cascade');
 
 		    $table->timestamps();
 		});
@@ -31,7 +31,7 @@ class AddUserNotesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('user_notes');
+		Schema::dropIfExists('application_notes');
 	}
 
 }
