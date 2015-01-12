@@ -1,6 +1,6 @@
 <?php
 
-class Application extends Eloquent {
+class Application extends \BaseModel {
 
     protected $table = 'applications';
 
