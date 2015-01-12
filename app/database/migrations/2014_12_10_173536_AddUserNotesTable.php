@@ -12,10 +12,10 @@ class AddUserNotesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('notes', function($table)
+		Schema::create('user_notes', function($table)
 		{
 		    $table->increments('id');
-		    $table->text('notes');
+		    $table->text('note');
 
 		    $table->integer('user_id')->unsigned();
 		    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -31,7 +31,7 @@ class AddUserNotesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('notes');
+		Schema::dropIfExists('user_notes');
 	}
 
 }
