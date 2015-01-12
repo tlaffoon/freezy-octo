@@ -139,7 +139,8 @@
 
                                     <div class="btn-group btn-group-dashboard pull-right">
 
-                                        <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Contact Info">
+                                        <!-- User Contact Info Modal Button Trigger -->
+                                        <a href="#myModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Contact Info" data-toggle="modal" data-target="#modal_{{ $application->id}}">
                                             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                                         </a>
 
@@ -183,6 +184,26 @@
                             </div>
                             @endif
                         <!-- End Individual Application Block -->
+
+                        <!-- User Contact Info Modal -->
+                        <div class="modal fade" id="modal_{{ $application->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">{{ $application->user->fullname}}</h4>
+                              </div>
+                              <div class="modal-body">
+                                <p>{{ $application->user->phone }}</p>
+                                <p>{{ $application->user->email }}</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         @endforeach
                     </td>
                 </tr>
@@ -218,10 +239,7 @@
         </p>
     </div>
 
-
-
-
-</div>
+</div> <!-- End Container -->
 
 
 
@@ -250,6 +268,10 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+
+        // Initialize Modal Button Tooltip
+        $("[rel='tooltip']").tooltip();
+
         // Hide all existing application boxes.
         $('.dashboard-application-box').hide();
 
