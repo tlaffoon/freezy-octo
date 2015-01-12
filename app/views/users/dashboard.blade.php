@@ -64,6 +64,8 @@
         <h3 class="page-header">Sidebar</h3>
             <a href="" class="btn btn-default sidebar-btn"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  Applications</a>
             <a href="" class="btn btn-default sidebar-btn"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>  Courses</a>
+            <a href="" class="btn btn-default sidebar-btn"><i class="fa fa-beer"></i>  Events</a>
+            <a href="" class="btn btn-default sidebar-btn"><i class="fa fa-male"></i>  Speakers</a>
             <a href="" class="btn btn-default sidebar-btn"><i class="fa fa-users"></i>  Users</a>
     </div>
 
@@ -165,8 +167,8 @@
                                         <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
                                     </a>
                                 </div>
-                                <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
                                 <p> <strong> Applying to: </strong>  {{ $application->course->name }}                      </p>
+                                <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
 
                                 <p> <strong> Employment status: </strong> {{ ucfirst($application->employment_status) }}   </p>
                                 
