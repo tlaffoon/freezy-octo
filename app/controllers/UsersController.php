@@ -112,15 +112,16 @@ class UsersController extends \BaseController {
 		$user = User::findOrFail($id);
 		$applications = Application::orderBy('id', 'DESC')->paginate(10);
 		$courses = Course::orderBy('id', 'DESC')->paginate(3);
-		$students = DB::table('users')->where('role', '=', 'user')->get();
+		$students = DB::table('users')
+			->where('role', '=', 'student')
+			->orderBy('created_at', 'DESC')
+			->paginate(10);
 
-		// $data = array(
-		//     'user'  => $user,
-		//     'applications'   => $applications,
-		//     'courses' => $courses
-		// );
-
-		return View::make('users.dashboard')->with('user', $user)->with('applications', $applications)->with('courses', $courses)->with('students', $students);
+		return View::make('dashboards.users')
+			->with('user', $user)
+			->with('applications', $applications)
+			->with('courses', $courses)
+			->with('students', $students);
 	}
 
 
@@ -168,7 +169,8 @@ class UsersController extends \BaseController {
 		else {
 		    $user = new User();
 		    
-		    $user->username 	= Input::get('username');
+		    $user->first 		= Input::get('first');
+		    $user->last 		= Input::get('last');
 		    $user->email 		= Input::get('email');
 		    $user->password 	= Input::get('password');
 		    
@@ -181,7 +183,16 @@ class UsersController extends \BaseController {
 		        $user->save();
 		    }
 
-	        return Redirect::to('/login')->with('message', 'Account created successfully!  Please login below.');
+		    Session::flash('message', 'Account created successfully!');
+
+		    // Log User In
+		    $user = User::find($user->id);
+		    Auth::login($user);
+
+		    return Redirect::route('/profile');
+
+	        // return Redirect::to('/login')->with('message', 'Account created successfully!  Please login below.');
+
 		}
 	}
 

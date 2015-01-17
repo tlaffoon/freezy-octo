@@ -2,6 +2,44 @@
 
 class ApplicationsController extends \BaseController {
 
+	public function processAjax() {
+
+		$data = Input::all();
+
+		if (Request::ajax()) {
+			// Find application and change to approved status.
+			$id = Input::get('applicationID');
+			$application = Application::findOrFail($id);
+			$application->status = 'approved';
+			$applications = Application::all();
+			return Response::json(array('applications' => $applications));
+		}
+
+		// if (Request::ajax()) {
+		// 	return Response::json(array('message' => 'Success!'));
+		// }
+
+		// else {
+		// 	return Response::json(array('message' => 'Fail.'));
+		// }
+
+	}
+
+	public function showDashboard()
+	{
+		$id = Auth::id();
+		$user = User::findOrFail($id);
+		$applications = Application::where('status', '=', 'pending')->orderBy('id', 'DESC')->get();
+		$courses = Course::orderBy('id', 'DESC');
+		$students = DB::table('users')->where('role', '=', 'user')->get();
+
+		return View::make('dashboards.applications')
+			->with('user', $user)
+			->with('applications', $applications)
+			->with('courses', $courses)
+			->with('students', $students);
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

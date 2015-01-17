@@ -2,6 +2,25 @@
 
 class CoursesController extends \BaseController {
 
+	public function showDashboard()
+	{
+		$id = Auth::id();
+		$user = User::findOrFail($id);
+		$courses = Course::all();
+		// $students = DB::table('users')->where('role', '=', 'user')->get();
+
+		// $data = array(
+		//     'user'  => $user,
+		//     'applications'   => $applications,
+		//     'courses' => $courses
+		// );
+
+		return View::make('dashboards.courses')
+			->with('user', $user)
+			->with('courses', $courses);
+			// ->with('students', $students);
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -42,7 +61,7 @@ class CoursesController extends \BaseController {
 		} else {
 
 		$course = new Course();
-		$course->name = Input::get('name');
+		$course->type = Input::get('type');
 		$course->description = Input::get('description');
 		$course->start_date = Input::get('start_date');
 		$course->end_date = Input::get('end_date');
@@ -100,7 +119,7 @@ class CoursesController extends \BaseController {
 		} else {
 
 		$course = Course::findOrFail($id);
-		$course->name = Input::get('name');
+		$course->type = Input::get('type');
 		$course->description = Input::get('description');
 		$course->start_date = Input::get('start_date');
 		$course->end_date = Input::get('end_date');
@@ -110,6 +129,7 @@ class CoursesController extends \BaseController {
 		$course->save();
 
 		return Redirect::action('CoursesController@index');
+		// return Redirect::action('UsersController@showDashboard');
 		}
 	}
 
