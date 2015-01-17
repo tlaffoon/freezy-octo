@@ -10,8 +10,8 @@ class CoursesTableSeeder extends Seeder {
         DB::table('courses')->delete();
 
         $course = new Course();
-        $course->active = 0;
-        $course->name = '4-Month Coding Bootcamp (Day)';
+        $course->status = 'inactive';
+        $course->type = '4-Month Coding Bootcamp (Day)';
         $course->designation = 'Denali';
         $course->description = 'Codeup Bootcamp is a 4 to 6 month, in-person program that turns non-techies into entry level Web Developers using a unique, instructor-led approach. Find work, or get 1/2 of your tuition returned.';
         $course->start_date = '2014-10-5';
@@ -23,8 +23,8 @@ class CoursesTableSeeder extends Seeder {
         $course->save();
 
         $course = new Course();
-        $course->active = 0;
-        $course->name = '4-Month Coding Bootcamp (Day)';
+        $course->status = 'inactive';
+        $course->type = '4-Month Coding Bootcamp (Day)';
         $course->designation = 'Everglades';
         $course->description = 'Codeup Bootcamp is a 4 to 6 month, in-person program that turns non-techies into entry level Web Developers using a unique, instructor-led approach. Find work, or get 1/2 of your tuition returned.';
         $course->start_date = '2014-11-5';
@@ -36,7 +36,7 @@ class CoursesTableSeeder extends Seeder {
         $course->save();
 
         $course = new Course();
-        $course->name = '4-Month Coding Bootcamp (Day)';
+        $course->type = '4-Month Coding Bootcamp (Day)';
         $course->designation = 'Franklin';
         $course->description = 'Codeup Bootcamp is a 4 to 6 month, in-person program that turns non-techies into entry level Web Developers using a unique, instructor-led approach. Find work, or get 1/2 of your tuition returned.';
         $course->start_date = '2015-2-3';
@@ -48,7 +48,7 @@ class CoursesTableSeeder extends Seeder {
         $course->save();
 
         $course = new Course();
-        $course->name = '9-Month Coding Bootcamp (Night) ';
+        $course->type = '9-Month Coding Bootcamp (Night) ';
         $course->designation = 'Gandolf';
         $course->description = 'A 9-month coding bootcamp, which facilitates working professionals.';
         $course->start_date = '2015-3-15';
@@ -60,7 +60,7 @@ class CoursesTableSeeder extends Seeder {
         $course->save();
 
         $course = new Course();
-        $course->name = 'Codeup Gap Year (2015-2016)';
+        $course->type = 'Codeup Gap Year (2015-2016)';
         $course->designation = 'The Trail Into Mordor';
         $course->description = 'CodeYear is a full-time, 12-month course done before or after college. Students become great programmers by building sophisticated games, launching a startup, and working as an intern at a real company.';
         $course->start_date = '2015-9-7';

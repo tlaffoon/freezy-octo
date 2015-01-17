@@ -11,18 +11,18 @@ class UsersTableSeeder extends Seeder {
 
         // Create admin user manually.
         $admin = [
-            'username' => $_ENV['ADMIN_USER'],
             'email' => $_ENV['ADMIN_EMAIL'],
             'gender' => $_ENV['ADMIN_GENDER'],
             'first' => $_ENV['ADMIN_FIRSTNAME'],
             'last' => $_ENV['ADMIN_LASTNAME'],
             'fullname' => $_ENV['ADMIN_FULLNAME'],
             'phone' => $_ENV['ADMIN_PHONE'],
-            'password' => Hash::make($_ENV['ADMIN_PASS']),  
-            'street' => '112 E. Pecan',
-            'city' => 'San Antonio',
-            'state' => 'Texas',
-            'zip' => '78205',
+            'password' => Hash::make($_ENV['ADMIN_PASS']),
+            'address' => '112 E. Pecan San Antonio, TX 78205',
+            // 'street' => '112 E. Pecan',
+            // 'city' => 'San Antonio',
+            // 'state' => 'Texas',
+            // 'zip' => '78205',
             'role' => 'staff',
         ];
 
@@ -40,7 +40,6 @@ class UsersTableSeeder extends Seeder {
         {
 
             $user = array(
-                'username' => $faker->userName,
                 'first' => $faker->firstName,
                 'last' => $faker->lastName,
                 'email' => $faker->email,
@@ -48,8 +47,7 @@ class UsersTableSeeder extends Seeder {
                 'fullname' => $faker->firstName . ' ' . $faker->lastName,
                 'phone' => $faker->phoneNumber ,
                 'gender' =>  $gender[array_rand($gender)],
-                'role' => 'user',
-                // 'address' => $faker->address
+                'address' => $faker->address
             );
 
           // Insert user into the database.
