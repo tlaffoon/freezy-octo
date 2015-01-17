@@ -24,14 +24,19 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
+// $env = $app->detectEnvironment(function()
+// {
+
+//     if (!empty($_SERVER['LARAVEL_ENV'])) {
+//         return $_SERVER['LARAVEL_ENV'];
+//     }
+
+//     return 'local';
+// });
+
 $env = $app->detectEnvironment(function()
 {
-
-    if (!empty($_SERVER['LARAVEL_ENV'])) {
-        return $_SERVER['LARAVEL_ENV'];
-    }
-
-    return 'local';
+    return !empty($_SERVER['LARAVEL_ENV']) && $_SERVER['LARAVEL_ENV'] == 'local' ? 'local' : 'production';
 });
 
 /*
