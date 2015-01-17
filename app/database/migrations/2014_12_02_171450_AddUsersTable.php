@@ -12,22 +12,22 @@ class AddUsersTable extends Migration
         // Creates the users table
         Schema::create('users', function ($table) {
             $table->increments('id');
-            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('first');
             $table->string('last');
             $table->string('fullname');
-            $table->string('role')->default('user');
+            $table->string('role')->default('student');
             $table->string('phone');
             $table->string('gender');
             $table->date('dob');
             $table->integer('age');
             $table->string('img_path');
-            $table->string('street');
-            $table->string('city');
-            $table->string('state');
-            $table->string('zip');
+            $table->string('address');
+            // $table->string('street');
+            // $table->string('city');
+            // $table->string('state');
+            // $table->string('zip');
 
             $table->boolean('financing')->default(0);
             $table->boolean('application_completed')->default(0);

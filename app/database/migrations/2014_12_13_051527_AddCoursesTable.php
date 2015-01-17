@@ -16,11 +16,11 @@ class AddCoursesTable extends Migration {
 		{
 		    $table->increments('id');
 		    
-		    $table->string('name')->unique();
+		    $table->string('type');
 		    $table->string('designation')->unique();
 		    $table->string('description');
 
-		    $table->boolean('active')->default(1);
+		    $table->string('status')->default('active');
 
 		    $table->date('start_date');
 		    $table->date('end_date');
