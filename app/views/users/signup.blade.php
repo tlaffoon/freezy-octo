@@ -14,10 +14,15 @@
 
             {{ Form::open(array('action' => 'UsersController@store', 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
 
-                <!-- Username -->
-                {{ Form::label('username', 'Username') }}
-                {{ Form::text('username', Input::old('username'), array('class' => 'form-group form-control', 'placeholder' => 'Username')) }}
-                {{ $errors->first('username', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                <!-- First Name -->
+                {{ Form::label('first', 'First Name') }}
+                {{ Form::text('first', Input::old('first'), array('class' => 'form-group form-control', 'placeholder' => 'First Name')) }}
+                {{ $errors->first('first', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+
+                <!-- Last Name -->
+                {{ Form::label('last', 'Last Name') }}
+                {{ Form::text('last', Input::old('last'), array('class' => 'form-group form-control', 'placeholder' => 'Last Name')) }}
+                {{ $errors->first('last', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Email -->
                 {{ Form::label('email', 'Email') }}

@@ -14,8 +14,8 @@
         {{ Form::open(array('action' => array('CoursesController@store'), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
 
             <!-- Name -->
-            {{ Form::label('name', 'Name') }}
-            {{ Form::text('name', Input::old('name'), array('class' => 'form-group form-control')) }}
+            {{ Form::label('type', 'Type') }}
+            {{ Form::text('type', Input::old('type'), array('class' => 'form-group form-control')) }}
             
             <!-- Description -->
             {{ Form::label('description', 'Description') }}

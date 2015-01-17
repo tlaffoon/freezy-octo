@@ -21,7 +21,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['username', 'email', 'password', 'password_confirmation'];
+	protected $fillable = ['email', 'password', 'password_confirmation'];
 
 	/**
 	 * The required fields on users.create form submission.
@@ -29,7 +29,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	public static $rules = array(
-		'username'				=>  'required',
 		'email'					=>  'required|email',
 		'password'				=>	'required|alpha_num|between:6,12|confirmed',
 		'password_confirmation'	=>	'required|alpha_num|between:6,12'

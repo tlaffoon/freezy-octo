@@ -16,6 +16,7 @@
 @stop
 
 @section('content')
+<!-- This view provides the staff an administrative overview of a particular student. -->
 <div class="container">
     <div class="col-md-12">
 

@@ -8,6 +8,9 @@
     <!-- Optional theme -->
     {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css') }}
 
+    <!-- Custom CSS -->
+    <!-- <link href="/includes/css/simple-sidebar.css" rel="stylesheet"> -->
+
     <!-- Include Lato Font -->
     {{ HTML::style('http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic') }}
     
@@ -67,6 +70,82 @@
         margin-right: 5px;
     }
 
+    .dashboard-application-header {
+        border: solid #eee 1px;
+        padding-top: 5px;
+        background-color: white;
+    }
+
+    .dashboard-application-box {
+        border: solid #eee 1px;
+        padding-top: 5px;
+        margin-bottom: 10px;
+        background-color: white;
+    }
+
+    .dashboard-course-header {
+        border: solid white 1px;
+        font-size: 18px;
+        padding-top: 5px;
+        background-color: #E1E7F9;
+        margin-bottom: 2px;
+    }
+
+    .dashboard-course-box {
+        background-color: #E1E7F9;
+        width: 100%;
+        border: solid white 1px;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .btn-group-dashboard {
+        position: relative;
+        bottom: 10px;
+    }
+
+    .sidebar-btn {
+        margin: 5px;
+    }
+
+    .section-header {
+        margin-top: 10px;
+    }
+
+    .course-description {
+        text-indent: 15px;
+    }
+
+    .status-feed {
+        text-indent: 15px;
+        border: dashed #eee 1px;
+        padding-top: 10px;
+    }
+
+    .status-header {
+    }
+
+    .chevron-nav {
+        font-size: 16px;
+        position: relative;
+        top: 20px;
+    }
+
+    .dashboard-tag {
+        color: #b394d1;
+    }
+
+    .sidebar-links {
+        list-style-type: none;
+        padding: 0px;
+        font-size: 18px;
+    }
+
+    .application-count {
+        color: orange;
+    }
+
     @yield('css')
 
     </style>
@@ -75,8 +154,9 @@
 
 </head>
 <body>
-    <div class="page">
-        <div class="container-fluid">
+  <div id="wrapper">
+    <div id="page-content-wrapper" class="page">
+        <div class=" container-fluid">
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
@@ -95,13 +175,21 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Menu <span class="caret"></span></a>
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                @if(Auth::check())
+                                    {{ Auth::user()->first }} 
+                                @else
+                                    Menu
+                                @endif
+                               <span class="caret"></span>
+                              </a>
                               <ul class="dropdown-menu" role="menu">
                                 @if (Auth::check())
                                     @if(Auth::user()->role == 'staff')
-                                        <li><a href="{{ action('UsersController@showDashboard') }}" class="text-right">Dashboard <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a></li>
-                                        <li><a href="{{ action('CoursesController@index') }}" class="text-right">Courses <span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></li>
-                                        <li><a href="{{ action('UsersController@index') }}" class="text-right">Users <i class="fa fa-users"></i></a></li>
+                                        <li><a href="" class="text-right">Dashboard <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a></li>
+                                        <!-- <li><a href="{{ action('CoursesController@showDashboard') }}" class="text-right">Applications <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></li> -->
+                                        <!-- <li><a href="{{ action('CoursesController@showDashboard') }}" class="text-right">Courses <span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></li> -->
+                                        <!-- <li><a href="{{ action('UsersController@showDashboard') }}" class="text-right">Users <i class="fa fa-users"></i></a></li> -->
                                         <li class="divider"></li>
                                     @endif
                                     <li><a href="{{ action('UsersController@showProfile') }}" class="text-right">Your Profile <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
@@ -151,7 +239,9 @@
             </div>
         </div>
         @yield('content')
-    </div>
+    </div> <!-- /.page-content-wrapper -->
+
+</div> <!-- /.wrapper -->
 
     <!-- Jquery -->
     {{HTML::script('http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js')}}
@@ -174,6 +264,39 @@
             // Initialize tooltips
             $(function () {
               $('[data-toggle="tooltip"]').tooltip()
+            });
+
+            // Initialize Modal Button Tooltip
+            $("[rel='tooltip']").tooltip();
+
+            // Hide all existing application boxes.
+            $('.dashboard-application-box').hide();
+
+            // Target display buttons and add event listener.
+            $('.btn-display').click(function(event) {
+                event.preventDefault();
+                
+                var button = this;
+                var id = button.id;
+                var buttonContent = $(this).html();
+                
+                $('#application_' + id).slideToggle();
+                
+            });
+
+            // Hide all existing course boxes.
+            $('.dashboard-course-box').hide();
+
+            // Target display buttons and add event listener.
+            $('.btn-display').click(function(event) {
+                event.preventDefault();
+                
+                var button = this;
+                var id = button.id;
+                var buttonContent = $(this).html();
+                
+                $('#course' + id).slideToggle();
+                
             });
         });
 

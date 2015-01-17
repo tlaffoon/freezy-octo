@@ -6,7 +6,7 @@
 
         <h2 class="page-header">User Index Page</h2>
 
-        <?php if ($users): ?>
+        @if ($users)
 
             <table class="table table-striped table-hover table-bordered">
 
@@ -14,25 +14,26 @@
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Status</th>
-                    <th>Math</th>
-                    <th>Logic</th>
-                    <th>Prework</th>
-                    <!-- <th>Address</th> -->
-                    <!-- <th>Github Url</th> -->
+                    <th>Role</th>
+                    
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Age</th>
+                    
                     <th class="actions-column">Actions</th>
                 </tr>
                 
-                <?php foreach ($users as $key => $user): ?>
+                @foreach ($users as $key => $user)
 
                     <tr>
                         <td>{{ $user->fullname }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->status }}</td>
-                        <td> ## </td>
-                        <td> ## </td>
-                        <td> ## </td>
+                        <td>{{ $user->role }}</td>
+
+                        <td>{{ $user->gender }}</td>
+                        <td>{{ $user->dob }}</td>
+                        <td>{{ $user->age }}</td>
                         <td>
 
                             <div class="btn-group">
@@ -52,7 +53,7 @@
                         </td>
                     </tr>
 
-                <?php endforeach ?>
+                @endforeach
 
             </table>
 
@@ -60,7 +61,7 @@
                 {{ $users->links() }}
             </div>
 
-        <?php endif ?>
+        @endif
     </div>
 
     {{ Form::open(array('action' => 'UsersController@destroy', 'id' => 'deleteForm', 'method' => 'DELETE')) }}

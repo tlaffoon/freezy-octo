@@ -12,32 +12,38 @@
 */
 
 
-
-
-/* ---------------- RESOURCES ---------------- */
-
-//  Users Resource Route
-Route::resource('users', 'UsersController');
-
-//  Applications Resource Route
-Route::resource('applications', 'ApplicationsController');
-
-//  Courses Resource Route
-Route::resource('courses', 'CoursesController');
-
-//  Notes Resource Route
-// Route::resource('notes', 'NotesController');
-
-
-
-/* ---------------- MAIN ROUTES ---------------- */
-
 /* ---------------- HOMEPAGE ---------------- */
-// Homepage
+
+Route::get('dashboard', function() {
+    return View::make('dashboards.primary');
+});
+
+// Get Homepage Route
 Route::get('/', function()
 {
     return View::make('landing');
 });
+
+
+
+/* ---------------- SIGNUP ---------------- */
+
+// User Get Signup Route
+Route::get('/signup', function()
+{
+    //  If user is already authenticated, redirect to their main view - else signup view.
+    if (Auth::check()) {
+        $user = User::find(Auth::id());
+        return View::make('users.show')->with('user', $user);
+    } else {
+        return View::make('users.signup');
+    }
+
+});
+
+// User Post Signup Route
+Route::post('/signup', array('as' => 'signup', 'uses' => 'UsersController@store'));
+
 
 
 /* ---------------- LOGIN/LOGOUT ---------------- */
@@ -77,40 +83,26 @@ Route::post('/login', array(
 Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'));
 
 
-/* ---------------- SIGNUP ---------------- */
-
-// User Get Signup Route
-Route::get('/signup', function()
-{
-    //  If user is already authenticated, redirect to their main view - else signup view.
-    if (Auth::check()) {
-        $user = User::find(Auth::id());
-        return View::make('users.show')->with('user', $user);
-    } else {
-        return View::make('users.signup');
-    }
-
-});
-
-// User Post Signup Route
-Route::post('/signup', array('as' => 'signup', 'uses' => 'UsersController@store'));
-
-// User Get Profile
-Route::get('/profile', function()
-{
-    if(Auth::check()) {
-        
-        $user = User::find(Auth::id());
-        return View::make('users.show')->with('user', $user);
-
-    } else {
-        
-        return Redirect::to('/login')->with('alert', 'Please login to continue.');
-    }
-});
 
 
 /* ---------------- PROFILE ---------------- */
+
+// User Get Profile
+// Route::get('/profile', function()
+// {
+//     if ($user->role == 'user') {
+//         # code...
+//     }
+
+//     else {
+//         return UsersController@showProfile
+//     }
+//     $user = User::find(Auth::id());
+//     return View::make('users.show')->with('user', $user);
+  
+//     return Redirect::to('/login')->with('alert', 'Please login to continue.');
+//     }
+// });
 
 Route::get('/profile', array(
     'as' => 'users.show',
@@ -118,16 +110,83 @@ Route::get('/profile', array(
 );
 
 
-/* ---------------- DASHBOARD ---------------- */
+
+/* ---------------- DASHBOARDS ---------------- */
+
+// Primary Dashboard Get Route
+// Route::get( '/dashboard/users', array(
+//     'as' => 'dashboards.users',
+//     'uses' => 'UsersController@showDashboard')
+// );
+
+// // Primary Dashboard Post Route
+// Route::post( '/dashboard/users', array(
+//     'as' => 'dashboards.users',
+//     'uses' => 'UsersController@showDashboard')
+// );
+
+/* ----------------------------------------------- */
 
 // User Dashboard Get Route
-Route::get( '/dashboard', array(
-    'as' => 'users.dashboard',
+Route::get( '/dashboard/users', array(
+    'as' => 'dashboards.users',
     'uses' => 'UsersController@showDashboard')
 );
 
 // User Dashboard Post Route
-Route::post( '/dashboard', array(
-    'as' => 'users.dashboard',
+Route::post( '/dashboard/users', array(
+    'as' => 'dashboards.users',
     'uses' => 'UsersController@showDashboard')
 );
+
+/* ----------------------------------------------- */
+
+// Applications Dashboard Get Route
+Route::get( '/dashboard/applications', array(
+    'as' => 'dashboards.applications',
+    'uses' => 'ApplicationsController@showDashboard')
+);
+
+// Applications Dashboard Post Route
+// Route::post( '/dashboard/applications', array(
+//     'as' => 'dashboards.applications',
+//     'uses' => 'ApplicationsController@showDashboard')
+// );
+
+// Ajax Request Route
+Route::post( '/dashboard/applications', array(
+    'as' => 'dashboards.applications',
+    'uses' => 'ApplicationsController@processAjax')
+);
+
+/* ----------------------------------------------- */
+
+// Courses Dashboard Get Route
+Route::get( '/dashboard/courses', array(
+    'as' => 'dashboards.courses',
+    'uses' => 'CoursesController@showDashboard')
+);
+
+// Courses Dashboard Post Route
+Route::post( '/dashboard/courses', array(
+    'as' => 'dashboards.courses',
+    'uses' => 'CoursesController@showDashboard')
+);
+
+
+
+
+
+/* ---------------- RESOURCES ---------------- */
+
+//  Users Resource Route
+Route::resource('users', 'UsersController');
+
+//  Applications Resource Route
+Route::resource('applications', 'ApplicationsController');
+
+//  Courses Resource Route
+Route::resource('courses', 'CoursesController');
+
+//  Notes Resource Route
+// Route::resource('notes', 'NotesController');

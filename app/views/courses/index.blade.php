@@ -24,7 +24,7 @@
             @if ($course->active)
                 <div class="course-box img-rounded">
                     <a href="{{ action('ApplicationsController@create') }}" class="btn btn-lg btn-primary pull-right">Apply!</a>
-                    <p>{{ $course->name }} | "{{ $course->designation }}" Cohort</p>
+                    <p>{{ $course->type }} | "{{ $course->designation }}" Cohort</p>
                     <p>Starts on: {{ $course->start_date }}</p>
                     <p>Ends on: {{ $course->end_date }}</p>
                     <p>Demo Day on: {{ $course->demo_date }}</p>
