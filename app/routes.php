@@ -17,9 +17,7 @@
 // Get Homepage Route
 Route::get('/', function()
 {
-
     return Redirect::to('login');
-
 });
 
 
@@ -127,7 +125,7 @@ Route::get( '/dashboard/users', array(
 // Applications Dashboard Get Route
 Route::get( '/dashboard/applications', array(
     'as' => 'dashboards.applications',
-    'uses' => 'DashboardsController@@showApplicationsDashboard')
+    'uses' => 'DashboardsController@showApplicationsDashboard')
 );
 
 // Applications Dashboard Post Route

@@ -70,6 +70,22 @@
             background-color: white;
         }
 
+        .dashboard-course-header {
+            border: solid #eee 1px;
+            padding-top: 5px;
+            background-color: white;
+            margin-bottom: 5px;
+        }
+
+        .dashboard-course-box {
+            /*background-color: #E1E7F9;*/
+            width: 100%;
+            border: dashed #eee 1px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
         .dashboard-tag {
             color: #b394d1;
             margin-left: 10px;

@@ -1,28 +1,17 @@
-@extends('layouts.master')
+@extends('layouts.dashboard')
 
 @section('topscript')
 @stop
 
 @section('content')
-<div class="container">
-
     <div class="pull-right dashboard-tag">
         <h5>Courses Dashboard</h5>
     </div>
 
-    <div class="page-header">
-        <h2>Welcome {{ Auth::user()->first }}!</h2>
-    </div>
-
-    <!-- Pulse -->
-
-    <!-- Sidebar -->
-    @include('partials.sidebar')
-
-    <div class="col-md-8">
+    <div class="col-md-9">
         
         <!-- Courses -->
-        <h3 class="page-header">Active Courses</h3>
+        <h3 class="page-header">Current Courses</h3>
         @foreach ($courses as $course)
             @if ($course->status == 'active')
 
@@ -38,7 +27,7 @@
                             
                             <!-- Course Toggle Display Button -->
                             <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Show/Hide Details">
-                                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                <i class="fa fa-chevron-down"></i>
                             </a>
 
                         </div>
@@ -62,12 +51,8 @@
 
     </div> <!-- End Middle Column -->
 
-    <div class="col-md-2">
-
-    </div>
-
-    <div class="col-md-8">
-        <h3 class="page-header">Inactive Courses</h3>
+    <div class="col-md-9">
+        <h3 class="page-header">Past Courses</h3>
 
         @foreach($courses as $course)
             @if ($course->status == 'inactive')
@@ -105,8 +90,6 @@
             @endif
         @endforeach
     </div>
-
-</div> <!-- End Container -->
 @stop
 
 @section('bottomscript')
