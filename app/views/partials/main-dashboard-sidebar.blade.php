@@ -30,7 +30,6 @@
                     <a href="/dashboard/users"><i class="fa fa-users"></i>  Users</a>
                 </li>
 
-
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
