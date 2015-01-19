@@ -59,7 +59,7 @@ Route::get('/login', function()
         }
 
         elseif (Auth::user()->role == 'user') {
-            return Redirect::action('UsersController@show', $user->id);
+            return Redirect::action('UsersController@showProfile', $user->id);
         }
     }
 

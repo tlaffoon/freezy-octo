@@ -104,7 +104,7 @@
 
     <div class="row">
 
-        <div class="col-md-7">
+        <div class="col-md-8">
             <!-- Screen Shot of Area Chart -->
             <img src="/includes/img/area-chart.png" class="img-responsive img-rounded">
         </div>

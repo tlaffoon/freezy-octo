@@ -12,25 +12,25 @@
                     </div>
                     <!-- /input-group -->
                 </li>              
+                <li>             
+
                 <li>
-                    <a href="#"><i class="fa fa-dashboard"></i>  Dashboard<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="/dashboard/applications"><i class="fa fa-list-alt"></i>  Applications</a>
-                        </li>
-                        <li>
-                            <a href="/dashboard/courses"><i class="fa fa-space-shuttle"></i>  Courses</a>
-                        </li>
-                        <li>
-                            <a href="/dashboard/users"><i class="fa fa-users"></i>  Users</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
+                    <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
                 </li>
-                
-<!--                 <li>
-                    <a href=""><i class="fa fa-table fa-fw"></i> Placeholder</a>
-                </li> -->
+
+                <li>
+                    <a href="/dashboard/applications"><i class="fa fa-list-alt"></i>  Applications</a>
+                </li>
+
+                <li>
+                    <a href="/dashboard/courses"><i class="fa fa-space-shuttle"></i>  Courses</a>
+                </li>
+
+                <li>
+                    <a href="/dashboard/users"><i class="fa fa-users"></i>  Users</a>
+                </li>
+
+
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
