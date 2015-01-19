@@ -40,9 +40,22 @@
                 {{ $errors->first('phone', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Address -->
-                {{ Form::label('address', 'Address') }}
-                {{ Form::text('address', Input::old('address'), array('class' => 'form-group form-control', 'placeholder' => 'Address')) }}
-                {{ $errors->first('address', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                {{ Form::label('street', 'Street Address') }}
+                {{ Form::text('street', Input::old('street'), array('class' => 'form-group form-control', 'placeholder' => 'Street Address')) }}
+                {{ $errors->first('street', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+
+                {{ Form::label('city', 'City') }}
+                {{ Form::text('city', Input::old('city'), array('class' => 'form-group form-control', 'placeholder' => 'City')) }}
+                {{ $errors->first('city', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+
+                {{ Form::label('state', 'State') }}
+                {{ Form::text('state', Input::old('state'), array('class' => 'form-group form-control', 'placeholder' => 'State')) }}
+                {{ $errors->first('state', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+
+                {{ Form::label('zip', 'Postal Code') }}
+                {{ Form::text('zip', Input::old('zip'), array('class' => 'form-group form-control', 'placeholder' => 'Zip')) }}
+                {{ $errors->first('zip', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+                <!-- End Address -->
 
                 <hr>
 
