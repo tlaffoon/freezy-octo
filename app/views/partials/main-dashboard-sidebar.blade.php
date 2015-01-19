@@ -28,9 +28,9 @@
                     <!-- /.nav-second-level -->
                 </li>
                 
-                <li>
+<!--                 <li>
                     <a href=""><i class="fa fa-table fa-fw"></i> Placeholder</a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
