@@ -101,31 +101,6 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Display the specified user's admin dashboard.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function showDashboard()
-	{
-		$id = Auth::id();
-		$user = User::findOrFail($id);
-		$applications = Application::orderBy('id', 'DESC')->paginate(10);
-		$courses = Course::orderBy('id', 'DESC')->paginate(3);
-		$students = DB::table('users')
-			->where('role', '=', 'student')
-			->orderBy('created_at', 'DESC')
-			->paginate(10);
-
-		return View::make('dashboards.users')
-			->with('user', $user)
-			->with('applications', $applications)
-			->with('courses', $courses)
-			->with('students', $students);
-	}
-
-
-	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -246,17 +221,12 @@ class UsersController extends \BaseController {
 
 		else {
 			
-			$user->first 		= Input::get('first');
-			$user->last 		= Input::get('last');
-			$user->fullname 	= $user->first . ' ' . $user->last;
-			
 			$user->phone		= Input::get('phone');
-
-			// Optional user email update.
-			if (Input::has('email')) {
-				$user->email 	= Input::get('email'); 
-			}
-
+			$user->street 		= Input::get('street');
+			$user->city 		= Input::get('city');
+			$user->state 		= Input::get('state');
+			$user->zip 			= Input::get('zip');
+			
 			$user->password 	= Input::get('password');
 			$user->save();
 

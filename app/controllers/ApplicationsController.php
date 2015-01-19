@@ -25,20 +25,6 @@ class ApplicationsController extends \BaseController {
 
 	}
 
-	public function showDashboard()
-	{
-		$id = Auth::id();
-		$user = User::findOrFail($id);
-		$applications = Application::where('status', '=', 'pending')->orderBy('id', 'DESC')->get();
-		$courses = Course::orderBy('id', 'DESC');
-		$students = DB::table('users')->where('role', '=', 'user')->get();
-
-		return View::make('dashboards.applications')
-			->with('user', $user)
-			->with('applications', $applications)
-			->with('courses', $courses)
-			->with('students', $students);
-	}
 
 	/**
 	 * Display a listing of the resource.

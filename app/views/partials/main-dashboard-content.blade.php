@@ -15,7 +15,7 @@
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
+                            <div class="huge"> {{ count($applications) }} </div>
                             <div>Pending Applications</div>
                         </div>
                     </div>

@@ -1,4 +1,3 @@
-Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,12 +27,9 @@ Navigation -->
                 @if (Auth::check())
                     @if(Auth::user()->role == 'staff')
                         <li><a href="/dashboard" class="text-right">Dashboard <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a></li>
-                        <!-- <li><a href="{{ action('CoursesController@showDashboard') }}" class="text-right">Applications <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></li> -->
-                        <!-- <li><a href="{{ action('CoursesController@showDashboard') }}" class="text-right">Courses <span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></li> -->
-                        <!-- <li><a href="{{ action('UsersController@showDashboard') }}" class="text-right">Users <i class="fa fa-users"></i></a></li> -->
                         <li class="divider"></li>
                     @endif
-                    <li><a href="{{ action('UsersController@showProfile') }}" class="text-right">Your Profile <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+                    <li><a href="/profile" class="text-right">Your Profile <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
                     <li><a href="/logout" class="text-right">Log Out <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
                 @else
                     <li><a href="/login" class="text-right">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>

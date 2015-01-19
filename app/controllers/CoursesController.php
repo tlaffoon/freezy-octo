@@ -2,25 +2,6 @@
 
 class CoursesController extends \BaseController {
 
-	public function showDashboard()
-	{
-		$id = Auth::id();
-		$user = User::findOrFail($id);
-		$courses = Course::all();
-		// $students = DB::table('users')->where('role', '=', 'user')->get();
-
-		// $data = array(
-		//     'user'  => $user,
-		//     'applications'   => $applications,
-		//     'courses' => $courses
-		// );
-
-		return View::make('dashboards.courses')
-			->with('user', $user)
-			->with('courses', $courses);
-			// ->with('students', $students);
-	}
-
 	/**
 	 * Display a listing of the resource.
 	 *

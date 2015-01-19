@@ -14,14 +14,12 @@
 
 /* ---------------- HOMEPAGE ---------------- */
 
-Route::get('dashboard', function() {
-    return View::make('dashboards.primary');
-});
-
 // Get Homepage Route
 Route::get('/', function()
 {
-    return View::make('landing');
+
+    return Redirect::to('login');
+
 });
 
 
@@ -59,7 +57,7 @@ Route::get('/login', function()
 
         // Check for user role.
         if (Auth::user()->role == 'staff') {
-            return Redirect::action('UsersController@showDashboard');
+            return Redirect::action('DashboardsController@showPrimaryDashboard');
         }
 
         elseif (Auth::user()->role == 'user') {
@@ -67,9 +65,9 @@ Route::get('/login', function()
         }
     }
 
-    // Redirect to login page.
+    // Redirect to landing page.
     else {
-        return View::make('users.login')->with('alert', 'Please login to continue.');
+        return View::make('landing');
     }
 });
 
@@ -88,21 +86,6 @@ Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'
 /* ---------------- PROFILE ---------------- */
 
 // User Get Profile
-// Route::get('/profile', function()
-// {
-//     if ($user->role == 'user') {
-//         # code...
-//     }
-
-//     else {
-//         return UsersController@showProfile
-//     }
-//     $user = User::find(Auth::id());
-//     return View::make('users.show')->with('user', $user);
-  
-//     return Redirect::to('/login')->with('alert', 'Please login to continue.');
-//     }
-// });
 
 Route::get('/profile', array(
     'as' => 'users.show',
@@ -114,12 +97,12 @@ Route::get('/profile', array(
 /* ---------------- DASHBOARDS ---------------- */
 
 // Primary Dashboard Get Route
-// Route::get( '/dashboard/users', array(
-//     'as' => 'dashboards.users',
-//     'uses' => 'UsersController@showDashboard')
-// );
+Route::get('/dashboard', array(
+    'as' => 'dashboard', 
+    'uses' => 'DashboardsController@showPrimaryDashboard')
+);
 
-// // Primary Dashboard Post Route
+// Primary Dashboard Post Route
 // Route::post( '/dashboard/users', array(
 //     'as' => 'dashboards.users',
 //     'uses' => 'UsersController@showDashboard')
@@ -130,27 +113,27 @@ Route::get('/profile', array(
 // User Dashboard Get Route
 Route::get( '/dashboard/users', array(
     'as' => 'dashboards.users',
-    'uses' => 'UsersController@showDashboard')
+    'uses' => 'DashboardsController@showUserDashboard')
 );
 
 // User Dashboard Post Route
-Route::post( '/dashboard/users', array(
-    'as' => 'dashboards.users',
-    'uses' => 'UsersController@showDashboard')
-);
+// Route::post( '/dashboard/users', array(
+//     'as' => 'dashboards.users',
+//     'uses' => 'DashboardsController@showUserDashboard')
+// );
 
 /* ----------------------------------------------- */
 
 // Applications Dashboard Get Route
 Route::get( '/dashboard/applications', array(
     'as' => 'dashboards.applications',
-    'uses' => 'ApplicationsController@showDashboard')
+    'uses' => 'DashboardsController@@showApplicationsDashboard')
 );
 
 // Applications Dashboard Post Route
 // Route::post( '/dashboard/applications', array(
 //     'as' => 'dashboards.applications',
-//     'uses' => 'ApplicationsController@showDashboard')
+//     'uses' => 'DashboardsController@@showApplicationsDashboard')
 // );
 
 // Ajax Request Route
@@ -164,14 +147,14 @@ Route::post( '/dashboard/applications', array(
 // Courses Dashboard Get Route
 Route::get( '/dashboard/courses', array(
     'as' => 'dashboards.courses',
-    'uses' => 'CoursesController@showDashboard')
+    'uses' => 'DashboardsController@showCoursesDashboard')
 );
 
 // Courses Dashboard Post Route
-Route::post( '/dashboard/courses', array(
-    'as' => 'dashboards.courses',
-    'uses' => 'CoursesController@showDashboard')
-);
+// Route::post( '/dashboard/courses', array(
+//     'as' => 'dashboards.courses',
+//     'uses' => 'DashboardsController@showCoursesDashboard')
+// );
 
 
 
