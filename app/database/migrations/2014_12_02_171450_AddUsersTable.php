@@ -23,11 +23,11 @@ class AddUsersTable extends Migration
             $table->date('dob');
             $table->integer('age');
             $table->string('img_path');
-            $table->string('address');
-            // $table->string('street');
-            // $table->string('city');
-            // $table->string('state');
-            // $table->string('zip');
+            // $table->string('address');
+            $table->string('street');
+            $table->string('city');
+            $table->string('state');
+            $table->string('zip');
 
             $table->boolean('financing')->default(0);
             $table->boolean('application_completed')->default(0);

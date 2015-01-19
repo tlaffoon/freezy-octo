@@ -18,11 +18,10 @@ class UsersTableSeeder extends Seeder {
             'fullname' => $_ENV['ADMIN_FULLNAME'],
             'phone' => $_ENV['ADMIN_PHONE'],
             'password' => Hash::make($_ENV['ADMIN_PASS']),
-            'address' => '112 E. Pecan San Antonio, TX 78205',
-            // 'street' => '112 E. Pecan',
-            // 'city' => 'San Antonio',
-            // 'state' => 'Texas',
-            // 'zip' => '78205',
+            'street' => '112 E. Pecan',
+            'city' => 'San Antonio',
+            'state' => 'Texas',
+            'zip' => '78205',
             'role' => 'staff',
         ];
 
@@ -47,7 +46,10 @@ class UsersTableSeeder extends Seeder {
                 'fullname' => $faker->firstName . ' ' . $faker->lastName,
                 'phone' => $faker->phoneNumber ,
                 'gender' =>  $gender[array_rand($gender)],
-                'address' => $faker->address
+                'street' => '112 E. Pecan',
+                'city' => 'San Antonio',
+                'state' => 'Texas',
+                'zip' => '78205',
             );
 
           // Insert user into the database.

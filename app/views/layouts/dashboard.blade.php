@@ -44,8 +44,8 @@
             background-color: white;
         }*/
 
-        #applications-panel {
-            margin-top: 20px;
+        .dashboard-panel {
+            margin-top: 30px;
         }
 
         .small-text {
@@ -143,8 +143,6 @@
 
     <!-- Morris Charts JavaScript -->
     <script src="/includes/sb_admin/bower_components/raphael/raphael-min.js"></script>
-    <!-- <script src="/includes/sb_admin/bower_components/morrisjs/morris.min.js"></script>
-    <script src="/includes/sb_admin/js/morris-data.js"></script> -->
 
     <!-- Custom Theme JavaScript -->
     <script src="/includes/sb_admin/dist/js/sb-admin-2.js"></script>

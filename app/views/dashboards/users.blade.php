@@ -41,10 +41,6 @@
 
         <h3 class="page-header"> Active Students </h3>
 
-            <div class="text-center">
-                {{ $students->links() }}
-            </div>
-
             @foreach ($students as $key => $student)
                 <div class="col-md-12 student-box ">
                     <div class="btn-group pull-right">
@@ -67,12 +63,9 @@
                         <p class="student-name">{{ $student->fullname }}</p>
                         <p class="student-info">{{ $student->email }}</p>
                         <p class="student-info">{{ $student->phone }}</p>
-                        <p class="student-info">{{ $student->address }}</p>
+                        <p class="student-info">{{ $student->street . " " . $student->city . " " . $student->state . " " . $student->zip }}</p>
                         <p class="student-info">{{ $student->age }}</p>
 
-                        @if($student->financing)
-                            Financing status: {{ $student->financing_status }}
-                        @endif
                     </div>
                 </div> <!-- End Student Box -->
             @endforeach

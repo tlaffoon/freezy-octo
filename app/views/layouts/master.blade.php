@@ -187,9 +187,6 @@
                                 @if (Auth::check())
                                     @if(Auth::user()->role == 'staff')
                                         <li><a href="" class="text-right">Dashboard <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a></li>
-                                        <!-- <li><a href="{{ action('CoursesController@showDashboard') }}" class="text-right">Applications <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></li> -->
-                                        <!-- <li><a href="{{ action('CoursesController@showDashboard') }}" class="text-right">Courses <span class="glyphicon glyphicon-list" aria-hidden="true"></span></a></li> -->
-                                        <!-- <li><a href="{{ action('UsersController@showDashboard') }}" class="text-right">Users <i class="fa fa-users"></i></a></li> -->
                                         <li class="divider"></li>
                                     @endif
                                     <li><a href="{{ action('UsersController@showProfile') }}" class="text-right">Your Profile <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>

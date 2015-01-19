@@ -65,7 +65,7 @@ Route::get('/login', function()
 
     // Redirect to landing page.
     else {
-        return View::make('landing');
+        return View::make('users.login');
     }
 });
 
