@@ -44,7 +44,7 @@
             background-color: white;
         }*/
 
-        .applications-panel {
+        #applications-panel {
             margin-top: 20px;
         }
 

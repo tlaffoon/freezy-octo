@@ -1,5 +1,5 @@
         <div class="pull-right dashboard-tag">
-            <h5>Applications Dashboard</h5>
+            <h5>Primary Dashboard</h5>
         </div>
 
         <!-- Codeup Pulse -->
