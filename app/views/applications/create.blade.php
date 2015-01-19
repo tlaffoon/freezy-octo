@@ -25,16 +25,6 @@
                 <!-- Select A Course -->
                 {{ Form::label('course_id', 'Select A Course: ') }}
                 {{ Form::select('course_id', Course::lists('type', 'id'), null, array('class' => 'form-group form-control')) }}
-                
-                <!-- First Name -->
-                {{ Form::label('firstname', 'First Name') }}
-                {{ Form::text('firstname', Input::old('firstname'), array('class' => 'form-group form-control', 'placeholder' => 'First Name')) }}
-                {{ $errors->first('firstname', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
-
-                <!-- Last Name -->
-                {{ Form::label('lastname', 'Last Name') }}
-                {{ Form::text('lastname', Input::old('lastname'), array('class' => 'form-group form-control', 'placeholder' => 'Last Name')) }}
-                {{ $errors->first('lastname', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
 
                 <!-- Gender -->
                 {{ Form::label('gender', 'Choose your gender: ')}}

@@ -74,14 +74,9 @@ class ApplicationsController extends \BaseController {
 		{
 			// Update user fields which correspond with application.
 			$user = User::findOrFail(Auth::id());
-
-			$user->first = Input::get('firstname');
-			$user->last = Input::get('lastname');
-			$user->fullname = $user->first . ' ' . $user->last;
 			$user->gender = Input::get('gender');
 			$user->dob = Input::get('dob');
 			$user->phone = Input::get('phone');
-			// $user->address = Input::get('address');
 
 			if (Input::get('financing_status')) {
 				// update user boolean value if financing value is anything but "no".
