@@ -69,7 +69,7 @@
                             
                             <!-- Course Toggle Display Button -->
                             <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Show/Hide Details">
-                                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                <i class="fa fa-chevron-down"></i>
                             </a>
 
                         </div>

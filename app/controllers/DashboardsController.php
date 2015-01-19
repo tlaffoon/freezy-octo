@@ -48,7 +48,7 @@ class DashboardsController extends \BaseController {
 
 
 	// Users Dashboard
-	public function showUserDashboard()
+	public function showUsersDashboard()
 	{
 		$id = Auth::id();
 		$user = User::findOrFail($id);

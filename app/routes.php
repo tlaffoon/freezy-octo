@@ -111,7 +111,7 @@ Route::get('/dashboard', array(
 // User Dashboard Get Route
 Route::get( '/dashboard/users', array(
     'as' => 'dashboards.users',
-    'uses' => 'DashboardsController@showUserDashboard')
+    'uses' => 'DashboardsController@showUsersDashboard')
 );
 
 // User Dashboard Post Route
