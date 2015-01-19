@@ -44,6 +44,10 @@
             background-color: white;
         }*/
 
+        .applications-panel {
+            margin-top: 20px;
+        }
+
         .small-text {
             margin-right: 5px;
         }

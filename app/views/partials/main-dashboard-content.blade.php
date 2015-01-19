@@ -1,17 +1,13 @@
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">Primary Dashboard</h2>
+        <div class="pull-right dashboard-tag">
+            <h5>Applications Dashboard</h5>
         </div>
-        <!-- /.col-lg-12 -->
 
         <!-- Codeup Pulse -->
         {{-- @include('partials.pulse') --}}
 
-    </div>
-    <!-- /.row -->
     <div class="row">
         <!-- New Applications Panel -->
-        <div class="col-lg-3 col-md-6">
+        <div id="applications-panel" class="col-lg-3 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
