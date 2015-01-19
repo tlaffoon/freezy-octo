@@ -28,4 +28,14 @@ class Course extends \BaseModel {
         return $this->morphMany('Note', 'noteable');
     }
 
+    public function getDates()
+    {
+        return ['created_at', 'updated_at', 'start_date', 'end_date', 'demo_date'];
+    }
+
+    // public function setStartDateAttribute($value)
+    // {
+    //     $this->attributes['start_date'] = Carbon::createFromFormat('d/m/Y', $value);
+    // }
+
 }

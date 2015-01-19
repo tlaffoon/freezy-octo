@@ -37,32 +37,57 @@
 
 @section('bottomscript')
 <script type="text/javascript">
-    
-    // Why doesn't this work?  The token...
-    $('.approveBtn').click(function() {
 
-        var id = $(this).attr('data-id');
-        console.log(id);
+    $(document).ready(function() {
+        // APPLICATIONS //
 
-        var data = $('#form' + id).serialize();
-        console.log(data);
+        // Hide all existing application boxes.
+        $('.dashboard-application-box').hide();
 
-        $.ajaxSetup({
-           headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+        // Target display buttons and add event listener.
+        $('.btn-display').click(function(event) {
+            event.preventDefault();
+            
+            var button = this;
+            var id = button.id;
+            var buttonContent = $(this).html();
+            
+            $('#application_' + id).slideToggle();
+            
         });
+    });
+</script>
 
-       var url = "http://app.dev/dashboard/applications";
+<script type="text/javascript">
+    $(document).ready(function() {
 
-       $.ajax({
-           type: "POST",
-           url: url,
-           data: data,
-           cache: false,
-           success: function(data){
-                return data;
-           }
+        // Why doesn't this work?  The token...
+        $('.approveBtn').click(function() {
+
+            var id = $(this).attr('data-id');
+            console.log(id);
+
+            var data = $('#form' + id).serialize();
+            console.log(data);
+
+            $.ajaxSetup({
+               headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+            });
+
+           var url = "http://app.dev/dashboard/applications";
+
+           $.ajax({
+               type: "POST",
+               url: url,
+               data: data,
+               cache: false,
+               success: function(data){
+                    return data;
+               }
+           });
+           return false;
        });
-       return false;
-   });
+
+    });
 </script>
 @stop

@@ -93,4 +93,28 @@
 @stop
 
 @section('bottomscript')
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        
+        // COURSES //
+        
+        // Hide all existing course boxes.
+        $('.dashboard-course-box').hide();
+
+        // Target display buttons and add event listener.
+        $('.btn-display').click(function(event) {
+            event.preventDefault();
+            
+            var button = this;
+            var id = button.id;
+            var buttonContent = $(this).html();
+            
+            $('#course' + id).slideToggle();
+            
+        });
+    })
+
+</script>
+
 @stop

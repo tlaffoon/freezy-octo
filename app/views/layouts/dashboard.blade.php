@@ -86,6 +86,21 @@
             font-size: 18px;
         }
 
+        .dashboard-user-header {
+            border: solid #eee 1px;
+            padding-top: 5px;
+            background-color: white;
+            margin-bottom: 5px;
+        }
+
+        .dashboard-user-box {
+            width: 100%;
+            border: dashed #eee 1px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
         .dashboard-tag {
             color: #b394d1;
             margin-left: 10px;
@@ -158,39 +173,7 @@
 
         // Initialize Modal Button Tooltip
         $("[rel='tooltip']").tooltip();
-
-        // APPLICATIONS //
-
-        // Hide all existing application boxes.
-        $('.dashboard-application-box').hide();
-
-        // Target display buttons and add event listener.
-        $('.btn-display').click(function(event) {
-            event.preventDefault();
-            
-            var button = this;
-            var id = button.id;
-            var buttonContent = $(this).html();
-            
-            $('#application_' + id).slideToggle();
-            
-        });
-
-        // COURSES //
-        // Hide all existing course boxes.
-        $('.dashboard-course-box').hide();
-
-        // Target display buttons and add event listener.
-        $('.btn-display').click(function(event) {
-            event.preventDefault();
-            
-            var button = this;
-            var id = button.id;
-            var buttonContent = $(this).html();
-            
-            $('#course' + id).slideToggle();
-            
-        });
+    
     });
     </script>
 

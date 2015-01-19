@@ -81,7 +81,7 @@ class UsersController extends \BaseController {
 
 		} else {
 			// Alert and send back to login page.
-        	Session::flash('alert', 'Please login to continue.');
+        	Session::flash('alert', 'Incorrect login information.');
         	return Redirect::route('login')->withInput();
 		}
 	}
