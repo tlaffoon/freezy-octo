@@ -69,6 +69,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$this->attributes['password'] = Hash::make($value);
 	}
 
+	public function setAddressAttribute() {
+		$this->attributes['address'] = $this->street . " " . $this->city . ", " . $this->state . " " . $this->zip;
+	}
+
 
 	/**
 	 * The function to format phone number on user creation.

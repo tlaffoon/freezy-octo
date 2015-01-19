@@ -23,7 +23,7 @@ class AddUsersTable extends Migration
             $table->date('dob');
             $table->integer('age');
             $table->string('img_path');
-            // $table->string('address');
+            $table->string('address');
             $table->string('street');
             $table->string('city');
             $table->string('state');

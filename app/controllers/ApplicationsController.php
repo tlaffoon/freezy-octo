@@ -127,7 +127,7 @@ class ApplicationsController extends \BaseController {
 			});
 
 			
-			Session::flash('message', 'Thanks for applying! We will get in touch with you within the next 24 hours.');
+			Session::flash('message', 'Thanks for applying! We will get in touch with you as soon as possible.');
 			// Return their profile view with success message.
 			return Redirect::to('profile');
 

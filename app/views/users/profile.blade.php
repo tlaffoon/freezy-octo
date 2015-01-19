@@ -119,9 +119,9 @@
                                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                             </a>
 
-                                            <a id="{{$application->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Show/Hide Application">
-                                                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-                                            </a>
+                                            <button id="{{$application->id}}" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Show/Hide Application">
+                                                <i class="fa fa-chevron-down"></i>
+                                            </button>
                                         </div>
                                     </h4>
                                 </div>
@@ -165,14 +165,12 @@
 
         // Target display buttons and add event listener.
         $('.btn-display').click(function(event) {
-            event.preventDefault();
             
             var button = this;
             var id = button.id;
-            var buttonContent = $(this).html();
+            
             
             $('#application_' + id).slideToggle();
-            
         });
     });
     
