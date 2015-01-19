@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.dashboard')
 
 @section('topscript')
 <style type="text/css">
@@ -29,56 +29,62 @@
 
 @section('content')
 
-<div class="container">
 
     <div class="pull-right dashboard-tag">
         <h5>Users Dashboard</h5>
     </div>
   
-    <!-- Codeup Pulse -->
-    @include('partials.pulse')
 
-    <!-- Sidebar -->
-    @include('partials.sidebar')
-
-    <div class="col-md-10">
+    <div class="col-md-9 column">
         
-        <!-- Users -->
-        <h3 class="page-header">Users</h3>
+        @if ($students)
 
-<!--             <div class="btn-group">
-                <button type="button" data-toggle="dropdown" class="btn btn-default btn-lg btn-select dropdown-toggle">Students 
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Active</a></li>
-                    <li><a href="#">Pending</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
-            </div> -->
+        <h3 class="page-header"> Active Students </h3>
 
+            <div class="text-center">
+                {{ $students->links() }}
+            </div>
 
-<!--             <div class="btn-group">
-                <button type="button" data-toggle="dropdown" class="btn btn-default btn-lg btn-select dropdown-toggle">Staff 
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
-            </div> -->
+            @foreach ($students as $key => $student)
+                <div class="col-md-12 student-box ">
+                    <div class="btn-group pull-right">
 
-            <!-- <button class="btn btn-default btn-lg btn-select">Speakers</button> -->
+                        <a href="{{ action('UsersController@show', $student->id) }}" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </a>
+                        
+                        <a href="{{ action('UsersController@edit', $student->id) }}" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
 
-        <!-- Include User List -->
-        @include('partials.student_list2')
+                        <a href="" class="deleteUser btn btn-default btn-sm" data-userid="{{$student->id}}">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                        </a>
+                    </div>
+
+                    <div class="student-details">
+
+                        <p class="student-name">{{ $student->fullname }}</p>
+                        <p class="student-info">{{ $student->email }}</p>
+                        <p class="student-info">{{ $student->phone }}</p>
+                        <p class="student-info">{{ $student->address }}</p>
+                        <p class="student-info">{{ $student->age }}</p>
+
+                        @if($student->financing)
+                            Financing status: {{ $student->financing_status }}
+                        @endif
+                    </div>
+                </div> <!-- End Student Box -->
+            @endforeach
+
+            <div class="text-center">
+                {{ $students->links() }}
+            </div>
+
+        @endif
 
     </div> <!-- End Column -->
 
-</div> <!-- End Container -->
 @stop
 
 @section('bottomscript')

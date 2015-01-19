@@ -57,7 +57,7 @@ class DashboardsController extends \BaseController {
 		$students = DB::table('users')
 			->where('role', '=', 'student')
 			->orderBy('created_at', 'DESC')
-			->paginate(10);
+			->paginate(5);
 
 		return View::make('dashboards.users')
 			->with('user', $user)
@@ -65,6 +65,5 @@ class DashboardsController extends \BaseController {
 			->with('courses', $courses)
 			->with('students', $students);
 	}
-
 
 }
