@@ -45,7 +45,8 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('applications.create');
+		$applications = Application::where('status', '=', 'active');
+		return View::make('applications.create')->with('applications', $applications);
 	}
 
 

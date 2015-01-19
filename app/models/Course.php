@@ -23,4 +23,9 @@ class Course extends \BaseModel {
         //$this->duration = $this->start_date && $this->end_date;
     }
 
+    public function notes()
+    {
+        return $this->morphMany('Note', 'noteable');
+    }
+
 }

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+<!-- This is the administrative user's overview of a particular student. -->
 @section('topscript')
 <style type="text/css">
     .profile-application-header {

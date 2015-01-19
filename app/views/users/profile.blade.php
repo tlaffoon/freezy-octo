@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+<!-- This is a user's profile, intended to be viewed by that user alone. -->
 @section('topscript')
 <style type="text/css">
     .profile-application-header {
@@ -111,7 +111,7 @@
                             @foreach ($user->applications as $application)
                             <!-- Begin Individual Application Block -->
                                 <div class="col-md-12 profile-application-header">
-                                    <h4> Application #{{ $application->id }} | {{ $application->course->name }}
+                                    <h4> {{ $application->course->type }}
 
                                         <div class="btn-group btn-group-user-profile pull-right">
 

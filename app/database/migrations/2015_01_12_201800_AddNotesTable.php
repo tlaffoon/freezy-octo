@@ -12,33 +12,15 @@ class AddNotesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('notes', function($table)
+		Schema::create('notes', function(Blueprint $table)
 		{
-		    $table->increments('id');
-		    $table->text('note');
-
-		    // Add User Foreign Key
-		    $table->integer('user_id')->unsigned();
-		    $table->foreign('user_id')
-		    	->references('id')
-		    	->on('users')
-		    	->onDelete('cascade');
-		    
-		    // Add Application Foreign Key
-		    $table->integer('application_id')->unsigned();
-		    $table->foreign('application_id')
-		    	->references('id')
-		    	->on('applications')
-		    	->onDelete('cascade');
-
-		    // Add Courses Foreign Key
-		    $table->integer('course_id')->unsigned();
-		    $table->foreign('course_id')
-		    	->references('id')
-		    	->on('courses')
-		    	->onDelete('cascade');
-
-		    $table->timestamps();
+			$table->increments('id');
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users');
+			$table->integer('noteable_id')->unsigned();
+			$table->string('noteable_type');
+			$table->text('body');
+			$table->timestamps();
 		});
 	}
 

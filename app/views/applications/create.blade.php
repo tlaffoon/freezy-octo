@@ -24,7 +24,7 @@
 
                 <!-- Select A Course -->
                 {{ Form::label('course_id', 'Select A Course: ') }}
-                {{ Form::select('course_id', Course::lists('name', 'id'), null, array('class' => 'form-group form-control')) }}
+                {{ Form::select('course_id', Course::lists('type', 'id'), null, array('class' => 'form-group form-control')) }}
                 
                 <!-- First Name -->
                 {{ Form::label('firstname', 'First Name') }}

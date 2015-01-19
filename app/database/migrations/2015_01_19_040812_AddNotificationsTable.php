@@ -19,7 +19,7 @@ class AddNotificationsTable extends Migration {
 			$table->string('type');
 			$table->string('content');
 			$table->timestamps();
-		}
+		});
 	}
 
 	/**

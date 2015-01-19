@@ -21,7 +21,7 @@
         <h2 class="page-header">Available Courses: </h2>
 
         @foreach ($courses as $course)
-            @if ($course->active)
+            @if ($course->status == 'active')
                 <div class="course-box img-rounded">
                     <a href="{{ action('ApplicationsController@create') }}" class="btn btn-lg btn-primary pull-right">Apply!</a>
                     <p>{{ $course->type }} | "{{ $course->designation }}" Cohort</p>

@@ -71,4 +71,9 @@ class Application extends \BaseModel {
 
         $this->attributes['questions'] = $formattedInput;
     }
+
+    public function notes()
+    {
+        return $this->morphMany('Note', 'noteable');
+    }
 }
