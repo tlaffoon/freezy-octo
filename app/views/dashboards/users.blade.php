@@ -5,7 +5,6 @@
 
 @section('content')
 
-
     <div class="pull-right dashboard-tag">
         <h5>Users Dashboard</h5>
     </div>

@@ -122,10 +122,15 @@ Route::get( '/dashboard/applications', array(
 );
 
 // Applications Dashboard Post Route
-Route::post( '/dashboard/applications', array(
-    'as' => 'dashboards.applications',
-    'uses' => 'ApplicationsController@approveApplication')
-);
+// Route::post( '/dashboard/applications/{id}', array(
+//     'as' => 'dashboards.applications',
+//     'uses' => 'ApplicationsController@approveApplication', $id)
+// );
+
+// Route::post('/dashboard/applications/{id}' function($id){
+
+//     return Redirect::action('ApplicationsController@approveApplication');
+// });
 
 
 // Ajax Request Route

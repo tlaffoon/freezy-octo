@@ -14,11 +14,8 @@ class AddCoursesTable extends Migration {
 	{
 		Schema::create('courses', function($table)
 		{
-		    $table->increments('id');
-		    
-		    $table->string('type');
+		    $table->increments('id');		    
 		    $table->string('designation')->unique();
-		    $table->string('description');
 
 		    $table->string('status')->default('active');
 
@@ -26,12 +23,14 @@ class AddCoursesTable extends Migration {
 		    $table->date('end_date');
 		    $table->date('demo_date')->nullable();
 
-		    $table->integer('duration');
 		    $table->integer('current_students');
 		    $table->integer('max_students');
 		    $table->integer('cost');
 		    
 		    $table->timestamps();
+
+		    $table->integer('course_type_id')->unsigned();
+		    $table->foreign('course_type_id')->references('id')->on('course_types');
 		});
 	}
 

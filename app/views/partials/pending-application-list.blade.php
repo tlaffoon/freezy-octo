@@ -30,7 +30,7 @@
                         <div class="btn-group pull-right">
 
                             {{ Form::open(array(action('ApplicationsController@approveApplication', $application->id), 'method' => 'POST')) }}
-                            {{ Form::button('<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
+                                {{ Form::button('<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
                             {{ Form::close() }}
                             <!-- <a href="" id="approveApplication{{$application->id}}" class="btn btn-default approveBtn" data-toggle="tooltip" data-placement="top" title="Approve">
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>

@@ -58,7 +58,7 @@
 
                 @if($user->img_path)
 
-                    <img src="{{$user->img_path }}" class="img-responsive img-rounded">
+                    <img src="{{ $user->img_path }}" class="img-responsive img-rounded">
 
                 @else 
                 
