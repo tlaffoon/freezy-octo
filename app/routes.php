@@ -122,16 +122,17 @@ Route::get( '/dashboard/applications', array(
 );
 
 // Applications Dashboard Post Route
-// Route::post( '/dashboard/applications', array(
-//     'as' => 'dashboards.applications',
-//     'uses' => 'DashboardsController@@showApplicationsDashboard')
-// );
-
-// Ajax Request Route
 Route::post( '/dashboard/applications', array(
     'as' => 'dashboards.applications',
-    'uses' => 'ApplicationsController@processAjax')
+    'uses' => 'ApplicationsController@approveApplication')
 );
+
+
+// Ajax Request Route
+// Route::post( '/dashboard/applications', array(
+//     'as' => 'dashboards.applications',
+//     'uses' => 'ApplicationsController@processAjax')
+// );
 
 /* ----------------------------------------------- */
 

@@ -17,7 +17,7 @@
                     @foreach ($applications as $application)
                     <!-- Begin Individual Application Block -->
                     <div class="col-md-12 dashboard-application-header">
-                        <h4>{{ $application->user->fullname }} | Application #{{ $application->id }}
+                        <h4>{{ $application->user->fullname }} | {{ $application->course->designation }}
 
                             <!-- Include Buttons For Application Administration -->
                             @include('partials.applicationBtnGroup')
@@ -28,9 +28,13 @@
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
                         
                         <div class="btn-group pull-right">
-                            <button id="approveApplication{{$application->id}}" class="btn btn-default approveBtn" data-id="{{$application->id}}" data-toggle="tooltip" data-placement="top" title="Approve">
+
+                            {{ Form::open(array(action('ApplicationsController@approveApplication', $application->id), 'method' => 'POST')) }}
+                            {{ Form::button('<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
+                            {{ Form::close() }}
+                            <!-- <a href="" id="approveApplication{{$application->id}}" class="btn btn-default approveBtn" data-toggle="tooltip" data-placement="top" title="Approve">
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                            </button>
+                            </a> -->
                             <button id="denyApplication{{$application->id}}" class="btn btn-default denyBtn" data-toggle="tooltip" data-placement="top" title="Deny">
                                 <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
                             </button>
@@ -59,10 +63,6 @@
                     @include('partials.userContactModal')
 
                     <!-- Include Hidden Form For Ajax Request -->
-                    {{ Form::open(array('action' => 'ApplicationsController@processAjax', 'method' => 'POST', 'id' => "form" . $application->id)) }}
-                        {{ Form::hidden('applicationID', $application->id) }}
-                    {{ Form::close() }}
-
                     @endforeach
                 @endif
             </td>

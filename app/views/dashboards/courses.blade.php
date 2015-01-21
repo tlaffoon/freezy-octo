@@ -11,7 +11,11 @@
     <div class="col-md-9">
         
         <!-- Courses -->
-        <h3 class="page-header">Current Courses</h3>
+        <h3 class="page-header">Current Courses  
+            <a class="pull-right" href="{{ action('CoursesController@create') }}">
+                <small class="small-text">Create a New Course</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+            </a>
+        </h3>
         @foreach ($courses as $course)
             @if ($course->status == 'active')
 

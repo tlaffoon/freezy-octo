@@ -61,32 +61,32 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        // Why doesn't this work?  The token...
-        $('.approveBtn').click(function() {
+       //  // Why doesn't this work?  The token...
+       //  $('.approveBtn').click(function() {
 
-            var id = $(this).attr('data-id');
-            console.log(id);
+       //      var id = $(this).attr('data-id');
+       //      console.log(id);
 
-            var data = $('#form' + id).serialize();
-            console.log(data);
+       //      var data = $('#form' + id).serialize();
+       //      console.log(data);
 
-            $.ajaxSetup({
-               headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
-            });
+       //      $.ajaxSetup({
+       //         headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+       //      });
 
-           var url = "http://app.dev/dashboard/applications";
+       //     var url = "http://app.dev/dashboard/applications";
 
-           $.ajax({
-               type: "POST",
-               url: url,
-               data: data,
-               cache: false,
-               success: function(data){
-                    return data;
-               }
-           });
-           return false;
-       });
+       //     $.ajax({
+       //         type: "POST",
+       //         url: url,
+       //         data: data,
+       //         cache: false,
+       //         success: function(data){
+       //              return data;
+       //         }
+       //     });
+       //     return false;
+       // });
 
     });
 </script>

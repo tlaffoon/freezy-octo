@@ -1,30 +1,6 @@
 @extends('layouts.dashboard')
 
 @section('topscript')
-<style type="text/css">
-/*    .student-box {
-        height: 170px;
-        margin-bottom: 10px;
-        padding: 10px;
-        border: dashed #eee 1px;
-    }
-    .student-name {
-        font-size: 18px;
-    }
-    .student-info {
-        font-size: 16px;
-    }
-    .btn-select {
-        margin-left: 50px;
-        margin-right: 50px;
-        margin-bottom: 10px;
-    }
-    .search-form {
-        height: 120px;
-        border: dashed #eee 1px;
-        margin-bottom: 10px;
-    }*/
-</style>
 @stop
 
 @section('content')
@@ -39,7 +15,11 @@
         
         @if ($students)
 
-        <h3 class="page-header"> Students </h3>
+        <h3 class="page-header"> Students 
+            <a class="pull-right" href="{{ action('UsersController@create') }}">
+                <small class="small-text">Create a New User</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+            </a>
+        </h3>
 
         <!-- Students -->
             @foreach ($students as $key => $student)
