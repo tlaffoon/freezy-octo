@@ -49,8 +49,8 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function create()
 	{
-		$applications = Application::where('status', '=', 'active');
-		return View::make('applications.create')->with('applications', $applications);
+		$course_list = Course::where('status', '=', 'active')->lists('designation', 'id');
+		return View::make('applications.create')->with('course_list', $course_list);
 	}
 
 
@@ -81,6 +81,10 @@ class ApplicationsController extends \BaseController {
 			$user->gender = Input::get('gender');
 			$user->dob = Input::get('dob');
 			$user->phone = Input::get('phone');
+			$user->street = Input::get('street');
+			$user->city = Input::get('city');
+			$user->state = Input::get('state');
+			$user->zip = Input::get('zip');
 
 			if (Input::get('financing_status')) {
 				// update user boolean value if financing value is anything but "no".
@@ -145,7 +149,7 @@ class ApplicationsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function approve($id)
+	public function approveApplication($id)
 	{
 		$application = Application::findOrFail($id);
 		$application->status = 'approved';

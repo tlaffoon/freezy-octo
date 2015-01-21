@@ -256,7 +256,7 @@ class UsersController extends \BaseController {
 
 		Session::flash('message', 'User deleted successfully.');
 
-		return Redirect::action('UsersController@index');
+		return Redirect::action('DashboardsController@showUsersDashboard');
 	}
 
 

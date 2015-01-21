@@ -267,34 +267,34 @@
             $("[rel='tooltip']").tooltip();
 
             // Hide all existing application boxes.
-            $('.dashboard-application-box').hide();
+            // $('.dashboard-application-box').hide();
 
-            // Target display buttons and add event listener.
-            $('.btn-display').click(function(event) {
-                event.preventDefault();
+            // // Target display buttons and add event listener.
+            // $('.btn-display').click(function(event) {
+            //     event.preventDefault();
                 
-                var button = this;
-                var id = button.id;
-                var buttonContent = $(this).html();
+            //     var button = this;
+            //     var id = button.id;
+            //     var buttonContent = $(this).html();
                 
-                $('#application_' + id).slideToggle();
+            //     $('#application_' + id).slideToggle();
                 
-            });
+            // });
 
-            // Hide all existing course boxes.
-            $('.dashboard-course-box').hide();
+            // // Hide all existing course boxes.
+            // $('.dashboard-course-box').hide();
 
-            // Target display buttons and add event listener.
-            $('.btn-display').click(function(event) {
-                event.preventDefault();
+            // // Target display buttons and add event listener.
+            // $('.btn-display').click(function(event) {
+            //     event.preventDefault();
                 
-                var button = this;
-                var id = button.id;
-                var buttonContent = $(this).html();
+            //     var button = this;
+            //     var id = button.id;
+            //     var buttonContent = $(this).html();
                 
-                $('#course' + id).slideToggle();
+            //     $('#course' + id).slideToggle();
                 
-            });
+            // });
         });
 
     </script>
