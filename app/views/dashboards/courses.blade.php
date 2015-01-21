@@ -20,7 +20,7 @@
             @if ($course->status == 'active')
 
                 <div class="col-md-12 dashboard-course-header img-rounded">
-                    <h4> {{ $course->type }}: "{{ $course->designation }}"
+                    <h4> {{ $course->type->name }}: "{{ $course->designation }}"
 
                         <div class="btn-group btn-group-dashboard pull-right">
 

@@ -25,7 +25,9 @@ class CoursesController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('courses.create');
+		// array('' => 'Select Course') + Course::where('status', '=', 'active')->lists('designation', 'id');
+		$course_type_list = array('' => 'Select Course') + CourseType::lists('name', 'id');
+		return View::make('courses.create')->with('course_type_list', $course_type_list);
 	}
 
 
@@ -46,8 +48,7 @@ class CoursesController extends \BaseController {
 		} else {
 
 		$course = new Course();
-		$course->type = Input::get('type');
-		$course->description = Input::get('description');
+		$course->course_type_id = Input::get('type');
 		$course->start_date = Input::get('start_date');
 		$course->end_date = Input::get('end_date');
 		$course->demo_date = Input::get('demo_date');
@@ -104,8 +105,7 @@ class CoursesController extends \BaseController {
 		} else {
 
 		$course = Course::findOrFail($id);
-		$course->type = Input::get('type');
-		$course->description = Input::get('description');
+		$course->course_type_id = Input::get('type');
 		$course->start_date = Input::get('start_date');
 		$course->end_date = Input::get('end_date');
 		$course->demo_date = Input::get('demo_date');
