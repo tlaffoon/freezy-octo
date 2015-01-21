@@ -27,14 +27,7 @@ Route::get('/', function()
 // User Get Signup Route
 Route::get('/signup', function()
 {
-    //  If user is already authenticated, redirect to their main view - else signup view.
-    if (Auth::check()) {
-        $user = User::find(Auth::id());
-        return View::make('users.show')->with('user', $user);
-    } else {
-        return View::make('users.signup');
-    }
-
+    return View::make('users.signup');
 });
 
 // User Post Signup Route
@@ -71,7 +64,7 @@ Route::get('/login', function()
 
 // User Post Login Route
 Route::post('/login', array(
-    'as' => 'login', 
+    'as' => 'login',
     'uses' => 'UsersController@handleLogin')
 );
 
