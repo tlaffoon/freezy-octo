@@ -87,7 +87,7 @@
             @if (count($user->applications) == 0)
 
                 <div class="bordered">
-                    <h4> You don't have any active applications. </h4>
+                    <h4> You don't have any active applications. <a href="{{ action('CoursesController@index') }}" class="pull-right">View Available Courses</a></h4>
                 </div>
 
             @elseif($user->applications && count($user->applications) == 1)
