@@ -7,10 +7,11 @@ class Application extends \BaseModel {
     protected $hidden = ['course_id', 'employment_status', 'resume_path', 'financing_status', 'referred_by', 'bg_info', 'questions'];
 
     public static $rules = [
-        'course_id' => 'required|integer',
+        'course_id'         => 'required|integer',
+        'city'              => 'required'
         'employment_status' => 'required',
-        'financing_status' => 'required',
-        'bg_info' => 'required'
+        'financing_status'  => 'required',
+        'bg_info'           => 'required'
     ];
 
 

@@ -128,7 +128,7 @@ class ApplicationsController extends \BaseController {
 			
 			Session::flash('message', 'Thanks for applying! We will get in touch with you as soon as possible.');
 			// Return their profile view with success message.
-			return Redirect::to('profile');
+			return Redirect::action('UsersController@showProfile');
 
 			// This was for testing only.
 				// Define applications and return index view.
