@@ -126,7 +126,10 @@ class ApplicationsController extends \BaseController {
 		    	$message->from($data['user']['email'] , $data['user']['fullname']);
 				$message->to('thomas@codeup.com', 'Staff');
 				$message->subject('New Application Submitted');
-				$message->attach($data['application']['resume_path']);
+
+				if ($data['application']['resume_path']) {
+					$message->attach($data['application']['resume_path']);
+				}
 			});
 
 			

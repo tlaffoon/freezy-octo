@@ -25,7 +25,7 @@
         <p> <strong> Employment status: </strong> {{ ucfirst($application->employment_status) }}</p>
         
         @if ($application->resume_path)
-            <p> <strong> Link to resume: </strong> <a href="http://{{ $_ENV['URL'] . $application->resume_path }}"> Here. </a></p>
+            <!-- <p> <strong> Link to resume: </strong> <a href="http://{{ $_ENV['URL'] . $application->resume_path }}"> Here. </a></p> -->
         @else 
             <p> <strong> Link to resume: </strong> No resume uploaded. </p>
         @endif

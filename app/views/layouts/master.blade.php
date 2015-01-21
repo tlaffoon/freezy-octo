@@ -266,35 +266,6 @@
             // Initialize Modal Button Tooltip
             $("[rel='tooltip']").tooltip();
 
-            // Hide all existing application boxes.
-            // $('.dashboard-application-box').hide();
-
-            // // Target display buttons and add event listener.
-            // $('.btn-display').click(function(event) {
-            //     event.preventDefault();
-                
-            //     var button = this;
-            //     var id = button.id;
-            //     var buttonContent = $(this).html();
-                
-            //     $('#application_' + id).slideToggle();
-                
-            // });
-
-            // // Hide all existing course boxes.
-            // $('.dashboard-course-box').hide();
-
-            // // Target display buttons and add event listener.
-            // $('.btn-display').click(function(event) {
-            //     event.preventDefault();
-                
-            //     var button = this;
-            //     var id = button.id;
-            //     var buttonContent = $(this).html();
-                
-            //     $('#course' + id).slideToggle();
-                
-            // });
         });
 
     </script>

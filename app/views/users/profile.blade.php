@@ -102,7 +102,6 @@
         <!-- End Check For User Applications -->
 
         <!-- Display Applications -->
-
         @if (count($user->applications) > 0)
         <div class="panel panel-default">
             <table class="table table-striped">

@@ -11,6 +11,21 @@
 
             {{ Form::model($user, array('action' => array('UsersController@update', $user->id), 'class'=>'form', 'role'=>'form', 'files' => true, 'method' => 'PUT' )) }}
               
+                <!-- First Name -->
+                {{ Form::label('first', 'First Name') }}
+                {{ Form::text('first', Input::old('first'), array('class' => 'form-group form-control', 'placeholder' => 'First Name')) }}
+                {{ $errors->first('first', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+
+                <!-- Last Name -->
+                {{ Form::label('last', 'Last Name') }}
+                {{ Form::text('last', Input::old('last'), array('class' => 'form-group form-control', 'placeholder' => 'Last Name')) }}
+                {{ $errors->first('last', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+
+                <!-- Email -->
+                {{ Form::label('email', 'Email') }}
+                {{ Form::text('email', Input::old('email'), array('class' => 'form-group form-control', 'placeholder' => 'Email')) }}
+                {{ $errors->first('email', '<span class="help-block"><p class="text-warning">:message</p></span><br>') }}
+              
                 <!-- Address -->
                 {{ Form::label('street', 'Street Address') }}
                 {{ Form::text('street', Input::old('street'), array('class' => 'form-group form-control', 'placeholder' => 'Street Address')) }}

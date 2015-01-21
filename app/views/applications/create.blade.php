@@ -11,15 +11,6 @@
 
             <h2 class="page-header">Submit Your Application</h2>
 
-            <!-- Logic on whether or not user already has an application submitted?
-
-                Either form model, or form open for new.
-                Main difference, Input::old vs $user->whatever_field
-
-                Currently the issue is that, if a user has already updated their contact information
-                 - it won't populate the application submit form with Form::open...
-            -->
-
             {{ Form::open(array('action' => array('ApplicationsController@store'), 'class'=>'form', 'role'=>'form', 'method' => 'POST', 'files' => true)) }}
 
                 <!-- Select A Course -->
