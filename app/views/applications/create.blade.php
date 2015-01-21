@@ -24,8 +24,8 @@
 
                 <!-- Select A Course -->
                 {{ Form::label('course_id', 'Select A Course: ') }}
-                {{ Form::select('course_id', $course_list, null, array('class' => 'form-group form-control')) }}
-
+                {{ Form::select('course_id', array('' => 'Select Course') + Course::where('status', '=', 'active')->lists('designation', 'id'), null, array('class' => 'form-group form-control')) }}
+                
                 <!-- Gender -->
                 {{ Form::label('gender', 'Choose your gender: ')}}
                 {{ Form::select('gender', array('male' => 'Male', 'female' => 'Female', 'unknown' => 'Prefer Not To Say'), null, array('class' => 'form-group form-control')) }}
