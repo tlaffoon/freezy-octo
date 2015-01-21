@@ -16,6 +16,10 @@
             <!-- Type -->
             {{ Form::label('type', 'Type') }}
             {{ Form::select('type', $course_type_list, null, array('class' => 'form-group form-control')) }}
+            
+            <!-- Designation -->
+            {{ Form::label('designation', 'Designation') }}
+            {{ Form::text('designation', Input::old('designation'), array('class' => 'form-group form-control')) }}
 
             <!-- Start Date -->
             <label for="start_date">Start Date</label>

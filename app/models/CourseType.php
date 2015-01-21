@@ -13,7 +13,7 @@ class CourseType extends \BaseModel {
     ];
 
     public function courses() {
-        $this->hasMany('Courses');
+        return $this->hasMany('Course');
     }
 
 }

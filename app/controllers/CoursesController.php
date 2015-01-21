@@ -25,8 +25,7 @@ class CoursesController extends \BaseController {
 	 */
 	public function create()
 	{
-		// array('' => 'Select Course') + Course::where('status', '=', 'active')->lists('designation', 'id');
-		$course_type_list = array('' => 'Select Course') + CourseType::lists('name', 'id');
+		$course_type_list = array('' => 'Select Course Type') + CourseType::lists('name', 'id');
 		return View::make('courses.create')->with('course_type_list', $course_type_list);
 	}
 
@@ -48,7 +47,8 @@ class CoursesController extends \BaseController {
 		} else {
 
 		$course = new Course();
-		$course->course_type_id = Input::get('type');
+		$course->type = Input::get('type');
+		$course->designation = Input::get('designation');
 		$course->start_date = Input::get('start_date');
 		$course->end_date = Input::get('end_date');
 		$course->demo_date = Input::get('demo_date');
@@ -56,7 +56,7 @@ class CoursesController extends \BaseController {
 		$course->cost = Input::get('cost');
 		$course->save();
 
-		return Redirect::action('CoursesController@index');
+		return Redirect::action('DashboardsController@showCoursesDashboard');
 		}
 	}
 
@@ -105,7 +105,8 @@ class CoursesController extends \BaseController {
 		} else {
 
 		$course = Course::findOrFail($id);
-		$course->course_type_id = Input::get('type');
+		$course->type = Input::get('type');
+		$course->designation = Input::get('designation');
 		$course->start_date = Input::get('start_date');
 		$course->end_date = Input::get('end_date');
 		$course->demo_date = Input::get('demo_date');
@@ -113,8 +114,7 @@ class CoursesController extends \BaseController {
 		$course->cost = Input::get('cost');
 		$course->save();
 
-		return Redirect::action('CoursesController@index');
-		// return Redirect::action('UsersController@showDashboard');
+		return Redirect::action('DashboardsController@showCoursesDashboard');
 		}
 	}
 

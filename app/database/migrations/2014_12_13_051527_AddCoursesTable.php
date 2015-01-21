@@ -30,7 +30,7 @@ class AddCoursesTable extends Migration {
 		    $table->timestamps();
 
 		    $table->integer('course_type_id')->unsigned();
-		    $table->foreign('course_type_id')->references('id')->on('course_types');
+		    $table->foreign('course_type_id')->references('id')->on('course_types')->onDelete('cascade');
 		});
 	}
 
