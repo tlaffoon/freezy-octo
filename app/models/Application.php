@@ -8,7 +8,7 @@ class Application extends \BaseModel {
 
     public static $rules = [
         'course_id'         => 'required|integer',
-        'city'              => 'required'
+        'city'              => 'required',
         'employment_status' => 'required',
         'financing_status'  => 'required',
         'bg_info'           => 'required'
