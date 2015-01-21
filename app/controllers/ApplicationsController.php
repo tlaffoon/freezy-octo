@@ -49,7 +49,7 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function create()
 	{
-		$course_list = Course::where('status', '=', 'active')->lists('designation', 'id');
+		$course_list = array('' => 'Select Course') + Course::where('status', '=', 'active')->lists('designation', 'id');
 		return View::make('applications.create')->with('course_list', $course_list);
 	}
 
