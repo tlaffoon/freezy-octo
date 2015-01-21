@@ -148,7 +148,6 @@ class UsersController extends \BaseController {
 		    $user->last 		= Input::get('last');
 		    $user->email 		= Input::get('email');
 		    $user->password 	= Input::get('password');
-		    
 		    $user->save();
 
 		    // Check for file uploads for user image.
@@ -164,7 +163,7 @@ class UsersController extends \BaseController {
 		    $user = User::find($user->id);
 		    Auth::login($user);
 
-		    return Redirect::route('/profile');
+		    return Redirect::action('UsersController@showProfile');
 
 	        // return Redirect::to('/login')->with('message', 'Account created successfully!  Please login below.');
 
