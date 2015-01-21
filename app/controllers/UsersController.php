@@ -146,6 +146,7 @@ class UsersController extends \BaseController {
 		    
 		    $user->first 		= Input::get('first');
 		    $user->last 		= Input::get('last');
+		    $user->fullname 	= $user->first . " " . $user->last;
 		    $user->email 		= Input::get('email');
 		    $user->password 	= Input::get('password');
 		    $user->save();
@@ -219,9 +220,10 @@ class UsersController extends \BaseController {
 		}
 
 		else {
-			
+
 			$user->first 		= Input::get('first');
 			$user->last 		= Input::get('last');
+			$user->fullname 	= $user->first . " " . $user->last;
 			$user->email 		= Input::get('email');
 			$user->phone		= Input::get('phone');
 			$user->street 		= Input::get('street');

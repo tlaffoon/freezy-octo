@@ -73,9 +73,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$this->attributes['address'] = $this->street . " " . $this->city . ", " . $this->state . " " . $this->zip;
 	}
 
-	public function setFullnameAttribute() {
-		$this->attributes['fullname'] = $this->first . " " . $this->last;
-	}
+	// public function setFullnameAttribute() {
+	// 	$this->attributes['fullname'] = $this->first . " " . $this->last;
+	// }
 
 
 	/**
