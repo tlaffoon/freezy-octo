@@ -186,7 +186,7 @@
                             @if(Auth::check())
                               <ul class="dropdown-menu" role="menu">
                                     @if(Auth::user()->role == 'staff')
-                                        <li><a href="" class="text-right">Dashboard <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a></li>
+                                        <li><a href="/dashboard" class="text-right">Dashboard <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a></li>
                                         <li class="divider"></li>
                                     @endif
                                     <li><a href="{{ action('UsersController@showProfile') }}" class="text-right">Your Profile <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>

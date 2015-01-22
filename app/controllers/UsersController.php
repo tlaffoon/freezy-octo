@@ -244,7 +244,7 @@ class UsersController extends \BaseController {
 		    Session::flash('message', 'Update successful.');
 		}
 		
-		return Redirect::action('UsersController@showProfile', $user->id);
+		return Redirect::action('UsersController@showProfile');
 	}
 
 

@@ -21,7 +21,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['email', 'password', 'password_confirmation'];
+	protected $fillable = ['email', 'password', 'password_confirmation', 'address', 'street', 'city', 'state', 'zip'];
 
 	/**
 	 * The required fields on users.create form submission.
@@ -56,10 +56,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    $this->img_path = '/' . $this->imgDir . '/' . $imageName;
 	}
 
-	public function applications() {
-		return $this->hasMany('Application');
-	}
-
+	
 	/**
 	 * The function to format password on user creation.
 	 *
@@ -68,30 +65,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function setPasswordAttribute($value) {
 		$this->attributes['password'] = Hash::make($value);
 	}
+	
 
-	public function setAddressAttribute() {
-		$this->attributes['address'] = $this->street . " " . $this->city . ", " . $this->state . " " . $this->zip;
-	}
-
-	// public function setFullnameAttribute() {
-	// 	$this->attributes['fullname'] = $this->first . " " . $this->last;
-	// }
-
-
-	/**
-	 * The function to format phone number on user creation.
-	 *
-	 * @param  string  $value
-	 */
-	public function setPhoneAttribute($value)
-	{
-		// Refactor into custom validator rule, eventually.  http://laravel.com/docs/4.2/validation#custom-validation-rules
-		// $value = trim($value);
-		// $value = str_replace(' ', '-', $value);
-		// $value = preg_replace('/[^A-Za-z0-9\-]/', '', $value);
-		// $value = '(' . substr($value, 0 , 3 ) . ')' . ' ' . substr($value, 3 , 3 ) . '-' . substr($value, 6 , 4 );
-
-		$this->attributes['phone'] = $value;
+	public function applications() {
+		return $this->hasMany('Application');
 	}
 
 
