@@ -13,9 +13,6 @@ class Course extends \BaseModel {
         'end_date' => 'required|date'
     ];
 
-    public function type() {
-        return $this->belongsTo('CourseType');
-    }
 
     public function applications() {
         return $this->hasMany('Application');
@@ -26,6 +23,9 @@ class Course extends \BaseModel {
         return $this->morphMany('Note', 'noteable');
     }
 
+    public function courseType() {
+        return $this->belongsTo('CourseType');
+    }
     // public function getDates()
     // {
     //     return ['created_at', 'updated_at', 'start_date', 'end_date', 'demo_date'];
