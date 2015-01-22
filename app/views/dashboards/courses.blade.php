@@ -44,7 +44,7 @@
                     <p>Starts on: {{ $course->start_date }}</p>
                     <p>Ends on: {{ $course->end_date }}</p>
                     <p>Demo Day on: {{ $course->demo_date }}</p>
-                    <p>Duration: {{ $course->duration }} weeks</p>
+                    <p>Duration: {{ $course->courseType->duration }} weeks</p>
                     <hr>
                     <p class="course-description">{{ $course->description }}</p>
                 </div>
@@ -86,7 +86,7 @@
                     <p>Starts on: {{ $course->start_date }}</p>
                     <p>Ends on: {{ $course->end_date }}</p>
                     <p>Demo Day on: {{ $course->demo_date }}</p>
-                    <p>Duration: {{ $course->duration }} weeks</p>
+                    <p>Duration: {{ $course->courseType->duration }} weeks</p>
                     <hr>
                     <p class="course-description">{{ $course->description }}</p>
                 </div>
