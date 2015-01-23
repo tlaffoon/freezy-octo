@@ -43,10 +43,12 @@ class DashboardsController extends \BaseController {
 		$id = Auth::id();
 		$user = User::findOrFail($id);
 		$courses = Course::all();
+		$courseTypes = CourseType::all();
 
 		return View::make('dashboards.courses')
 			->with('user', $user)
-			->with('courses', $courses);
+			->with('courses', $courses)
+			->with('courseTypes', $courseTypes);
 			// ->with('students', $students);
 	}
 

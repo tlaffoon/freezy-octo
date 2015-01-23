@@ -168,5 +168,8 @@ Route::resource('applications', 'ApplicationsController');
 //  Courses Resource Route
 Route::resource('courses', 'CoursesController');
 
+//  CourseTypes Resource Route
+Route::resource('courseTypes', 'CourseTypesController');
+
 //  Notes Resource Route
 // Route::resource('notes', 'NotesController');

@@ -1,6 +1,13 @@
 @extends('layouts.dashboard')
 
 @section('topscript')
+<style type="text/css">
+
+    #pastCoursesHeader {
+        margin-top: 20px;
+    }
+
+</style>
 @stop
 
 @section('content')
@@ -51,12 +58,11 @@
                 
             @endif
         @endforeach
-        <!-- End Courses -->
+        <!-- End Active Courses -->
 
-    </div> <!-- End Middle Column -->
+        <div class="clearfix"></div>
 
-    <div class="col-md-9">
-        <h3 class="page-header">Past Courses</h3>
+        <h3 id="pastCoursesHeader" class="page-header">Past Courses</h3>
 
         @foreach($courses as $course)
             @if ($course->status == 'inactive')
@@ -93,7 +99,30 @@
                 
             @endif
         @endforeach
+
+        <div class="clearfix"></div>
+
+        <!-- Course Types -->
+        <h3 class="page-header">Course Types  
+            <a class="pull-right" href="{{ action('CourseTypesController@create') }}">
+                <small class="small-text">Create a New Course Type</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+            </a>
+        </h3>
+
+        @foreach ($courseTypes as $courseType)
+
+            <p>{{$courseType->name}}</p>
+
+        @endforeach
+    </div> <!-- End Middle Column -->
+    <!-- End Past Courses -->
+
+    <div class="col-md-3">
+        <!-- Placeholder -->
     </div>
+
+
+
 @stop
 
 @section('bottomscript')
