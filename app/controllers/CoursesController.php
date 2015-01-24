@@ -83,7 +83,8 @@ class CoursesController extends \BaseController {
 	public function edit($id)
 	{
 		$course = Course::findOrFail($id);
-		return View::make('courses.edit')->with('course', $course);
+		$course_type_list = array('' => 'Select Course Type') + CourseType::lists('name', 'id');
+		return View::make('courses.edit')->with('course', $course)->with('course_type_list', $course_type_list);
 	}
 
 
