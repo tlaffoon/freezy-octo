@@ -13,7 +13,7 @@
 
                     <!-- Type -->
                     {{ Form::label('type', 'Type') }}
-                    {{ Form::select('type', $course_type_list, null, array('class' => 'form-group form-control')) }}
+                    {{ Form::select('type', $course_type_list, Input::old('course_type'), array('class' => 'form-group form-control')) }}
                     
                     <!-- Designation -->
                     {{ Form::label('designation', 'Designation') }}
