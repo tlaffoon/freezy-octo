@@ -11,6 +11,13 @@
 |
 */
 
+// Route::post('/dashboards/applications', )
+
+// Route::post('/dashboards/applications/{id}', function($action)
+// {
+//     return Redirect::action('ApplicationsController@updateApplication', $application->id);
+// });
+
 
 /* ---------------- HOMEPAGE ---------------- */
 
