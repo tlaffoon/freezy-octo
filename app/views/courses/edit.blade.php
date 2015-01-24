@@ -8,7 +8,7 @@
     <div class="row clearfix">
         <div class="col-md-4 col-md-offset-4">
 
-            <h2 class="page-header">Create A Course</h2>
+            <h2 class="page-header">Edit A Course</h2>
                 {{ Form::model($course, array('action' => array('CoursesController@update', $course->id), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
 
                     <!-- Type -->
