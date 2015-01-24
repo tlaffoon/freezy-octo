@@ -1,9 +1,6 @@
 @extends('layouts.dashboard')
 
 @section('topscript')
-
-    <link rel="stylesheet" type="text/css" href="/includes/css/applications-dashboard.css">
-
 @stop
 
 @section('content')

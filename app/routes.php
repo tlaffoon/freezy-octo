@@ -129,9 +129,26 @@ Route::get( '/dashboard/applications', array(
 );
 
 // Applications Dashboard Post Route
-// Route::post( '/dashboard/applications/{id}', array(
+Route::post( '/dashboard/applications', function() {
+
+    $application = Application::findOrFail(Input::get('id'));
+
+    if (Input::get('approve')) {
+        $application->status = 'approved';
+        $application->save();
+        Session::flash('message', 'This is an approve message.');
+    } elseif (Input::get('deny')) {
+        $application->status = 'denied';
+        $application->save();
+        Session::flash('message', 'This is a deny message.');
+    }
+
+    return Redirect::action('DashboardsController@showApplicationsDashboard');
+
+});
+
 //     'as' => 'dashboards.applications',
-//     'uses' => 'ApplicationsController@approveApplication', $id)
+//     'uses' => 'ApplicationsController@updateApplication')
 // );
 
 // Route::post('/dashboard/applications/{id}' function($id){

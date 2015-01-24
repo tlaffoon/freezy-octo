@@ -152,12 +152,23 @@ class ApplicationsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function approveApplication($id)
-	{
-		$application = Application::findOrFail($id);
-		$application->status = 'approved';
-		return Redirect::back();
-	}
+	// public function updateApplication($id)
+	// {
+	// 	$application = Application::findOrFail($id);
+
+	// 	$approve = Input::get('approve');
+	// 	$deny = Input::get('deny');
+
+	// 	if ($approve) {
+	// 		$application->status = 'approved';
+	// 		$application->save();
+	// 	} elseif ($deny) {
+	// 		$application->status = 'denied';
+	// 		$application->save();
+	// 	}
+		
+	// 	return Redirect::action('DashboardsController@showApplicationsDashboard');
+	// }
 
 
 	/**
@@ -205,7 +216,12 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$application = Application::find($id);
+		$application->delete();
+
+		Session::flash('message', 'Application removed.');
+
+		return Redirect::action('DashboardsController@showUsersDashboard');
 	}
 
 
