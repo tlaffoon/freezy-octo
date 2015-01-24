@@ -11,13 +11,13 @@
             <h2 class="page-header">Create A Course</h2>
                 {{ Form::model($course, array('action' => array('CoursesController@update', $course->id), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
 
-                    <!-- Name -->
+                    <!-- Type -->
                     {{ Form::label('type', 'Type') }}
-                    {{ Form::text('type', Input::old('type'), array('class' => 'form-group form-control')) }}
+                    {{ Form::select('type', $course_type_list, null, array('class' => 'form-group form-control')) }}
                     
-                    <!-- Description -->
-                    {{ Form::label('description', 'Description') }}
-                    {{ Form::textarea('description', Input::old('description'), array('class' => 'form-group form-control')) }}
+                    <!-- Designation -->
+                    {{ Form::label('designation', 'Designation') }}
+                    {{ Form::text('designation', Input::old('designation'), array('class' => 'form-group form-control')) }}
 
                     <!-- Start Date -->
                     <label for="start_date">Start Date</label>
