@@ -12,11 +12,11 @@
                 {{ Form::model($course, array('action' => array('CoursesController@update', $course->id), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
 
                     <!-- Type -->
-                    {{ Form::label('type', 'Type') }}
-                    {{ Form::select('type', $course_type_list, Input::old('name'), array('class' => 'form-group form-control')) }}
+                    {{ Form::label('type', 'Type of Course') }}
+                    {{ Form::select('type', $course_type_list, null, array('class' => 'form-group form-control')) }}
                     
                     <!-- Designation -->
-                    {{ Form::label('designation', 'Designation') }}
+                    {{ Form::label('designation', 'Cohort Designation') }}
                     {{ Form::text('designation', Input::old('designation'), array('class' => 'form-group form-control')) }}
 
                     <!-- Start Date -->
