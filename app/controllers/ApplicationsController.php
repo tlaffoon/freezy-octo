@@ -147,31 +147,6 @@ class ApplicationsController extends \BaseController {
 
 
 	/**
-	 * Approve the specified application.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	// public function updateApplication($id)
-	// {
-	// 	$application = Application::findOrFail($id);
-
-	// 	$approve = Input::get('approve');
-	// 	$deny = Input::get('deny');
-
-	// 	if ($approve) {
-	// 		$application->status = 'approved';
-	// 		$application->save();
-	// 	} elseif ($deny) {
-	// 		$application->status = 'denied';
-	// 		$application->save();
-	// 	}
-		
-	// 	return Redirect::action('DashboardsController@showApplicationsDashboard');
-	// }
-
-
-	/**
 	 * Display the specified resource.
 	 *
 	 * @param  int  $id

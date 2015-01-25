@@ -2,9 +2,11 @@
 
 class DashboardsController extends \BaseController {
 
+	// Authentication Filter
 	public function __construct() {
 		$this->beforeFilter('auth');
 	}
+
 
 	// Primary Dashboard
 	public function showPrimaryDashboard()
@@ -12,12 +14,13 @@ class DashboardsController extends \BaseController {
 		$id = Auth::id();
 		$user = User::findOrFail($id);
 		$applications = Application::where('status', '=', 'pending')->get();
+		$unreadNotifications = $user->notifications()->unread()->get();
 
 		return View::make('dashboards.primary')
 			->with('user', $user)
-			->with('applications', $applications);
+			->with('applications', $applications)
+			->with('notifications', $unreadNotifications);
 	}
-
 
 
 	// Applications Dashboard
@@ -71,5 +74,4 @@ class DashboardsController extends \BaseController {
 			->with('courses', $courses)
 			->with('students', $students);
 	}
-
 }

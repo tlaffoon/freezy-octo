@@ -33,7 +33,7 @@ class Notification extends \BaseModel
      
     public function withType($type)
     {
-        $this->type = $type;
+        $this->object_type = $type;
      
         return $this;
     }
