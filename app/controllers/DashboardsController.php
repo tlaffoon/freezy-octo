@@ -67,7 +67,7 @@ class DashboardsController extends \BaseController {
 		$user = User::findOrFail($id);
 		$applications = Application::orderBy('id', 'DESC')->paginate(10);
 		$courses = Course::orderBy('id', 'DESC')->paginate(3);
-		$unreadNotifications = $user->notifications()->unread()->get()
+		$unreadNotifications = $user->notifications()->unread()->get();
 		$students = DB::table('users')
 			->where('role', '=', 'student')
 			->orderBy('created_at', 'DESC')
