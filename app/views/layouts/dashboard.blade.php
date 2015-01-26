@@ -62,12 +62,13 @@
             padding-top: 5px;
             background-color: white;
         }
-
+        
         .dashboard-application-box {
             border: solid #eee 1px;
             padding-top: 5px;
             margin-bottom: 10px;
             background-color: white;
+            display: none;
         }
 
         .dashboard-course-header {
@@ -78,12 +79,12 @@
         }
 
         .dashboard-course-box {
-            /*background-color: #E1E7F9;*/
             width: 100%;
             border: dashed #eee 1px;
             margin-bottom: 10px;
             padding: 10px;
             font-size: 18px;
+            display: none;
         }
 
         .dashboard-user-header {
@@ -99,6 +100,7 @@
             margin-bottom: 10px;
             padding: 10px;
             font-size: 18px;
+            display: none;
         }
 
         .dashboard-tag {

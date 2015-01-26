@@ -14,11 +14,11 @@
         {{ Form::open(array('action' => array('CoursesController@store'), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
 
             <!-- Type -->
-            {{ Form::label('type', 'Type') }}
+            {{ Form::label('type', 'Type of Course') }}
             {{ Form::select('type', $course_type_list, null, array('class' => 'form-group form-control')) }}
             
             <!-- Designation -->
-            {{ Form::label('designation', 'Designation') }}
+            {{ Form::label('designation', 'Cohort Designation') }}
             {{ Form::text('designation', Input::old('designation'), array('class' => 'form-group form-control')) }}
 
             <!-- Start Date -->

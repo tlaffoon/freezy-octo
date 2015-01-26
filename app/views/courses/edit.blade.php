@@ -8,16 +8,16 @@
     <div class="row clearfix">
         <div class="col-md-4 col-md-offset-4">
 
-            <h2 class="page-header">Create A Course</h2>
+            <h2 class="page-header">Edit A Course</h2>
                 {{ Form::model($course, array('action' => array('CoursesController@update', $course->id), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
 
-                    <!-- Name -->
-                    {{ Form::label('type', 'Type') }}
-                    {{ Form::text('type', Input::old('type'), array('class' => 'form-group form-control')) }}
+                    <!-- Type -->
+                    {{ Form::label('type', 'Type of Course') }}
+                    {{ Form::select('type', $course_type_list, null, array('class' => 'form-group form-control')) }}
                     
-                    <!-- Description -->
-                    {{ Form::label('description', 'Description') }}
-                    {{ Form::textarea('description', Input::old('description'), array('class' => 'form-group form-control')) }}
+                    <!-- Designation -->
+                    {{ Form::label('designation', 'Cohort Designation') }}
+                    {{ Form::text('designation', Input::old('designation'), array('class' => 'form-group form-control')) }}
 
                     <!-- Start Date -->
                     <label for="start_date">Start Date</label>

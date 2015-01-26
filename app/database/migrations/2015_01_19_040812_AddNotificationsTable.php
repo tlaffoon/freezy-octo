@@ -16,7 +16,7 @@ class AddNotificationsTable extends Migration {
 		{
 
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
+			// $table->integer('user_id')->unsigned();
 
 			$table->string('subject', 128)->nullable();
 			$table->text('body')->nullable();
@@ -28,11 +28,9 @@ class AddNotificationsTable extends Migration {
 			$table->dateTime('sent_at')->nullable();
 			$table->timestamps();
 
-			// $table->integer('user_id')->unsigned();
-			// $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-			
-			
 		});
 	}
 

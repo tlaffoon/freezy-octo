@@ -147,20 +147,6 @@ class ApplicationsController extends \BaseController {
 
 
 	/**
-	 * Approve the specified application.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function approveApplication($id)
-	{
-		$application = Application::findOrFail($id);
-		$application->status = 'approved';
-		return Redirect::back();
-	}
-
-
-	/**
 	 * Display the specified resource.
 	 *
 	 * @param  int  $id
@@ -205,7 +191,12 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$application = Application::find($id);
+		$application->delete();
+
+		Session::flash('message', 'Application removed.');
+
+		return Redirect::action('DashboardsController@showUsersDashboard');
 	}
 
 
