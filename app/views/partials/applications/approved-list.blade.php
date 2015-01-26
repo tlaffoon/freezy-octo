@@ -1,6 +1,6 @@
 <!-- Applications -->
-<h3 class="page-header">Pending Applications
-    <div class="pull-right"><small>{{ count($applications) }}</small></div>
+<h3 class="page-header">Approved Applications
+    <div class="pull-right"><small>{{ count($approvedApplications) }}</div>
 </h3>
 
 <div class="panel panel-default">
@@ -8,37 +8,44 @@
         <tr>
             <td>
                 <!-- Display if no applications present. -->
-                @if (!$applications)
+                @if (!$approvedApplications)
 
-                    <h4> There are no pending applications. </h4>
+                    <h4> There are no approved applications. </h4>
 
                 @else
 
-                    @foreach ($applications as $application)
+                    @foreach ($approvedApplications as $application)
                     <!-- Begin Individual Application Block -->
                     <div class="col-md-12 dashboard-application-header">
                         <h4>{{ $application->user->fullname }} | {{ $application->course->designation }}
 
                             <!-- Include Buttons For Application Administration -->
-                            @include('partials.applicationBtnGroup')
+                            {{-- @include('partials.applications.BtnGroup') --}}
 
                         </h4>
                     </div>
 
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
                         
-                        <div class="pull-right">
+                        <div class="btn-group pull-right">
+
                             {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
                                 {{ Form::hidden('id', $application->id) }}
                                 {{ Form::hidden('approve', true) }}
-                                {{ Form::button('<i class="fa fa-thumbs-up"></i>', array('type' => 'submit', 'class' => 'btn btn-primary approveBtn'))}}
+                                {{ Form::button('<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
                             {{ Form::close() }}
 
                             {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
                                 {{ Form::hidden('id', $application->id) }}
                                 {{ Form::hidden('deny', true) }}
-                                {{ Form::button('<i class="fa fa-thumbs-down"></i>', array('type' => 'submit', 'class' => 'btn btn-danger approveBtn'))}}
+                                {{ Form::button('<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
                             {{ Form::close() }}
+                            <!-- <a href="" id="approveApplication{{$application->id}}" class="btn btn-default approveBtn" data-toggle="tooltip" data-placement="top" title="Approve">
+                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                            </a> -->
+                            <!-- <button id="denyApplication{{$application->id}}" class="btn btn-default denyBtn" data-toggle="tooltip" data-placement="top" title="Deny">
+                                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                            </button> -->
                         </div>
 
                         <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
@@ -69,5 +76,8 @@
             </td>
         </tr>
     </table>
+    <div class="text-center">
+        {{ $approvedApplications->links() }}
+    </div>
 </div> <!-- End Panel -->
 <!-- End Applications -->

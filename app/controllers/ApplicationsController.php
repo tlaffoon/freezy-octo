@@ -6,28 +6,28 @@ class ApplicationsController extends \BaseController {
 		$this->beforeFilter('auth');
 	}
 
-	public function processAjax() {
+	// public function processAjax() {
 
-		$data = Input::all();
+	// 	$data = Input::all();
 
-		if (Request::ajax()) {
-			// Find application and change to approved status.
-			$id = Input::get('applicationID');
-			$application = Application::findOrFail($id);
-			$application->status = 'approved';
-			$applications = Application::all();
-			return Response::json(array('applications' => $applications));
-		}
+	// 	if (Request::ajax()) {
+	// 		// Find application and change to approved status.
+	// 		$id = Input::get('applicationID');
+	// 		$application = Application::findOrFail($id);
+	// 		$application->status = 'approved';
+	// 		$applications = Application::all();
+	// 		return Response::json(array('applications' => $applications));
+	// 	}
 
-		// if (Request::ajax()) {
-		// 	return Response::json(array('message' => 'Success!'));
-		// }
+	// 	// if (Request::ajax()) {
+	// 	// 	return Response::json(array('message' => 'Success!'));
+	// 	// }
 
-		// else {
-		// 	return Response::json(array('message' => 'Fail.'));
-		// }
+	// 	// else {
+	// 	// 	return Response::json(array('message' => 'Fail.'));
+	// 	// }
 
-	}
+	// }
 
 
 	/**

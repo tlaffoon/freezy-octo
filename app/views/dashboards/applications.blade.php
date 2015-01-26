@@ -11,36 +11,17 @@
 
     <div class="col-md-6">
       <div class="col-md-12">
-          @include('partials.pending-application-list')
+        <!-- Pending Applications -->
+          @include('partials.applications.pending-list')
       </div>
     </div>
 
-
-
     <div class="col-md-4">
-      <!-- Approved Apps -->
-      <h3 class="page-header">Approved Applications
-          <div class="pull-right"><small>{{ count($applications) }}</small></div>
-      </h3>
-      {{-- @include('partials.approved-application-list') --}}
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <!-- Approved Applications -->
+      @include('partials.applications.approved-list')
 
-      <!-- Denied Apps -->
-      <h3 class="page-header">Denied Applications
-          <div class="pull-right"><small>{{ count($applications) }}</small></div>
-      </h3>
-      {{-- @include('partials.denied-application-list') --}}
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <!-- Denied Applications -->
+      @include('partials.applications.denied-list')
     </div>
 
     

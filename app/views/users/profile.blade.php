@@ -77,7 +77,7 @@
 
     <div class="col-md-12">
 
-        <h2 class="page-header">Application Status 
+        <h2 class="page-header">Application Status
             <a class="pull-right" href="{{ action('ApplicationsController@create') }}">
                 <small class="small-text">Submit A New Application</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
             </a> 
