@@ -1,6 +1,6 @@
 <!-- Applications -->
 <h3 class="page-header">Pending Applications
-    <div class="pull-right"><small>{{ count($applications) }}</div>
+    <div class="pull-right"><small>{{ count($applications) }}</small></div>
 </h3>
 
 <div class="panel panel-default">
@@ -27,25 +27,18 @@
 
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
                         
-                        <div class="btn-group pull-right">
-
+                        <div class="pull-right">
                             {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
                                 {{ Form::hidden('id', $application->id) }}
                                 {{ Form::hidden('approve', true) }}
-                                {{ Form::button('<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
+                                {{ Form::button('<i class="fa fa-thumbs-up"></i>', array('type' => 'submit', 'class' => 'btn btn-primary approveBtn'))}}
                             {{ Form::close() }}
 
                             {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
                                 {{ Form::hidden('id', $application->id) }}
                                 {{ Form::hidden('deny', true) }}
-                                {{ Form::button('<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
+                                {{ Form::button('<i class="fa fa-thumbs-down"></i>', array('type' => 'submit', 'class' => 'btn btn-danger approveBtn'))}}
                             {{ Form::close() }}
-                            <!-- <a href="" id="approveApplication{{$application->id}}" class="btn btn-default approveBtn" data-toggle="tooltip" data-placement="top" title="Approve">
-                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                            </a> -->
-                            <!-- <button id="denyApplication{{$application->id}}" class="btn btn-default denyBtn" data-toggle="tooltip" data-placement="top" title="Deny">
-                                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-                            </button> -->
                         </div>
 
                         <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
