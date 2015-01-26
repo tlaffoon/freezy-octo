@@ -110,7 +110,7 @@
                             @foreach ($user->applications as $application)
                             <!-- Begin Individual Application Block -->
                                 <div class="col-md-12 profile-application-header">
-                                    <h4> {{ $application->course->designation }} | {{ $application->course->courseType }} - <span class="text-info">{{ ucfirst($application->status) }}</span>
+                                    <h4> {{ $application->course->designation }} | {{ $application->course->courseType->name }} - <span class="text-info">{{ ucfirst($application->status) }}</span>
 
                                         <div class="btn-group btn-group-user-profile pull-right">
 
