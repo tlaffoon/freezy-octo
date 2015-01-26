@@ -74,7 +74,7 @@
 
                 <!-- Upload Resume -->
                 {{ Form::label('resume', 'Upload your resume or CV') }}
-                {{ Form::file('resume', array('class' => 'form-group customBtn')) }}
+                {{ Form::file('resume', array('class' => 'form-group customBtn required')) }}
 
                 {{ Form::submit('Apply!', array('class' => 'btn btn-success btn-block')) }}
             
