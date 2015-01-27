@@ -6,11 +6,12 @@
     </a>
 
     <!-- User Send Message Modal Button Trigger -->
-    <a href="#messageModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Send A Message" data-toggle="modal" data-target="#messageModal_{{ $application->id}}">
+    <a href="#messageModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Send Email" data-toggle="modal" data-target="#messageModal_{{ $application->id}}">
         <i class="fa fa-envelope-o"></i>
     </a>
 
-    <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Make A Note">
+    <!-- User Send Message Modal Button Trigger -->
+    <a href="#noteModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Make A Note" data-toggle="modal" data-target="#noteModal_{{ $application->id}}">
         <i class="fa fa-comment-o"></i>
     </a>
 
