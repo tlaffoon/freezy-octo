@@ -19,13 +19,24 @@ class MailController extends \BaseController {
 	 */
 	public function send()
 	{
-		$to = Input::get('to');
-		$from = 'info@codeup.com';
-		$subject = Input::get('subject');
-		$message = Input::get('message');
 
+		$data = Input::all();
+
+		// Send email confirmation to info@codeup.com with attached resume.
+		Mail::send('emails.message', $data, function($message) use ($data) {
+	    	$message->from('info@codeup.com' , 'Codeup');
+			
+			// Get applicant info from form.
+			$message->to($data['email'], $data['name']);
+			$message->subject($data['subject']);
+
+			// if ($data['application']['resume_path']) {
+			// 	$message->attach($data['application']['resume_path']);
+			// }
+		});
+
+		Session::flash('message', 'Message Sent!');
 		return Redirect::back()->with('message', 'Message Sent!');
-
 	}
 
 

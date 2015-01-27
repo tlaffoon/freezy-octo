@@ -33,20 +33,20 @@
                     {{ Form::open(array('url' => '/sendMail')) }}
 
                         <!-- Applicant Email -->
-                        {{ Form::label('applicant_name', 'Applicant Name') }}
-                        {{ Form::text('applicant_name', $application->user->fullname, array('class' => 'form-group form-control' )) }}
+                        {{ Form::label('name', 'Applicant Name') }}
+                        {{ Form::text('name', $application->user->fullname, array('class' => 'form-group form-control' )) }}
 
                         <!-- Applicant Email -->
-                        {{ Form::label('applicant_email', 'Applicant Email') }}
-                        {{ Form::text('applicant_email', $application->user->email, array('class' => 'form-group form-control' )) }}
+                        {{ Form::label('email', 'Applicant Email') }}
+                        {{ Form::text('email', $application->user->email, array('class' => 'form-group form-control' )) }}
 
                         <!-- Subject -->
                         {{ Form::label('subject', 'Subject') }}
                         {{ Form::text('subject', $application->course->designation, array('class' => 'form-group form-control' )) }}
 
                         <!-- Message -->
-                        {{ Form::label('message', 'Message') }}
-                        {{ Form::textarea('message', null, array('class' => 'form-group form-control' )) }}
+                        {{ Form::label('messageContents', 'Message') }}
+                        {{ Form::textarea('messageContents', null, array('class' => 'form-group form-control' )) }}
 
                   </div>
                   <div class="modal-footer">

@@ -188,4 +188,6 @@ Route::resource('notes', 'NotesController');
 Route::resource('mail', 'MailController');
 
 // Send Mail Route
-Route::post( '/sendMail', 'MailController@send');
+Route::post('/sendMail', 'MailController@send');
+
+

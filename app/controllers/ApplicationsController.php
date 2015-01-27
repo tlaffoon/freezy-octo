@@ -5,30 +5,7 @@ class ApplicationsController extends \BaseController {
 	public function __construct() {
 		$this->beforeFilter('auth');
 	}
-
-	// public function processAjax() {
-
-	// 	$data = Input::all();
-
-	// 	if (Request::ajax()) {
-	// 		// Find application and change to approved status.
-	// 		$id = Input::get('applicationID');
-	// 		$application = Application::findOrFail($id);
-	// 		$application->status = 'approved';
-	// 		$applications = Application::all();
-	// 		return Response::json(array('applications' => $applications));
-	// 	}
-
-	// 	// if (Request::ajax()) {
-	// 	// 	return Response::json(array('message' => 'Success!'));
-	// 	// }
-
-	// 	// else {
-	// 	// 	return Response::json(array('message' => 'Fail.'));
-	// 	// }
-
-	// }
-
+	
 
 	/**
 	 * Display a listing of the resource.
