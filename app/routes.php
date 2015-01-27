@@ -137,6 +137,7 @@ Route::post( '/dashboard/applications', function() {
         $application->status = 'approved';
         $application->save();
         Session::flash('message', 'This is an approve message.');
+
     } elseif (Input::get('deny')) {
         $application->status = 'denied';
         $application->save();
@@ -147,21 +148,8 @@ Route::post( '/dashboard/applications', function() {
 
 });
 
-//     'as' => 'dashboards.applications',
-//     'uses' => 'ApplicationsController@updateApplication')
-// );
-
-// Route::post('/dashboard/applications/{id}' function($id){
-
-//     return Redirect::action('ApplicationsController@approveApplication');
-// });
 
 
-// Ajax Request Route
-// Route::post( '/dashboard/applications', array(
-//     'as' => 'dashboards.applications',
-//     'uses' => 'ApplicationsController@processAjax')
-// );
 
 /* ----------------------------------------------- */
 
@@ -176,8 +164,6 @@ Route::get( '/dashboard/courses', array(
 //     'as' => 'dashboards.courses',
 //     'uses' => 'DashboardsController@showCoursesDashboard')
 // );
-
-
 
 
 
@@ -196,4 +182,10 @@ Route::resource('courses', 'CoursesController');
 Route::resource('courseTypes', 'CourseTypesController');
 
 //  Notes Resource Route
-// Route::resource('notes', 'NotesController');
+Route::resource('notes', 'NotesController');
+
+//  Mail Resource Route
+Route::resource('mail', 'MailController');
+
+// Send Mail Route
+Route::post( '/sendMail', 'MailController@send');

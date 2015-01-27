@@ -4,29 +4,25 @@
 @stop
 
 @section('content')
-<div class="pull-right dashboard-tag">
-    <h5>Applications Dashboard</h5>
+
+<div class="col-md-9">
+    <!-- Pending Applications -->
+    @include('partials.applications.pending-list')
+
+    <!-- Approved Applications -->
+    @include('partials.applications.approved-list')
+
+    <!-- Denied Applications -->
+    @include('partials.applications.denied-list')
 </div>
 
-
-    <div class="col-md-6">
-      <div class="col-md-12">
-        <!-- Pending Applications -->
-          @include('partials.applications.pending-list')
-      </div>
+<div class="col-md-3">
+    <div class="pull-right dashboard-tag">
+      <h5>Applications Dashboard</h5>
+      <a href="/applications"> View All Applications </a>
     </div>
+</div>
 
-    <div class="col-md-4">
-      <!-- Approved Applications -->
-      @include('partials.applications.approved-list')
-
-      <!-- Denied Applications -->
-      @include('partials.applications.denied-list')
-    </div>
-
-    
-
-</div> <!-- End Container -->
 @stop
 
 @section('bottomscript')
@@ -49,12 +45,6 @@
             $('#application_' + id).slideToggle();
             
         });
-    });
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-      //
     });
 </script>
 @stop

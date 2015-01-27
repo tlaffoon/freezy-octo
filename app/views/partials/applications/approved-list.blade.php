@@ -1,6 +1,6 @@
 <!-- Applications -->
-<h3 class="page-header">Approved Applications
-    <div class="pull-right"><small>{{ count($approvedApplications) }}</div>
+<h3 class="page-header">Recently Approved
+    <!-- <div class="pull-right"><small>{{ count($approvedApplications) }}</div> -->
 </h3>
 
 <div class="panel panel-default">
@@ -20,7 +20,7 @@
                         <h4>{{ $application->user->fullname }} | {{ $application->course->designation }}
 
                             <!-- Include Buttons For Application Administration -->
-                            {{-- @include('partials.applications.BtnGroup') --}}
+                            @include('partials.applications.BtnGroup')
 
                         </h4>
                     </div>
@@ -32,20 +32,14 @@
                             {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
                                 {{ Form::hidden('id', $application->id) }}
                                 {{ Form::hidden('approve', true) }}
-                                {{ Form::button('<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
+                                {{ Form::button('<i class="fa fa-thumbs-o-up"></i>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
                             {{ Form::close() }}
 
                             {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
                                 {{ Form::hidden('id', $application->id) }}
                                 {{ Form::hidden('deny', true) }}
-                                {{ Form::button('<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
+                                {{ Form::button('<i class="fa fa-thumbs-o-down"></i>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
                             {{ Form::close() }}
-                            <!-- <a href="" id="approveApplication{{$application->id}}" class="btn btn-default approveBtn" data-toggle="tooltip" data-placement="top" title="Approve">
-                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                            </a> -->
-                            <!-- <button id="denyApplication{{$application->id}}" class="btn btn-default denyBtn" data-toggle="tooltip" data-placement="top" title="Deny">
-                                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-                            </button> -->
                         </div>
 
                         <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
@@ -68,16 +62,15 @@
                     <!-- End Individual Application Block -->
 
                     <!-- Include Modal For Contact Info -->
-                    @include('partials.userContactModal')
+                    @include('partials.applications.userContactModal')
 
-                    <!-- Include Hidden Form For Ajax Request -->
+                    <!-- Include Modal For Contact Info -->
+                    @include('partials.applications.userMessageModal')
+
                     @endforeach
                 @endif
             </td>
         </tr>
     </table>
-    <div class="text-center">
-        {{ $approvedApplications->links() }}
-    </div>
 </div> <!-- End Panel -->
-<!-- End Applications -->
+<!-- End Applications

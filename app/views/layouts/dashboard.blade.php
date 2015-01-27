@@ -140,7 +140,7 @@
         <!-- Include Sidebar -->
         @include('partials.main-dashboard-sidebar')
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" class="row">
             <!-- Include main content -->
             @yield('content')
         </div>

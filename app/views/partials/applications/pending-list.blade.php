@@ -1,6 +1,6 @@
 <!-- Applications -->
 <h3 class="page-header">Pending Applications
-    <div class="pull-right"><small>{{ count($pendingApplications) }}</small></div>
+    <!-- <div class="pull-right"><small>{{ count($pendingApplications) }}</small></div> -->
 </h3>
 
 <div class="panel panel-default">
@@ -15,7 +15,17 @@
                     
                     <!-- Begin Individual Application Block -->
                     <div class="col-md-12 dashboard-application-header">
-                        <h4>{{ $application->user->fullname }} | {{ $application->course->designation }}
+                        <h4>
+
+                            <!-- Display Gender Icon -->
+                            @if($application->user->gender == 'male')
+                                <i class="fa fa-mars"></i>
+                            @elseif($application->user->gender == 'female')
+                                <i class="fa fa-venus"></i>
+                            @endif
+
+                            <!-- Display User Info & Cohort -->
+                            {{ $application->user->fullname }} | {{ $application->course->designation }}
 
                             <!-- Include Buttons For Application Administration -->
                             @include('partials.applications.BtnGroup')
@@ -24,18 +34,20 @@
                     </div>
 
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
-                        
+
                         <div class="pull-right">
                             {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
                                 {{ Form::hidden('id', $application->id) }}
-                                {{ Form::hidden('approve', true) }}
-                                {{ Form::button('<i class="fa fa-thumbs-up"></i>', array('type' => 'submit', 'class' => 'btn btn-primary approveBtn'))}}
+                                {{ Form::hidden('deny', true) }}
+                                {{ Form::button('<i class="fa fa-thumbs-o-down"></i>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
                             {{ Form::close() }}
+                        </div>
 
+                        <div class="pull-right"
                             {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
                                 {{ Form::hidden('id', $application->id) }}
-                                {{ Form::hidden('deny', true) }}
-                                {{ Form::button('<i class="fa fa-thumbs-down"></i>', array('type' => 'submit', 'class' => 'btn btn-danger approveBtn'))}}
+                                {{ Form::hidden('approve', true) }}
+                                {{ Form::button('<i class="fa fa-thumbs-o-up"></i>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
                             {{ Form::close() }}
                         </div>
 
@@ -59,17 +71,16 @@
                     <!-- End Individual Application Block -->
 
                     <!-- Include Modal For Contact Info -->
-                    @include('partials.userContactModal')
+                    @include('partials.applications.userContactModal')
 
-                    <!-- Include Hidden Form For Ajax Request -->
+                    <!-- Include Modal For Contact Info -->
+                    @include('partials.applications.userMessageModal')
+
+
                     @endforeach
                 @endif
             </td>
         </tr>
     </table>
-
-    <div class="text-center">
-        {{ $pendingApplications->links() }}
-    </div>
 </div> <!-- End Panel -->
-<!-- End Applications -->
+<!-- End Applications
