@@ -22,6 +22,12 @@ class MailController extends \BaseController {
 
 		$data = Input::all();
 
+		$student = User::find($data['user_id']);
+		// $application = Application::find($data['application_id'])
+
+		$data['student'] = $student;
+		// $data['application'] = $application;
+
 		// Send email confirmation to info@codeup.com with attached resume.
 		Mail::send('emails.message', $data, function($message) use ($data) {
 	    	$message->from('info@codeup.com' , 'Codeup');

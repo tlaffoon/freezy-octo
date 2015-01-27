@@ -48,6 +48,9 @@
                         {{ Form::label('messageContents', 'Message') }}
                         {{ Form::textarea('messageContents', null, array('class' => 'form-group form-control' )) }}
 
+                        {{ Form::hidden('user_id', $application->user->id) }}
+                        {{ Form::hidden('application_id'), $application->id }}
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
