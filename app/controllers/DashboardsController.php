@@ -34,8 +34,8 @@ class DashboardsController extends \BaseController {
 		$unreadNotifications = $user->notifications()->unread()->get();
 
 		$pendingApplications = Application::where('status', '=', 'pending')->orderBy('id', 'DESC')->paginate(10);
-		$approvedApplications = Application::where('status', '=', 'approved')->orderBy('id', 'DESC')->paginate(5);
-		$deniedApplications = Application::where('status', '=', 'denied')->orderBy('id', 'DESC')->paginate(5);
+		$approvedApplications = Application::where('status', '=', 'approved')->orderBy('id', 'DESC')->paginate(3);
+		$deniedApplications = Application::where('status', '=', 'denied')->orderBy('id', 'DESC')->paginate(3);
 
 		return View::make('dashboards.applications')
 			->with('user', $user)
