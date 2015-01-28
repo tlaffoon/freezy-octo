@@ -4,7 +4,7 @@ class Course extends \BaseModel {
 
     protected $table = 'courses';
 
-    protected $hidden = ['current_students', 'max_students', 'cost', 'start_date', 'end_date', 'demo_date'];
+    protected $hidden = ['current_students', 'max_students', 'cost', 'start_date', 'end_date', 'demo_date', 'course_type_id'];
 
     public static $rules = [
         'cost' => 'required|integer',

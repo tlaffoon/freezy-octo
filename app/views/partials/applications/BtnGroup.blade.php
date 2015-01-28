@@ -1,12 +1,12 @@
 <div class="btn-group btn-group-dashboard pull-right">
 
     <!-- User Contact Info Modal Button Trigger -->
-    <a href="#infoModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Student Info" data-toggle="modal" data-target="#infoModal_{{ $application->id}}">
+    <a href="#infoModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Info" data-toggle="modal" data-target="#infoModal_{{ $application->id}}">
         <i class="fa fa-info-circle"></i>
     </a>
 
     <!-- User Edit Modal Button Trigger -->
-    <a href="#editModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit Application" data-toggle="modal" data-target="#editModal_{{ $application->id}}">
+    <a href="#editModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit" data-toggle="modal" data-target="#editModal_{{ $application->id}}">
         <i class="fa fa-pencil-square-o"></i>
     </a>
 

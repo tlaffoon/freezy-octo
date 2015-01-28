@@ -1,14 +1,14 @@
 
-<!-- Course Create Modal -->
-<div class="modal fade" id="createCourseModal" tabindex="-1" role="dialog" aria-labelledby="createCourseModalLabel" aria-hidden="true">
+<!-- Course Edit Modal -->
+<div class="modal fade" id="courseEditModal_{{$course->id}}" tabindex="-1" role="dialog" aria-labelledby="courseEditModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="createCourseModalLabel">Create A Course</h4>
+        <h4 class="modal-title" id="courseEditModal_{{$course->id}}">Edit Course: {{ $course->designation }}</h4>
       </div>
       <div class="modal-body">
-        {{ Form::open(array('action' => array('CoursesController@store'), 'class' => 'form', 'role' => 'form', 'method' => 'POST' )) }}
+        {{ Form::model($course, array('action' => array('CoursesController@update', $course->id), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
 
             <!-- Type -->
             {{ Form::label('type', 'Type') }}
@@ -16,7 +16,7 @@
             
             <!-- Designation -->
             {{ Form::label('designation', 'Cohort Designation') }}
-            {{ Form::text('designation', null, array('class' => 'form-group form-control')) }}
+            {{ Form::text('designation', Input::old('designation'), array('class' => 'form-group form-control')) }}
 
             <!-- Start Date -->
             <label for="start_date">Start Date</label>
@@ -32,17 +32,17 @@
 
             <!-- Max Students -->
             {{ Form::label('max_students', 'Max Number of Students') }}
-            {{ Form::text('max_students', null, array('class' => 'form-group form-control')) }}
+            {{ Form::text('max_students', Input::old('max_students'), array('class' => 'form-group form-control')) }}
             
             <!-- Cost of Tuition -->
             {{ Form::label('cost', 'Cost of Tuition') }}
-            {{ Form::text('cost', null, array('class' => 'form-group form-control')) }}
+            {{ Form::text('cost', Input::old('cost'), array('class' => 'form-group form-control')) }}
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
             
-            {{ Form::submit('Create Course', array('class' => 'btn btn-primary pull-right')) }}
+            {{ Form::submit('Save', array('class' => 'btn btn-primary pull-right')) }}
         {{ Form::close() }}
       </div>
     </div>

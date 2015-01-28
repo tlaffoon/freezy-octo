@@ -11,18 +11,27 @@
 @stop
 
 @section('content')
-    <div class="col-md-9">
+
+    <div class="col-md-12">
+        <div class="pull-right dashboard-tag">
+            <h5>Courses Dashboard</h5>
+            <a href="/courses"> View All Courses </a>
+        </div>
+    </div>
+
+    <div class="col-md-7">
         
         <!-- Courses -->
         <h3 class="page-header">Current Courses  
 
-            <!-- User Edit Modal Button Trigger -->
+            <!-- Course Create Modal Button Trigger -->
             <a href="#createCourseModal" class="pull-right" role="button" rel="tooltip" data-original-title="" data-toggle="modal" data-target="#createCourseModal">
-                <small class="small-text">Create a New Course</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                <small class="small-text">Create a New Course</small><i class="fa fa-plus-square-o"></i>
             </a>
 
         </h3>
-        
+
+        <!-- Include Course Create Modal -->
         @include('partials.modals.course-create')
         
         @foreach ($courses as $course)
@@ -33,10 +42,13 @@
 
                         <div class="btn-group btn-group-dashboard pull-right">
 
-                            <!-- Course Edit Button -->
-                            <a href="{{ action('CoursesController@edit', $course->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
-                                <span class="glyphicon glyphicon-edit"></span>
+                            <!-- Course Edit Modal Button Trigger -->
+                            <a href="#courseEditModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit" data-toggle="modal" data-target="#courseEditModal_{{ $course->id}}">
+                                <i class="fa fa-pencil-square-o"></i>
                             </a>
+
+                            <!-- Include Course Edit Modal -->
+                            @include('partials.modals.course-edit')
                             
                             <!-- Course Toggle Display Button -->
                             <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
@@ -104,12 +116,21 @@
 
         <div class="clearfix"></div>
 
-        <!-- Course Types -->
+    <!-- End Past Courses -->
+    </div>
+    
+    <div class="col-md-5">
+            <!-- Course Types -->
         <h3 class="page-header">Course Types
-            <a class="pull-right" href="{{ action('CourseTypesController@create') }}">
-                <small class="small-text">Create a New Course Type</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+
+            <!-- Course Create Modal Button Trigger -->
+            <a href="#createCourseTypeModal" class="pull-right" role="button" rel="tooltip" data-original-title="" data-toggle="modal" data-target="#createCourseTypeModal">
+                <small class="small-text">Create a New Course Type</small><i class="fa fa-plus-square-o"></i>
             </a>
+
         </h3>
+
+        @include('partials.modals.course-type-create')
 
         @foreach ($courseTypes as $courseType)
             <div class="col-md-12 dashboard-course-header img-rounded">
@@ -127,18 +148,7 @@
             </div>
 
         @endforeach
-    </div> <!-- End Middle Column -->
-    <!-- End Past Courses -->
-
-    <div class="col-md-3">
-        <div class="pull-right dashboard-tag">
-            <h5>Courses Dashboard</h5>
-            <a href="/courses"> View All Courses </a>
-        </div>
     </div>
-
-
-
 @stop
 
 @section('bottomscript')
