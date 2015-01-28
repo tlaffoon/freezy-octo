@@ -86,10 +86,13 @@
 
                         <div class="btn-group btn-group-dashboard pull-right">
 
-                            <!-- Course Edit Button -->
-                            <a href="{{ action('CoursesController@edit', $course->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
-                                <span class="glyphicon glyphicon-edit"></span>
+                            <!-- Course Edit Modal Button Trigger -->
+                            <a href="#courseEditModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit" data-toggle="modal" data-target="#courseEditModal_{{ $course->id}}">
+                                <i class="fa fa-pencil-square-o"></i>
                             </a>
+
+                            <!-- Include Course Edit Modal -->
+                            @include('partials.modals.course-edit')
                             
                             <!-- Course Toggle Display Button -->
                             <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
@@ -130,6 +133,7 @@
 
         </h3>
 
+        <!-- Course Type Create Modal -->
         @include('partials.modals.course-type-create')
 
         @foreach ($courseTypes as $courseType)
@@ -138,10 +142,13 @@
 
                     <div class="btn-group btn-group-dashboard pull-right">
 
-                        <!-- Course Edit Button -->
-                        <a href="{{ action('CourseTypesController@edit', $courseType->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
-                            <span class="glyphicon glyphicon-edit"></span>
+                        <!-- Course Type Edit Modal Button Trigger -->
+                        <a href="#courseTypeEditModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit" data-toggle="modal" data-target="#courseTypeEditModal_{{ $course->id}}">
+                            <i class="fa fa-pencil-square-o"></i>
                         </a>
+
+                        <!-- Include Course Type Edit Modal -->
+                        @include('partials.modals.course-edit')
 
                     </div>
                 </h4>

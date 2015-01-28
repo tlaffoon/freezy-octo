@@ -19,8 +19,9 @@
                 </li>
 
                 <li>
-                    <a href="/dashboard/applications"><i class="fa fa-list-alt"></i> Applications<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
+                    <a href="/dashboard/applications"><i class="fa fa-list-alt"></i> Applications</a>
+                    <!-- <span class="fa arrow"></span> -->
+                    <!-- <ul class="nav nav-second-level">
                         <li>
                             <a href="/dashboard/applications/pending"><i class="fa fa-question"></i> Pending</a>
                         </li>
@@ -30,7 +31,7 @@
                         <li>
                             <a href="/dashboard/applications/denied"><i class="fa fa-frown-o"></i> Denied</a>
                         </li>
-                    </ul>
+                    </ul> -->
                     <!-- /.nav-second-level -->
                 </li>
 

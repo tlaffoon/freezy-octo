@@ -8,7 +8,7 @@
         <h4 class="modal-title" id="courseEditModal_{{$course->id}}">Edit Course: {{ $course->designation }}</h4>
       </div>
       <div class="modal-body">
-        {{ Form::model($course, array('action' => array('CoursesController@update', $course->id), 'class'=>'form', 'role'=>'form', 'method' => 'POST' )) }}
+        {{ Form::model($course, array('action' => array('CoursesController@update', $course->id), 'class'=>'form', 'role'=>'form', 'method' => 'PUT' )) }}
 
             <!-- Type -->
             {{ Form::label('type', 'Type') }}
