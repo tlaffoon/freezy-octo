@@ -17,20 +17,24 @@ class AddUsersTable extends Migration
             $table->string('first');
             $table->string('last');
             $table->string('fullname');
-            $table->string('role')->default('student');
             $table->string('phone');
             $table->string('gender');
             $table->date('dob');
             $table->integer('age');
             $table->string('img_path');
+            
             $table->string('address');
             $table->string('street');
             $table->string('city');
             $table->string('state');
             $table->string('zip');
 
+            $table->string('role')->default('student');
+            $table->integer('course_assigned')->nullable();
+
             $table->boolean('financing')->default(0);
             $table->boolean('application_completed')->default(0);
+            $table->boolean('scholarship_recipient')->default(0);
 
             $table->string('confirmation_code');
             $table->string('remember_token')->nullable();

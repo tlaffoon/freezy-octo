@@ -56,12 +56,14 @@ class DashboardsController extends \BaseController {
 		$user = User::findOrFail($id);
 		$courses = Course::all();
 		$courseTypes = CourseType::all();
+		$course_type_list = array('' => 'Select Course Type') + CourseType::lists('name', 'id');
 		$unreadNotifications = $user->notifications()->unread()->get();
 
 		return View::make('dashboards.courses')
 			->with('user', $user)
 			->with('courses', $courses)
 			->with('courseTypes', $courseTypes)
+			->with('course_type_list', $course_type_list)
 			->with('notifications', $unreadNotifications);
 			// ->with('students', $students);
 	}

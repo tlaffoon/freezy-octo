@@ -148,6 +148,21 @@ Route::post( '/dashboard/applications', function() {
 
 });
 
+Route::get( '/dashboard/applications/pending', array(
+    'as' => 'dashboards.applications',
+    'uses' => 'DashboardsController@showApplicationsDashboard')
+);
+
+Route::get( '/dashboard/applications/approved', array(
+    'as' => 'dashboards.applications',
+    'uses' => 'DashboardsController@showApplicationsDashboard')
+);
+
+Route::get( '/dashboard/applications/denied', array(
+    'as' => 'dashboards.applications',
+    'uses' => 'DashboardsController@showApplicationsDashboard')
+);
+
 
 
 

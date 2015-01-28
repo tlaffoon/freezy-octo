@@ -11,18 +11,20 @@
 @stop
 
 @section('content')
-    <div class="pull-right dashboard-tag">
-        <h5>Courses Dashboard</h5>
-    </div>
-
     <div class="col-md-9">
         
         <!-- Courses -->
         <h3 class="page-header">Current Courses  
-            <a class="pull-right" href="{{ action('CoursesController@create') }}">
+
+            <!-- User Edit Modal Button Trigger -->
+            <a href="#createCourseModal" class="pull-right" role="button" rel="tooltip" data-original-title="" data-toggle="modal" data-target="#createCourseModal">
                 <small class="small-text">Create a New Course</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
             </a>
+
         </h3>
+        
+        @include('partials.modals.course-create')
+        
         @foreach ($courses as $course)
             @if ($course->status == 'active')
 
@@ -32,12 +34,12 @@
                         <div class="btn-group btn-group-dashboard pull-right">
 
                             <!-- Course Edit Button -->
-                            <a href="{{ action('CoursesController@edit', $course->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit Course">
+                            <a href="{{ action('CoursesController@edit', $course->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
                             
                             <!-- Course Toggle Display Button -->
-                            <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Show/Hide Details">
+                            <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
                                 <i class="fa fa-chevron-down"></i>
                             </a>
 
@@ -73,12 +75,12 @@
                         <div class="btn-group btn-group-dashboard pull-right">
 
                             <!-- Course Edit Button -->
-                            <a href="{{ action('CoursesController@edit', $course->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit Course">
+                            <a href="{{ action('CoursesController@edit', $course->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
                             
                             <!-- Course Toggle Display Button -->
-                            <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Show/Hide Details">
+                            <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
                                 <i class="fa fa-chevron-down"></i>
                             </a>
 
@@ -103,22 +105,36 @@
         <div class="clearfix"></div>
 
         <!-- Course Types -->
-        <h3 class="page-header">Course Types  
+        <h3 class="page-header">Course Types
             <a class="pull-right" href="{{ action('CourseTypesController@create') }}">
                 <small class="small-text">Create a New Course Type</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
             </a>
         </h3>
 
         @foreach ($courseTypes as $courseType)
+            <div class="col-md-12 dashboard-course-header img-rounded">
+                <h4> {{ $courseType->name }}
 
-            <p>{{$courseType->name}}</p>
+                    <div class="btn-group btn-group-dashboard pull-right">
+
+                        <!-- Course Edit Button -->
+                        <a href="{{ action('CourseTypesController@edit', $courseType->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+
+                    </div>
+                </h4>
+            </div>
 
         @endforeach
     </div> <!-- End Middle Column -->
     <!-- End Past Courses -->
 
     <div class="col-md-3">
-        <!-- Placeholder -->
+        <div class="pull-right dashboard-tag">
+            <h5>Courses Dashboard</h5>
+            <a href="/courses"> View All Courses </a>
+        </div>
     </div>
 
 

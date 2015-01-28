@@ -19,7 +19,19 @@
                 </li>
 
                 <li>
-                    <a href="/dashboard/applications"><i class="fa fa-list-alt"></i>  Applications</a>
+                    <a href="/dashboard/applications"><i class="fa fa-list-alt"></i> Applications<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/dashboard/applications/pending"><i class="fa fa-question"></i> Pending</a>
+                        </li>
+                        <li>
+                            <a href="/dashboard/applications/approved"><i class="fa fa-smile-o"></i> Approved</a>
+                        </li>
+                        <li>
+                            <a href="/dashboard/applications/denied"><i class="fa fa-frown-o"></i> Denied</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
                 </li>
 
                 <li>
@@ -30,9 +42,12 @@
                     <a href="/dashboard/users"><i class="fa fa-users"></i>  Users</a>
                 </li>
 
+
+
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
     </div>
     <!-- /.navbar-static-side -->
 </nav>
+

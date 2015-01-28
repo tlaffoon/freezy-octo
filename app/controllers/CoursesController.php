@@ -47,7 +47,7 @@ class CoursesController extends \BaseController {
 		} else {
 
 		$course = new Course();
-		$course->type = Input::get('type');
+		$course->course_type_id = Input::get('type');
 		$course->designation = Input::get('designation');
 		$course->start_date = Input::get('start_date');
 		$course->end_date = Input::get('end_date');
@@ -106,7 +106,7 @@ class CoursesController extends \BaseController {
 		} else {
 
 		$course = Course::findOrFail($id);
-		$course->type = Input::get('type');
+		$course->course_type_id = Input::get('type');
 		$course->designation = Input::get('designation');
 		$course->start_date = Input::get('start_date');
 		$course->end_date = Input::get('end_date');
