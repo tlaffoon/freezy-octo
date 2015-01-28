@@ -35,21 +35,8 @@
 
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
 
-                        <div class="pull-right">
-                            {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
-                                {{ Form::hidden('id', $application->id) }}
-                                {{ Form::hidden('deny', true) }}
-                                {{ Form::button('<i class="fa fa-thumbs-o-down"></i>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
-                            {{ Form::close() }}
-                        </div>
-
-                        <div class="pull-right"
-                            {{ Form::open(array('url' => '/dashboard/applications/', 'method' => 'POST')) }}
-                                {{ Form::hidden('id', $application->id) }}
-                                {{ Form::hidden('approve', true) }}
-                                {{ Form::button('<i class="fa fa-thumbs-o-up"></i>', array('type' => 'submit', 'class' => 'btn btn-default approveBtn'))}}
-                            {{ Form::close() }}
-                        </div>
+                        <!-- Approve/Deny -->
+                        @include('partials.applications.approve-deny-buttons')
 
                         <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
                         <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
@@ -71,13 +58,13 @@
                     <!-- End Individual Application Block -->
 
                     <!-- Include Modal For Contact Info -->
-                    @include('partials.applications.userContactModal')
+                    @include('partials.modals.contact')
 
                     <!-- Include Modal For Send Email -->
-                    @include('partials.applications.userMessageModal')
+                    @include('partials.modals.message')
 
                     <!-- Include Modal For Notes -->
-                    @include('partials.applications.userNoteModal')
+                    @include('partials.modals.note')
 
 
                     @endforeach
