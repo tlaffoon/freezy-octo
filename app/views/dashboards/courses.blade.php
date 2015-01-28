@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-6">
         
         <!-- Courses -->
         <h3 class="page-header">Current Courses  
@@ -51,7 +51,7 @@
                             @include('partials.modals.course-edit')
                             
                             <!-- Course Toggle Display Button -->
-                            <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
+                            <a id="{{$course->id}}" href="" class="btn btn-default course-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
                                 <i class="fa fa-chevron-down"></i>
                             </a>
 
@@ -67,7 +67,7 @@
                     <p>Demo Day on: {{ $course->demo_date }}</p>
                     <p>Duration: {{ $course->courseType->duration }} weeks</p>
                     <hr>
-                    <p class="course-description">{{ $course->description }}</p>
+                    <p class="course-description">{{ $course->courseType->description }}</p>
                 </div>
                 
             @endif
@@ -95,7 +95,7 @@
                             @include('partials.modals.course-edit')
                             
                             <!-- Course Toggle Display Button -->
-                            <a id="{{$course->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
+                            <a id="{{$course->id}}" href="" class="btn btn-default course-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
                                 <i class="fa fa-chevron-down"></i>
                             </a>
 
@@ -111,7 +111,7 @@
                     <p>Demo Day on: {{ $course->demo_date }}</p>
                     <p>Duration: {{ $course->courseType->duration }} weeks</p>
                     <hr>
-                    <p class="course-description">{{ $course->description }}</p>
+                    <p class="course-description">{{ $course->courseType->description }}</p>
                 </div>
                 
             @endif
@@ -122,7 +122,7 @@
     <!-- End Past Courses -->
     </div>
     
-    <div class="col-md-5">
+    <div class="col-md-6">
             <!-- Course Types -->
         <h3 class="page-header">Course Types
 
@@ -150,8 +150,20 @@
                         <!-- Include Course Type Edit Modal -->
                         @include('partials.modals.course-edit')
 
+                        <!-- Course Toggle Display Button -->
+                        <a id="{{$courseType->id}}" href="" class="btn btn-default courseType-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+
                     </div>
                 </h4>
+            </div>
+
+            <div id="courseType{{$courseType->id}}" class="col-md-12 dashboard-course-box img-rounded">
+
+                <p>Duration: {{ $courseType->duration }} weeks</p>
+                <hr>
+                <p class="course-description">{{ $courseType->description }}</p>
             </div>
 
         @endforeach
@@ -169,17 +181,31 @@
         $('.dashboard-course-box').hide();
 
         // Target display buttons and add event listener.
-        $('.btn-display').click(function(event) {
+        $('.course-btn-display').click(function(event) {
             event.preventDefault();
             
             var button = this;
             var id = button.id;
+            console.log(id);
             var buttonContent = $(this).html();
             
             $('#course' + id).slideToggle();
             
         });
-    })
+
+        // Target display buttons and add event listener.
+        $('.courseType-btn-display').click(function(event) {
+            event.preventDefault();
+            
+            var button = this;
+            var id = button.id;
+            console.log(id);
+            var buttonContent = $(this).html();
+            
+            $('#courseType' + id).slideToggle();
+            
+        });
+    });
 
 </script>
 
