@@ -5,10 +5,20 @@
 
 @section('content')
 
-<div class="col-md-9">
+<div class="col-md-12">
+    <div class="pull-right dashboard-tag">
+      <h5>Applications Dashboard</h5>
+      <a href="/applications"> View All Applications </a>
+    </div>
+</div>
+
+<div class="col-md-6">
     <!-- Pending Applications -->
     @include('partials.applications.pending-list')
+</div>
 
+
+<div class="col-md-6">
     <!-- Approved Applications -->
     @include('partials.applications.approved-list')
 
@@ -16,12 +26,7 @@
     @include('partials.applications.denied-list')
 </div>
 
-<div class="col-md-3">
-    <div class="pull-right dashboard-tag">
-      <h5>Applications Dashboard</h5>
-      <a href="/applications"> View All Applications </a>
-    </div>
-</div>
+
 
 @stop
 

@@ -64,4 +64,4 @@
         </tr>
     </table>
 </div> <!-- End Panel -->
-<!-- End Applications
+<!-- End Applications -->
