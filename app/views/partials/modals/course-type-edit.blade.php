@@ -1,13 +1,14 @@
-<!-- Course Create Modal -->
-<div class="modal fade" id="courseTypeEditModal_{{ $courseType->id }}" tabindex="-1" role="dialog" aria-labelledby="courseTypeEditModalLabel" aria-hidden="true">
+<!-- Course Type Edit Modal -->
+<div class="modal fade" id="courseTypeEditModal_{{$courseType->id}}" tabindex="-1" role="dialog" aria-labelledby="courseTypeEditModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="courseTypeEditModal_{{ $courseType->id }}">Edit Course Type: {{ $courseType->name }}</h4>
+        <h4 class="modal-title" id="courseTypeEditModal_{{$courseType->id}}">Edit Course Type: {{ $courseType->name }}</h4>
       </div>
       <div class="modal-body">
-        {{ Form::model(array('action' => array('CourseTypesController@update', $courseType->id), 'class' => 'form', 'role' => 'form', 'method' => 'PUT' )) }}
+
+        {{ Form::model($courseType, array('action' => array('CourseTypesController@update', $courseType->id), 'class' => 'form', 'role' => 'form', 'method' => 'PUT' )) }}
             
             <!-- Name -->
             {{ Form::label('name', 'Course Type Name') }}
@@ -15,7 +16,7 @@
 
             <!-- Description -->
             {{ Form::label('description', 'Course Type Description') }}
-            {{ Form::textarea('description', Input::old('description'), array('class' => 'form-group form-control', 'placeholder' => 'A short description of this course...')) }}
+            {{ Form::textarea('description', Input::old('description'), array('class' => 'form-group form-control')) }}
             
             <!-- Duration -->
             {{ Form::label('duration', 'Duration of Course Type (Weeks)') }}
