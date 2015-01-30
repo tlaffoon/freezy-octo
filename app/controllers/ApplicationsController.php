@@ -127,6 +127,17 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function show($id)
 	{
+
+		// Eager load all the things.
+		// Needs user added.
+		// $application = Application::with(
+		// 	array('user', 
+		// 		'comments' => function($query) { 
+		// 			$query->orderBy('created_at', 'DESC'); 
+		// 		} ))
+		// ->findOrFail($id)
+		// ->get();
+
 		$application = Application::findOrFail($id);
 		// $comments = DB::table('comments')->where('commentable_id', '=', $application->id)->orderBy('created_at', 'DESC');
 		$comments = Comment::where('commentable_id', '=', $application->id)->orderBy('created_at', 'DESC')->get();

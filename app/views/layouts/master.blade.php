@@ -146,6 +146,23 @@
         color: orange;
     }
 
+    .comment-box {
+        padding: 5px;
+        border: dashed #eee 1px;
+    }
+
+    .comment-header {
+       margin-top: 5px; 
+    }
+
+    .comment-body {
+        margin-top: 5px;
+    }
+
+    .timestamp {
+        font-size: 12px;
+    }
+
     @yield('css')
 
     </style>

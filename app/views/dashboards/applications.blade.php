@@ -26,8 +26,6 @@
     @include('partials.applications.denied-list')
 </div>
 
-
-
 @stop
 
 @section('bottomscript')

@@ -26,6 +26,12 @@ class Course extends \BaseModel {
     public function courseType() {
         return $this->belongsTo('CourseType');
     }
+
+    private function setCurrentStudents() {
+        $numStudents = User::where('assigned_course', '=', $this->id);
+        $this->attributes['current_students'] = $numStudents;
+    }
+    
     // public function getDates()
     // {
     //     return ['created_at', 'updated_at', 'start_date', 'end_date', 'demo_date'];

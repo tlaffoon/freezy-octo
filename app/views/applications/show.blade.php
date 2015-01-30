@@ -1,26 +1,6 @@
 @extends('layouts.master')
 
 @section('topscript')
-<style type="text/css">
-
-    .comment-box {
-        padding: 5px;
-        border: dashed #eee 1px;
-    }
-
-    .comment-header {
-       margin-top: 5px; 
-    }
-
-    .comment-body {
-        margin-top: 5px;
-    }
-
-    .timestamp {
-        font-size: 12px;
-    }
-
-</style>
 @stop
 
 @section('content')
@@ -94,7 +74,7 @@
                     @endif
 
                     <p> <strong> Financing: </strong> {{ ucfirst($application->financing_status) }}</p>
-                    <p> <strong> Referred by: </strong> {{ ucfirst($application->referred_by) }}</p>
+                    <p> <strong> How did you hear about Codeup? </strong> {{ ucfirst($application->referred_by) }}</p>
                     <p> <strong> Background Info: </strong> {{ $application->bg_info }}</p>
                     <p> <strong> Questions: </strong> {{ $application->questions }}</p>
                 
@@ -102,7 +82,7 @@
 
                 <div class="col-md-4 comment-box">
                 
-                    @foreach($application->comments as $comment)
+                    @foreach($comments as $comment)
                     
                         <div class="col-sm-12 comment-header">
                             <div class="text-muted pull-left">

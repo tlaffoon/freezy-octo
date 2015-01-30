@@ -73,12 +73,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('Application');
 	}
 
-
-	// public function notes() 
-	// {
-	// 	return $this->hasMany('Note');
-	// }
-
 	public function comments()
 	{
 	    return $this->morphMany('Comment', 'commentable');
@@ -88,6 +82,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 	    return $this->hasMany('Notification');
 	}
+
+	// public function getAssignedCourse($id) {
+
+	// 	$assigned_course = Course::find($id);
+
+	// 	return $
+	// }
 
 	// public function newNotification()
 	// {

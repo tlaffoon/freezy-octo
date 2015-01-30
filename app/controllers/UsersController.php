@@ -230,6 +230,8 @@ class UsersController extends \BaseController {
 			$user->city 		= Input::get('city');
 			$user->state 		= Input::get('state');
 			$user->zip 			= Input::get('zip');
+
+			$user->address 		= $user->street . " " . $user->city . " " . $user->state . " " . $user->zip;
 			
 			$user->password 	= Input::get('password');
 			$user->save();
@@ -247,6 +249,22 @@ class UsersController extends \BaseController {
 		return Redirect::action('UsersController@showProfile');
 	}
 
+
+	public function assignCourse() {
+
+		$id = Input::get('user_id');
+		$user = User::findOrFail($id);
+		$course_id = Input::get('course_id');
+
+		$user->course_assigned = $course_id;
+
+		$user->save();
+
+		Session::flash('message', 'Cohort Assigned.');
+
+		return Redirect::back();
+
+	}
 
 	/**
 	 * Remove the specified resource from storage.

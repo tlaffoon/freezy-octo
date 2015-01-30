@@ -1,4 +1,3 @@
-<!-- Applications -->
 <h3 class="page-header">Recently Approved
     <!-- <div class="pull-right"><small>{{ count($approvedApplications) }}</div> -->
 </h3>
@@ -27,8 +26,22 @@
 
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
                         
-                        <!-- Approve/Deny -->
-                        @include('partials.applications.approve-deny-buttons')
+                        <div class="col-sm-6 pull-right">
+
+                            <!-- Assign Student to Cohort Dropdown -->
+                            <p>Assign Student to Cohort?</p>
+
+                                {{ Form::open(array('url' => '/assignCourse', 'method' => 'POST')) }}
+
+                                    {{ Form::select('course_id', $course_list, null, array('class' => 'form-group form-control')) }}
+                                    
+                                    {{ Form::hidden('user_id', $application->user->id) }}
+
+                                    {{ Form::submit('Assign', array('class' => 'btn btn-default btn-success pull-right')) }}
+
+                                {{ Form::close() }}
+
+                        </div>
 
                         <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
                         <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
@@ -59,9 +72,10 @@
                     @include('partials.modals.add-comment')
 
                     @endforeach
+
                 @endif
             </td>
         </tr>
     </table>
 </div> <!-- End Panel -->
-<!-- End Applications -->
+<!-- End Applications

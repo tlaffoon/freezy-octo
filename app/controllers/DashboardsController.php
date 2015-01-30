@@ -30,6 +30,7 @@ class DashboardsController extends \BaseController {
 		$user = User::findOrFail($id);
 		// $applications = Application::all()->orderBy('id', 'DESC')->paginate(10);
 		$courses = Course::orderBy('id', 'DESC');
+		$course_list = array('' => 'Select Course') + Course::where('status', '=', 'active')->lists('designation', 'id');
 		$students = DB::table('users')->where('role', '=', 'user')->get();
 		$unreadNotifications = $user->notifications()->unread()->get();
 
@@ -44,6 +45,7 @@ class DashboardsController extends \BaseController {
 			->with('approvedApplications', $approvedApplications)
 			->with('deniedApplications', $deniedApplications)
 			->with('courses', $courses)
+			->with('course_list', $course_list)
 			->with('students', $students)
 			->with('notifications', $unreadNotifications);
 	}
