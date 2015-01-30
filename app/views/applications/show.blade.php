@@ -8,8 +8,16 @@
         border: dashed #eee 1px;
     }
 
+    .comment-header {
+       margin-top: 5px; 
+    }
+
     .comment-body {
-        margin-top: 10px;
+        margin-top: 5px;
+    }
+
+    .timestamp {
+        font-size: 12px;
     }
 
 </style>
@@ -24,22 +32,6 @@
         @if ($application)
 
                 <div class="col-md-8 application-box">
-
-<!--                     <div class="btn-group pull-right">
-
-                            <a href="{{ action('ApplicationsController@show', $application->id) }}" class="btn btn-default btn-sm">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </a>
-                            
-                            <a href="{{ action('ApplicationsController@edit', $application->id) }}" class="btn btn-default btn-sm">
-                                <span class="glyphicon glyphicon-edit"></span>
-                            </a>
-
-                            <a href="" class="deleteApp btn btn-default btn-sm" data-userid="{{ $application->id }}">
-                                <span class="glyphicon glyphicon-remove-sign"></span>
-                            </a>
-
-                    </div> -->
 
                     <div class="btn-group pull-right">
 
@@ -63,7 +55,7 @@
                             <i class="fa fa-comment-o"></i>
                         </a>
 
-                        <a href="" class="deleteApp btn btn-default" data-userid="{{ $application->id }}">
+                        <a href="" class="deleteApp btn btn-default" role="button" rel="tooltip" data-original-title="Delete" data-userid="{{ $application->id }}">
                             <span class="glyphicon glyphicon-remove-sign"></span>
                         </a>
 
@@ -112,20 +104,21 @@
                 
                     @foreach($application->comments as $comment)
                     
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 comment-header">
                             <div class="text-muted pull-left">
-                                {{ $comment->author->first }} 
+                                {{ $comment->author->first }} said:
                             </div>
+
+                            <div class="col-sm-12 comment-body">
+                                <p> {{ $comment->body }} </p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 timestamp">
                             <div class="text-muted pull-right">
-                                {{ $comment->created_at }} 
+                                on {{ $comment->created_at }} 
                             </div>
                         </div>
-
-                        <div class="col-sm-12 comment-body">
-                            <p> {{ $comment->body }} </p>
-                        </div>
-
-                        <hr>
 
                     @endforeach
 

@@ -127,7 +127,7 @@
 
                                 <div id="application_{{$application->id}}" class="col-md-12 profile-application-box">
                                     <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
-                                    <p> <strong> Applying to: </strong>  {{ $application->course->name }}                      </p>
+                                    <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
 
                                     <p> <strong> Employment status: </strong> {{ ucfirst($application->employment_status) }}   </p>
                                     
@@ -138,7 +138,7 @@
                                     @endif
 
                                     <p> <strong> Financing: </strong> {{ ucfirst($application->financing_status) }}            </p>
-                                    <p> <strong> Referred by: </strong> {{ ucfirst($application->referred_by) }}               </p>
+                                    <p> <strong> How did you hear about Codeup? </strong> {{ ucfirst($application->referred_by) }}               </p>
                                     <p> <strong> Background Info: </strong> {{ $application->bg_info }}                        </p>
                                     <p> <strong> Questions: </strong> {{ $application->questions }}                            </p>
                                 
