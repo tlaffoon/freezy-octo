@@ -37,12 +37,14 @@
     <![endif]-->
 
     <style type="text/css">
-/*        .application-box {
-            border: solid #eee 1px;
-            padding-top: 5px;
-            margin-bottom: 10px;
-            background-color: white;
-        }*/
+
+        .flash-message {
+            margin-top: 10px;
+        }
+
+        .message-info {
+            font-size: 18px;
+        }
 
         .dashboard-panel {
             margin-top: 30px;
@@ -158,6 +160,37 @@
         @include('partials.main-dashboard-sidebar')
 
         <div id="page-wrapper" class="row">
+
+            <div class="col-md-12 flash-message">
+                @if(Session::has('message'))
+                <div class="alert bg-success">
+                    <button class="close" data-dismiss="alert">×</button>
+                    <p class="message-info">{{ Session::get('message') }}</p>
+                </div>
+                @endif
+
+                @if(Session::has('notice'))
+                <div class="alert bg-info">
+                    <button class="close" data-dismiss="alert">×</button>
+                    <p class="message-info">{{ Session::get('notice') }}</p>
+                </div>
+                @endif
+
+                @if(Session::has('alert'))
+                <div class="alert bg-warning">
+                    <button class="close" data-dismiss="alert">×</button>
+                    <p class="message-info">{{ Session::get('alert') }}</p>
+                </div>
+                @endif
+
+                @if(Session::has('error'))
+                <div class="alert bg-warning">
+                    <button class="close" data-dismiss="alert">×</button>
+                    <p class="message-info">{{ Session::get('error') }}</p>
+                </div>
+                @endif
+            </div>
+
             <!-- Include main content -->
             @yield('content')
         </div>
