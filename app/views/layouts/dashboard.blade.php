@@ -125,9 +125,13 @@
             top: 20px;
         }
 
-        .comment-box {
+        .comment-container {
             padding: 5px;
             border: dashed #eee 1px;
+        }
+
+        .comment-box {
+            margin-top: 5px;
         }
 
         .comment-header {
