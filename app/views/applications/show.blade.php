@@ -1,30 +1,31 @@
 @extends('layouts.master')
 
-@section('css')
-    .contact-info {
-        height: 200px; 
-        width: 200px;
-        border: dotted #eee 1px;
-        float: right;
+@section('topscript')
+<style type="text/css">
+
+    .comment-box {
+        padding: 5px;
+        border: dashed #eee 1px;
     }
-    .btn-box {
-        <!-- position: relative; -->
-        <!-- top: 0px; -->
-        <!-- right: 0px; -->
+
+    .comment-body {
+        margin-top: 10px;
     }
+
+</style>
 @stop
 
 @section('content')
 
     <div class="container">
 
-        <h2 class="page-header">Application Index Page</h2>
+        <h2 class="page-header">Application Overview: {{ $application->user->fullname }}</h2>
 
         @if ($application)
 
-                <div class="col-md-12 application-box">
+                <div class="col-md-8 application-box">
 
-                    <div class="btn-group pull-right">
+<!--                     <div class="btn-group pull-right">
 
                             <a href="{{ action('ApplicationsController@show', $application->id) }}" class="btn btn-default btn-sm">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -38,6 +39,43 @@
                                 <span class="glyphicon glyphicon-remove-sign"></span>
                             </a>
 
+                    </div> -->
+
+                    <div class="btn-group pull-right">
+
+                        <!-- Contact Info Modal Button Trigger -->
+                        <a href="#infoModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Info" data-toggle="modal" data-target="#infoModal_{{ $application->id}}">
+                            <i class="fa fa-info-circle"></i>
+                        </a>
+
+                        <!-- User Edit Modal Button Trigger -->
+                        <!-- <a href="" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit" data-toggle="modal" data-target="#editModal_{{ $application->id}}">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a> -->
+
+                        <!-- Send Message Modal Button Trigger -->
+                        <a href="#messageModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Send Email" data-toggle="modal" data-target="#messageModal_{{ $application->id}}">
+                            <i class="fa fa-envelope-o"></i>
+                        </a>
+
+                        <!-- Make Comment Modal Button Trigger -->
+                        <a href="#commentModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Add Comment" data-toggle="modal" data-target="#commentModal_{{ $application->id}}">
+                            <i class="fa fa-comment-o"></i>
+                        </a>
+
+                        <a href="" class="deleteApp btn btn-default" data-userid="{{ $application->id }}">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                        </a>
+
+                        <!-- Include Modal For Contact Info -->
+                        @include('partials.modals.contact')
+
+                        <!-- Include Modal For Send Email -->
+                        @include('partials.modals.message')
+
+                        <!-- Include Modal For Comments -->
+                        @include('partials.modals.add-comment')
+                        
                     </div>
 
                     <h3 class="page-header">{{ $application->user->fullname }} | Application #{{ $application->id }}</h3>
@@ -49,7 +87,7 @@
                     @endif
                     
                     <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
-                    <p> <strong> Applying to: </strong>  {{ $application->course->name }}</p>
+                    <p> <strong> Applying to: </strong>  {{ $application->course->designation }}</p>
                     
                     <p> <strong> Phone: </strong> {{ $application->user->phone }}</p>
                     <p> <strong> Email: </strong> {{ $application->user->email }}</p>
@@ -69,6 +107,29 @@
                     <p> <strong> Questions: </strong> {{ $application->questions }}</p>
                 
                 </div> <!-- End end application block -->
+
+                <div class="col-md-4 comment-box">
+                
+                    @foreach($application->comments as $comment)
+                    
+                        <div class="col-sm-12">
+                            <div class="text-muted pull-left">
+                                {{ $comment->author->first }} 
+                            </div>
+                            <div class="text-muted pull-right">
+                                {{ $comment->created_at }} 
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 comment-body">
+                            <p> {{ $comment->body }} </p>
+                        </div>
+
+                        <hr>
+
+                    @endforeach
+
+                </div>
 
     @endif
 

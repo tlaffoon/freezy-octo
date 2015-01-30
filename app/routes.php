@@ -11,13 +11,6 @@
 |
 */
 
-// Route::post('/dashboards/applications', )
-
-// Route::post('/dashboards/applications/{id}', function($action)
-// {
-//     return Redirect::action('ApplicationsController@updateApplication', $application->id);
-// });
-
 
 /* ---------------- HOMEPAGE ---------------- */
 
@@ -148,22 +141,6 @@ Route::post( '/dashboard/applications', function() {
 
 });
 
-// Route::get( '/dashboard/applications/pending', array(
-//     'as' => 'dashboards.applications',
-//     'uses' => 'DashboardsController@showApplicationsDashboard')
-// );
-
-// Route::get( '/dashboard/applications/approved', array(
-//     'as' => 'dashboards.applications',
-//     'uses' => 'DashboardsController@showApplicationsDashboard')
-// );
-
-// Route::get( '/dashboard/applications/denied', array(
-//     'as' => 'dashboards.applications',
-//     'uses' => 'DashboardsController@showApplicationsDashboard')
-// );
-
-
 
 
 /* ----------------------------------------------- */
@@ -202,7 +179,7 @@ Route::resource('comments', 'CommentsController');
 //  Mail Resource Route
 Route::resource('mail', 'MailController');
 
-// Send Mail Route
+//  Send Mail Route
 Route::post('/sendMail', 'MailController@send');
 
 

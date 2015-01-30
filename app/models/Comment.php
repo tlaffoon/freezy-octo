@@ -24,6 +24,6 @@ class Comment extends \BaseModel {
 
     public function author()
     {
-     return $this->belongsTo('User');
+     return $this->belongsTo('User', 'user_id');
     }
 }

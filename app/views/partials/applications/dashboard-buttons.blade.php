@@ -10,6 +10,12 @@
         <i class="fa fa-pencil-square-o"></i>
     </a> -->
 
+
+    <!-- Application Inspect Button Trigger -->
+    <a href="{{ action('ApplicationsController@show', $application->id) }}" class="btn btn-default" role="button" rel="tooltip" data-original-title="Inspect Application">
+        <i class="fa fa-search"></i>
+    </a>
+
     <!-- Send Message Modal Button Trigger -->
     <a href="#messageModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Send Email" data-toggle="modal" data-target="#messageModal_{{ $application->id}}">
         <i class="fa fa-envelope-o"></i>

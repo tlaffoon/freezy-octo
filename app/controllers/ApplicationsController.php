@@ -114,10 +114,6 @@ class ApplicationsController extends \BaseController {
 			// Return their profile view with success message.
 			return Redirect::action('UsersController@showProfile');
 
-			// This was for testing only.
-				// Define applications and return index view.
-				// $applications = Application::paginate(5);
-				// return View::make('applications.index')->with('applications', $applications);
 		}
 
 	}
@@ -132,7 +128,11 @@ class ApplicationsController extends \BaseController {
 	public function show($id)
 	{
 		$application = Application::findOrFail($id);
-		return View::make('applications.show')->with('application', $application);
+		// $comments = DB::table('comments')->where('commentable_id', '=', $application->id)->orderBy('created_at', 'DESC');
+		$comments = Comment::where('commentable_id', '=', $application->id)->orderBy('created_at', 'DESC')->get();
+		return View::make('applications.show')
+			->with('application', $application)
+			->with('comments', $comments);
 	}
 
 
