@@ -6,6 +6,10 @@ class NotificationsController extends \BaseController {
 		$this->beforeFilter('auth');
 	}
 
+	public function __construct() {
+		$this->beforeFilter('auth');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

@@ -20,7 +20,7 @@
                         <h4>{{ $application->user->fullname }} | {{ $application->course->designation }}
 
                             <!-- Include Buttons For Application Administration -->
-                            @include('partials.applications.btnGroup')
+                            @include('partials.applications.dashboard-buttons')
 
                         </h4>
                     </div>
@@ -55,8 +55,8 @@
                     <!-- Include Modal For Send Email -->
                     @include('partials.modals.message')
 
-                    <!-- Include Modal For Notes -->
-                    @include('partials.modals.note')
+                    <!-- Include Modal For Comments -->
+                    @include('partials.modals.add-comment')
 
                     @endforeach
                 @endif

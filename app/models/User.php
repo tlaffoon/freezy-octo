@@ -62,19 +62,26 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @param  string  $value
 	 */
-	public function setPasswordAttribute($value) {
+	public function setPasswordAttribute($value) 
+	{
 		$this->attributes['password'] = Hash::make($value);
 	}
 	
 
-	public function applications() {
+	public function applications() 
+	{
 		return $this->hasMany('Application');
 	}
 
 
-	public function notes()
+	// public function notes() 
+	// {
+	// 	return $this->hasMany('Note');
+	// }
+
+	public function comments()
 	{
-	    return $this->morphMany('Note', 'noteable');
+	    return $this->morphMany('Comment', 'commentable');
 	}
 
 	public function notifications()
@@ -82,11 +89,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    return $this->hasMany('Notification');
 	}
 
-	public function newNotification()
-	{
-	    $notification = new Notification;
-	    $notification->user()->associate($this);
+	// public function newNotification()
+	// {
+	//     $notification = new Notification;
+	//     $notification->user()->associate($this);
 	 
-	    return $notification;
-	}
+	//     return $notification;
+	// }
 }

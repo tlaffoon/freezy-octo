@@ -197,7 +197,7 @@ Route::resource('courses', 'CoursesController');
 Route::resource('courseTypes', 'CourseTypesController');
 
 //  Notes Resource Route
-Route::resource('notes', 'NotesController');
+Route::resource('comments', 'CommentsController');
 
 //  Mail Resource Route
 Route::resource('mail', 'MailController');
