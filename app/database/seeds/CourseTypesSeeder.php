@@ -4,6 +4,13 @@ class CourseTypesSeeder extends Seeder {
 
     public function run()
     {
+
+        $courseType = new CourseType();
+        $courseType->name = '3-Month Coding Bootcamp (Day)';
+        $courseType->description = 'Codeup Bootcamp is a 3 month, in-person program that turns non-techies into entry level Web Developers using a unique, instructor-led approach. Find work, or get 1/2 of your tuition returned.';
+        $courseType->duration = 12;
+        $courseType->save();
+
         $courseType = new CourseType();
         $courseType->name = '4-Month Coding Bootcamp (Day)';
         $courseType->description = 'Codeup Bootcamp is a 4 to 6 month, in-person program that turns non-techies into entry level Web Developers using a unique, instructor-led approach. Find work, or get 1/2 of your tuition returned.';

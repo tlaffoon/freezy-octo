@@ -38,18 +38,22 @@ class UsersTableSeeder extends Seeder {
         for ($i = 0; $i < 100; $i++)
         {
 
+            $first = $faker->firstName;
+            $last = $faker->lastName;
+
             $user = array(
-                'first' => $faker->firstName,
-                'last' => $faker->lastName,
+                'first' => $first,
+                'last' => $last,
                 'email' => $faker->email,
                 'password' => Hash::make($faker->word),
-                'fullname' => $faker->firstName . ' ' . $faker->lastName,
+                'fullname' => $first . ' ' . $last,
                 'phone' => $faker->phoneNumber ,
                 'gender' =>  $gender[array_rand($gender)],
                 'street' => '112 E. Pecan',
                 'city' => 'San Antonio',
                 'state' => 'Texas',
                 'zip' => '78205',
+                'address' => '112 E. Pecan San Antonio, TX 78205'
             );
 
           // Insert user into the database.

@@ -16,7 +16,7 @@ class ApplicationsTableSeeder extends Seeder {
 
         for ($i=0; $i < 100; $i++) {
             $application = [
-                'course_id' => $faker->numberBetween($min = 1, $max = 3),
+                'course_id' => $faker->numberBetween($min = 6, $max = 8),
                 'employment_status' => $employment_status[array_rand($employment_status)],
                 'financing_status' => $financing_status[array_rand($financing_status)],
                 'referred_by' => $faker->word,

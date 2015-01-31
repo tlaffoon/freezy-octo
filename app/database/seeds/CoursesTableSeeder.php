@@ -75,7 +75,7 @@ class CoursesTableSeeder extends Seeder {
         $course->save();
 
         $course = new Course();
-        $course->designation = 'Gandolf';
+        $course->designation = 'Gandalf';
         $course->start_date = '2015-3-15';
         $course->end_date = '2015-12-15';
         $course->demo_date = '2015-12-16';
@@ -85,7 +85,7 @@ class CoursesTableSeeder extends Seeder {
         $course->save();
 
         $course = new Course();
-        $course->designation = 'The Trail Into Mordor';
+        $course->designation = 'Hodor';
         $course->start_date = '2015-9-7';
         $course->end_date = '2016-9-7';
         $course->demo_date = '2016-9-8';

@@ -33,7 +33,7 @@
 
                                 {{ Form::model($user, array('url' => array('/assignCourse'), 'class'=>'form', 'role'=>'form', 'method' => 'POST')) }}
                                   
-                                    {{ Form::select('assigned_course', $course_list, Input::old('assigned_course'), array('class' => 'form-group form-control')) }}
+                                    {{ Form::select('assigned_course_id', $course_list, null, array('class' => 'form-group form-control')) }}
                                     
                                     {{ Form::hidden('user_id', $application->user->id) }}
 

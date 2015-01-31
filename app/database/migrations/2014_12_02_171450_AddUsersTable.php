@@ -23,14 +23,14 @@ class AddUsersTable extends Migration
             $table->integer('age');
             $table->string('img_path');
             
-            $table->string('address');
             $table->string('street');
             $table->string('city');
             $table->string('state');
             $table->string('zip');
+            $table->string('address');
 
             $table->string('role')->default('student');
-            $table->integer('assigned_course')->nullable();
+            $table->integer('assigned_course_id')->unsigned();
 
             $table->boolean('financing')->default(0);
             $table->boolean('application_completed')->default(0);
