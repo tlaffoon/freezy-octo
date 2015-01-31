@@ -158,10 +158,10 @@
     <div id="wrapper">
 
         <!-- Include Navbar -->
-        @include('partials.main-dashboard-navbar')
+        @include('partials.dashboard.main-dashboard-navbar')
 
         <!-- Include Sidebar -->
-        @include('partials.main-dashboard-sidebar')
+        @include('partials.dashboard.main-dashboard-sidebar')
 
         <div id="page-wrapper" class="row">
 

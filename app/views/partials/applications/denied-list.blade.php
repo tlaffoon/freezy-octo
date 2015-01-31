@@ -28,7 +28,7 @@
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
                         
 
-                        <button class="tn btn-default btn-danger pull-right"> Denied </button>
+                        <button class="btn btn-default btn-danger disabled pull-right"> Denied </button>
 
                         <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
                         <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
