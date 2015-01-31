@@ -20,15 +20,15 @@
 
             <!-- Start Date -->
             <label for="start_date">Start Date</label>
-            <input id="start_date" name="start_date" type="date" class="form-group form-control">
+            <input id="start_date" name="start_date" type="date" class="form-group form-control" value="{{ $course->start_date }}">
 
             <!-- End Date -->
             <label for="end_date">End Date</label>
-            <input id="end_date" name="end_date" type="date" class="form-group form-control">
+            <input id="end_date" name="end_date" type="date" class="form-group form-control" value="{{ $course->end_date }}">
 
             <!-- Demo Date -->
             <label for="demo_date">Demo Date (optional)</label>
-            <input id="demo_date" name="demo_date" type="date" class="form-group form-control">            
+            <input id="demo_date" name="demo_date" type="date" class="form-group form-control" value="{{ $course->demo_date }}">            
 
             <!-- Max Students -->
             {{ Form::label('max_students', 'Max Number of Students') }}
