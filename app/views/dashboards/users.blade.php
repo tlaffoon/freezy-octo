@@ -26,7 +26,7 @@
                 <div class="col-md-12 dashboard-user-header img-rounded">
                     <h4> {{ $student->fullname }}
 
-                        <div class="btn-group btn-group-dashboard pull-right">
+                        <!-- <div class="btn-group btn-group-dashboard pull-right">
 
 
                             <a href="{{ action('UsersController@show', $student->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Show User Profile">
@@ -45,7 +45,9 @@
                                 <i class="fa fa-chevron-down"></i>
                             </a>
 
-                        </div>
+                        </div> -->
+
+                        @include('partials.users.dashboard-buttons')
                     </h4>
                 </div>
 

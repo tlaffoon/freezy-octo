@@ -131,12 +131,12 @@ Route::post( '/dashboard/applications', function() {
     if (Input::get('approve')) {
         $application->status = 'approved';
         $application->save();
-        Session::flash('message', 'This is an approve message.');
+        Session::flash('message', 'Application Approved! Huzzah!');
 
     } elseif (Input::get('deny')) {
         $application->status = 'denied';
         $application->save();
-        Session::flash('message', 'This is a deny message.');
+        Session::flash('message', 'Application Denied.  Bummer Yo =(');
     }
 
     return Redirect::action('DashboardsController@showApplicationsDashboard');
