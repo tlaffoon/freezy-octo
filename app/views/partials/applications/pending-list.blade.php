@@ -54,10 +54,6 @@
                         <p> <strong> Background Info: </strong> {{ $application->bg_info }}                        </p>
                         <p> <strong> Questions: </strong> {{ $application->questions }}                            </p>
                     
-                        <hr>
-                        <p><strong> Comments: </strong></p>
-                        @include('partials.applications.comments-box')
-                    
                     </div>
                     <!-- End Individual Application Block -->
 
