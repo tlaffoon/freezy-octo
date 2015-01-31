@@ -1,4 +1,4 @@
-@foreach($application->comments as $comment)
+@foreach($comments as $comment)
 
     <div class="col-sm-12 comment-header">
         <div class="text-muted pull-left">

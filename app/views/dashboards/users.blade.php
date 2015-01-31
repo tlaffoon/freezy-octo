@@ -5,18 +5,21 @@
 
 @section('content')
 
-    <div class="pull-right dashboard-tag">
-        <h5>Users Dashboard</h5>
+    <div class="col-md-12">
+        <div class="pull-right dashboard-tag">
+            <h5>Users Dashboard</h5>
+            <a href="{{ action('UsersController@index') }}">View All Users</a>
+        </div>
     </div>
   
 
-    <div class="col-md-9 column">
+    <div class="col-md-6 column">
         
         @if ($students)
 
         <h3 class="page-header"> Students 
             <a class="pull-right" href="{{ action('UsersController@create') }}">
-                <small class="small-text">Create a New User</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                <small class="small-text">Create a New Student</small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
             </a>
         </h3>
 
@@ -25,44 +28,55 @@
 
                 <div class="col-md-12 dashboard-user-header img-rounded">
                     <h4> {{ $student->fullname }}
-
-                        <!-- <div class="btn-group btn-group-dashboard pull-right">
-
-
-                            <a href="{{ action('UsersController@show', $student->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Show User Profile">
-                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                            </a>
-                            
-                            <a href="{{ action('UsersController@edit', $student->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit User">
-                                <span class="glyphicon glyphicon-edit"></span>
-                            </a>
-
-                            <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Make A Note">
-                                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                            </a>
-
-                            <a id="{{$student->id}}" href="" class="btn btn-default btn-display" data-toggle="tooltip" data-placement="top" title="Show/Hide Application">
-                                <i class="fa fa-chevron-down"></i>
-                            </a>
-
-                        </div> -->
-
+                        
                         @include('partials.users.dashboard-buttons')
+                    
                     </h4>
+
                 </div>
 
                 <div id="student{{$student->id}}" class="col-md-12 dashboard-user-box img-rounded">
 
-                    <a href="" class="deleteUser btn btn-danger pull-right" data-userid="{{$student->id}}" data-toggle="tooltip" data-placement="top" title="Delete Student">
+<!--                     <a href="" class="deleteUser btn btn-danger pull-right" data-userid="{{$student->id}}" data-toggle="tooltip" data-placement="top" title="Delete Student">
                         <span class="glyphicon glyphicon-remove-sign"></span>
-                    </a>
+                    </a> -->
 
                     <p class="student-name">{{ $student->fullname }}</p>
                     <p class="student-info">{{ $student->email }}</p>
                     <p class="student-info">{{ $student->phone }}</p>
                     <p class="student-info">{{ $student->street . " " . $student->city . " " . $student->state . " " . $student->zip }}</p>
 
+                    <!-- Comments -->
+                    @foreach($student->comments as $comment)
+
+                        <div class="col-sm-12 comment-header">
+                            <div class="text-muted pull-left">
+                                {{ $comment->author->first }} said:
+                            </div>
+
+                            <div class="col-sm-12 comment-body">
+                                <p> {{ $comment->body }} </p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 timestamp">
+                            <div class="text-muted pull-right">
+                                on {{ $comment->created_at }} 
+                            </div>
+                        </div>
+
+                    @endforeach
+
                 </div>
+
+                <!-- Include Modal For Contact Info -->
+                @include('partials.users.modals.contact')
+
+                <!-- Include Modal For Send Email -->
+                @include('partials.users.modals.message')
+
+                <!-- Include Modal For Add Comments -->
+                @include('partials.users.modals.add-comment')
                     
             @endforeach
         
@@ -75,6 +89,12 @@
         @endif
 
     </div> <!-- End Column -->
+
+    <div class="col-md-6">
+
+        <!-- Placeholder -->
+
+    </div>
 
 @stop
 

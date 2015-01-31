@@ -79,10 +79,15 @@ class DashboardsController extends \BaseController {
 		$applications = Application::orderBy('id', 'DESC')->paginate(10);
 		$courses = Course::orderBy('id', 'DESC')->paginate(3);
 		$unreadNotifications = $user->notifications()->unread()->get();
-		$students = DB::table('users')
-			->where('role', '=', 'student')
+		
+		$students = User::where('role', '=', 'student')
 			->orderBy('created_at', 'DESC')
-			->paginate(5);
+			->paginate(10);
+
+		// $students = DB::table('users')
+		// 	->where('role', '=', 'student')
+		// 	->orderBy('created_at', 'DESC')
+		// 	->paginate(10);
 
 		return View::make('dashboards.users')
 			->with('user', $user)

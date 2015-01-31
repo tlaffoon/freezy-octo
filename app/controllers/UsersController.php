@@ -180,7 +180,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return View::make('users.show')->with('user', User::find($id));
+		return View::make('users.profile')->with('user', User::find($id));
 	}
 
 	/**

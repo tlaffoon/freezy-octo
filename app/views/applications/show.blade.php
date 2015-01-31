@@ -16,27 +16,22 @@
                     <div class="btn-group pull-right">
 
                         <!-- Contact Info Modal Button Trigger -->
-                        <a href="#infoModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Info" data-toggle="modal" data-target="#infoModal_{{ $application->id}}">
+                        <a href="#infoModal" class="btn btn-default btn-sm" role="button" rel="tooltip" data-original-title="Info" data-toggle="modal" data-target="#infoModal_{{ $application->id}}">
                             <i class="fa fa-info-circle"></i>
                         </a>
 
-                        <!-- User Edit Modal Button Trigger -->
-                        <!-- <a href="" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit" data-toggle="modal" data-target="#editModal_{{ $application->id}}">
-                            <i class="fa fa-pencil-square-o"></i>
-                        </a> -->
-
                         <!-- Send Message Modal Button Trigger -->
-                        <a href="#messageModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Send Email" data-toggle="modal" data-target="#messageModal_{{ $application->id}}">
+                        <a href="#messageModal" class="btn btn-default btn-sm" role="button" rel="tooltip" data-original-title="Send Email" data-toggle="modal" data-target="#messageModal_{{ $application->id}}">
                             <i class="fa fa-envelope-o"></i>
                         </a>
 
                         <!-- Make Comment Modal Button Trigger -->
-                        <a href="#commentModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Add Comment" data-toggle="modal" data-target="#commentModal_{{ $application->id}}">
+                        <a href="#commentModal" class="btn btn-default btn-sm" role="button" rel="tooltip" data-original-title="Add Comment" data-toggle="modal" data-target="#commentModal_{{ $application->id}}">
                             <i class="fa fa-comment-o"></i>
                         </a>
 
-                        <a href="" class="deleteApp btn btn-default" role="button" rel="tooltip" data-original-title="Delete" data-userid="{{ $application->id }}">
-                            <span class="glyphicon glyphicon-remove-sign"></span>
+                        <a href="" class="deleteApp btn btn-default btn-sm" role="button" rel="tooltip" data-original-title="Delete" data-userid="{{ $application->id }}">
+                            <i class="fa fa-trash-o"></i>
                         </a>
 
                         <!-- Include Modal For Contact Info -->
@@ -82,27 +77,9 @@
 
                 
                 <div class="col-md-4">
-                    @foreach($comments as $comment)
-                        <div class="comment-box col-sm-12">
-                            
-                            <div class="col-sm-12 comment-header">
-                                <div class="text-muted pull-left">
-                                    {{ $comment->author->first }} said:
-                                </div>
+                    <!-- Comments -->
+                    @include('partials.comments-box')
 
-                                <div class="col-sm-12 comment-body">
-                                    <p> {{ $comment->body }} </p>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12 timestamp">
-                                <div class="text-muted pull-right">
-                                    on {{ $comment->created_at }} 
-                                </div>
-                            </div>
-
-                        </div>
-                    @endforeach
                 </div>
 
     @endif
