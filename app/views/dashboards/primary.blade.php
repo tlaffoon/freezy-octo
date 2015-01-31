@@ -119,7 +119,7 @@
     <div class="col-md-4">
 
         <!-- Notifications Panel -->
-        @include('partials.notifications-panel')
+        @include('partials.dashboard.notifications-panel')
         
     </div>
 
