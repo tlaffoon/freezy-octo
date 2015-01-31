@@ -40,13 +40,13 @@
                         </a>
 
                         <!-- Include Modal For Contact Info -->
-                        @include('partials.modals.contact')
+                        @include('partials.applications.modals.contact')
 
                         <!-- Include Modal For Send Email -->
-                        @include('partials.modals.message')
+                        @include('partials.applications.modals.message')
 
                         <!-- Include Modal For Comments -->
-                        @include('partials.modals.add-comment')
+                        @include('partials.applications.modals.add-comment')
                         
                     </div>
 
@@ -116,11 +116,11 @@
 
 <script type="text/javascript">
     $(".deleteApp").click(function() {
-        var userID = $(this).data('userid');
-        $("#deleteForm").attr('action', '/users/' + userID);
-        if (confirm("Are you sure you want to delete this user?")) {
-            $('#deleteForm').submit();
-        }
+        // var userID = $(this).data('userid');
+        // $("#deleteForm").attr('action', '/users/' + userID);
+        // if (confirm("Are you sure you want to delete this user?")) {
+        //     $('#deleteForm').submit();
+        // }
     });
 </script>
 
