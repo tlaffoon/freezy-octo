@@ -27,8 +27,8 @@
 
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
                         
-                        <!-- Approve/Deny -->
-                        @include('partials.applications.approve-deny-buttons')
+
+                        <button class="tn btn-default btn-danger pull-right"> Denied </button>
 
                         <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
                         <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
@@ -50,13 +50,13 @@
                     <!-- End Individual Application Block -->
 
                     <!-- Include Modal For Contact Info -->
-                    @include('partials.modals.contact')
+                    @include('partials.applications.modals.contact')
 
                     <!-- Include Modal For Send Email -->
-                    @include('partials.modals.message')
+                    @include('partials.applications.modals.message')
 
                     <!-- Include Modal For Comments -->
-                    @include('partials.modals.add-comment')
+                    @include('partials.applications.modals.add-comment')
 
                     @endforeach
                 @endif

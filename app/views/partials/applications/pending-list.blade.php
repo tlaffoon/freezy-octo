@@ -62,13 +62,13 @@
                     <!-- End Individual Application Block -->
 
                     <!-- Include Modal For Contact Info -->
-                    @include('partials.modals.contact')
+                    @include('partials.applications.modals.contact')
 
                     <!-- Include Modal For Send Email -->
-                    @include('partials.modals.message')
+                    @include('partials.applications.modals.message')
 
                     <!-- Include Modal For Comments -->
-                    @include('partials.modals.add-comment')
+                    @include('partials.applications.modals.add-comment')
 
 
                     @endforeach

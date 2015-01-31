@@ -32,7 +32,7 @@
         </h3>
 
         <!-- Include Course Create Modal -->
-        @include('partials.modals.course-create')
+        @include('partials.courses.modals.course-create')
         
         @foreach ($courses as $course)
             @if ($course->status == 'active')
@@ -48,7 +48,7 @@
                             </a>
 
                             <!-- Include Course Edit Modal -->
-                            @include('partials.modals.course-edit')
+                            @include('partials.courses.modals.course-edit')
                             
                             <!-- Course Toggle Display Button -->
                             <a id="{{$course->id}}" href="" class="btn btn-default course-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
@@ -92,7 +92,7 @@
                             </a>
 
                             <!-- Include Course Edit Modal -->
-                            @include('partials.modals.course-edit')
+                            @include('partials.courses.modals.course-edit')
                             
                             <!-- Course Toggle Display Button -->
                             <a id="{{$course->id}}" href="" class="btn btn-default course-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
@@ -134,7 +134,7 @@
         </h3>
 
         <!-- Course Type Create Modal -->
-        @include('partials.modals.course-type-create')
+        @include('partials.courses.modals.course-type-create')
 
         @foreach ($courseTypes as $courseType)
             <div class="col-md-12 dashboard-course-header img-rounded">
@@ -148,7 +148,7 @@
                         </a>
 
                         <!-- Include Course Type Edit Modal -->
-                        @include('partials.modals.course-type-edit')
+                        @include('partials.courses.modals.course-type-edit')
 
                         <!-- Course Toggle Display Button -->
                         <a id="{{$courseType->id}}" href="" class="btn btn-default courseType-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
