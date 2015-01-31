@@ -31,9 +31,9 @@
                             <!-- Assign Student to Cohort Dropdown -->
                             <p>Assign Student to Cohort?</p>
 
-                                {{ Form::open(array('url' => '/assignCourse', 'method' => 'POST')) }}
-
-                                    {{ Form::select('course_id', $course_list, null, array('class' => 'form-group form-control')) }}
+                                {{ Form::model($user, array('action' => array('UsersController@assignCourse', $application->user->id), 'class'=>'form', 'role'=>'form', 'method' => 'PUT')) }}
+                                  
+                                    {{ Form::select('assigned_course', $course_list, Input::old('assigned_course'), array('class' => 'form-group form-control')) }}
                                     
                                     {{ Form::hidden('user_id', $application->user->id) }}
 

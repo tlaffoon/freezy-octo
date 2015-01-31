@@ -136,7 +136,7 @@ Route::post( '/dashboard/applications', function() {
     } elseif (Input::get('deny')) {
         $application->status = 'denied';
         $application->save();
-        Session::flash('message', 'Application Denied.  Bummer Yo =(');
+        Session::flash('alert', 'Application Denied.  Bummer Yo =(');
     }
 
     return Redirect::action('DashboardsController@showApplicationsDashboard');

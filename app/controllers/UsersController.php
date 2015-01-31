@@ -255,15 +255,12 @@ class UsersController extends \BaseController {
 		$id = Input::get('user_id');
 		$user = User::findOrFail($id);
 		$course_id = Input::get('course_id');
-
-		$user->course_assigned = $course_id;
-
+		$user->assigned_course = $course_id;
 		$user->save();
 
 		Session::flash('message', 'Cohort Assigned.');
 
 		return Redirect::back();
-
 	}
 
 	/**

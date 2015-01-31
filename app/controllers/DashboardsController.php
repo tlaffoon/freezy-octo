@@ -28,15 +28,14 @@ class DashboardsController extends \BaseController {
 	{
 		$id = Auth::id();
 		$user = User::findOrFail($id);
-		// $applications = Application::all()->orderBy('id', 'DESC')->paginate(10);
 		$courses = Course::orderBy('id', 'DESC');
 		$course_list = array('' => 'Select Course') + Course::where('status', '=', 'active')->lists('designation', 'id');
 		$students = DB::table('users')->where('role', '=', 'user')->get();
 		$unreadNotifications = $user->notifications()->unread()->get();
 
 		$pendingApplications = Application::where('status', '=', 'pending')->orderBy('id', 'DESC')->paginate(10);
-		$approvedApplications = Application::where('status', '=', 'approved')->orderBy('id', 'DESC')->paginate(3);
-		$deniedApplications = Application::where('status', '=', 'denied')->orderBy('id', 'DESC')->paginate(3);
+		$approvedApplications = Application::where('status', '=', 'approved')->orderBy('id', 'DESC')->paginate(10);
+		$deniedApplications = Application::where('status', '=', 'denied')->orderBy('id', 'DESC')->paginate(10);
 
 		return View::make('dashboards.applications')
 			->with('user', $user)

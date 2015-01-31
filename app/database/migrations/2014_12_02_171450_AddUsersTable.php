@@ -30,7 +30,7 @@ class AddUsersTable extends Migration
             $table->string('zip');
 
             $table->string('role')->default('student');
-            $table->integer('course_assigned')->nullable();
+            $table->integer('assigned_course')->nullable();
 
             $table->boolean('financing')->default(0);
             $table->boolean('application_completed')->default(0);
