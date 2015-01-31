@@ -39,7 +39,6 @@ class DashboardsController extends \BaseController {
 
 		return View::make('dashboards.applications')
 			->with('user', $user)
-			// ->with('applications', $applications)
 			->with('pendingApplications', $pendingApplications)
 			->with('approvedApplications', $approvedApplications)
 			->with('deniedApplications', $deniedApplications)
