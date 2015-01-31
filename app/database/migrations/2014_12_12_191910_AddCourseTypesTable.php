@@ -17,6 +17,7 @@ class AddCourseTypesTable extends Migration {
 			$table->string('name');
 			$table->string('description');
 			$table->integer('duration');
+			$table->string('status')->default('active');
 			$table->timestamps();
 		});
 	}

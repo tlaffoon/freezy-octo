@@ -74,7 +74,7 @@ Route::get('/logout', array('as' => 'logout', 'uses' => 'UsersController@logout'
 /* ---------------- USER MODIFICATION ---------------- */
 
 //  Assign User to Course POST Route
-Route::post('/assignCourse', 'UsersController@assignCourse');
+Route::post('/assignCourse/{id}', 'UsersController@assignCourse');
 
 /* ---------------- PROFILE ---------------- */
 

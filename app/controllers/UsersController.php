@@ -250,12 +250,10 @@ class UsersController extends \BaseController {
 	}
 
 
-	public function assignCourse() {
+	public function assignCourse($id) {
 
-		$id = Input::get('user_id');
 		$user = User::findOrFail($id);
-		$course_id = Input::get('course_id');
-		$user->assigned_course_id = $course_id;
+		$user->assigned_course_id = Input::get('assigned_course_id');
 		$user->save();
 
 		Session::flash('message', 'Cohort Assigned.');

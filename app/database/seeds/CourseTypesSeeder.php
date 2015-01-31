@@ -4,6 +4,11 @@ class CourseTypesSeeder extends Seeder {
 
     public function run()
     {
+        $courseType = new CourseType();
+        $courseType->name = 'Placeholder';
+        $courseType->description = 'No description.';
+        $courseType->duration = 0;
+        $courseType->save();
 
         $courseType = new CourseType();
         $courseType->name = '3-Month Coding Bootcamp (Day)';

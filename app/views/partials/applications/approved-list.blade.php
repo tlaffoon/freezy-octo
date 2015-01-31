@@ -28,10 +28,12 @@
                         
                         <div class="col-sm-6 pull-right">
 
+                            
+
                             <!-- Assign Student to Cohort Dropdown -->
                             <p>Assign Student to Cohort?</p>
 
-                                {{ Form::model($user, array('url' => array('/assignCourse'), 'class'=>'form', 'role'=>'form', 'method' => 'POST')) }}
+                                {{ Form::model($user, array('url' => array('/assignCourse', $application->user->id), 'class'=>'form-inline', 'role'=>'form', 'method' => 'POST')) }}
                                   
                                     {{ Form::select('assigned_course_id', $course_list, null, array('class' => 'form-group form-control')) }}
                                     

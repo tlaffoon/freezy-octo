@@ -29,7 +29,9 @@ class DashboardsController extends \BaseController {
 		$id = Auth::id();
 		$user = User::findOrFail($id);
 		$courses = Course::orderBy('id', 'DESC');
-		$course_list = array('' => 'Select Course') + Course::where('status', '=', 'active')->lists('designation', 'id');
+		// $course_list = array('' => 'Select Course') + Course::where('status', '=', 'active')->lists('designation', 'id');
+		$course_list = Course::where('status', '=', 'active')->lists('designation', 'id');
+
 		$students = DB::table('users')->where('role', '=', 'user')->get();
 		$unreadNotifications = $user->notifications()->unread()->get();
 

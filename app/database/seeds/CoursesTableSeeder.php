@@ -10,6 +10,17 @@ class CoursesTableSeeder extends Seeder {
         DB::table('courses')->delete();
 
         $course = new Course();
+        $course->status = 'active';
+        $course->designation = 'Unassigned';
+        $course->start_date = '0000-00-00';
+        $course->end_date = '0000-00-00';
+        $course->demo_date = '0000-00-00';
+        $course->max_students = 0;
+        $course->cost = 0;
+        $course->course_type_id = 1;
+        $course->save();
+
+        $course = new Course();
         $course->status = 'inactive';
         $course->designation = 'Arches';
         $course->start_date = '2014-10-5';
@@ -17,7 +28,7 @@ class CoursesTableSeeder extends Seeder {
         $course->demo_date = '2015-1-14';
         $course->max_students = 30;
         $course->cost = 10000;
-        $course->course_type_id = 1;
+        $course->course_type_id = 2;
         $course->save();
 
         $course = new Course();
@@ -28,7 +39,7 @@ class CoursesTableSeeder extends Seeder {
         $course->demo_date = '2015-1-14';
         $course->max_students = 30;
         $course->cost = 10000;
-        $course->course_type_id = 1;
+        $course->course_type_id = 2;
         $course->save();
 
         $course = new Course();
@@ -39,7 +50,7 @@ class CoursesTableSeeder extends Seeder {
         $course->demo_date = '2015-1-14';
         $course->max_students = 15;
         $course->cost = 10000;
-        $course->course_type_id = 1;
+        $course->course_type_id = 2;
         $course->save();
 
         $course = new Course();
@@ -50,7 +61,7 @@ class CoursesTableSeeder extends Seeder {
         $course->demo_date = '2015-1-14';
         $course->max_students = 15;
         $course->cost = 10000;
-        $course->course_type_id = 1;
+        $course->course_type_id = 2;
         $course->save();
 
         $course = new Course();
@@ -61,7 +72,7 @@ class CoursesTableSeeder extends Seeder {
         $course->demo_date = '2015-2-15';
         $course->max_students = 15;
         $course->cost = 10000;
-        $course->course_type_id = 1;
+        $course->course_type_id = 2;
         $course->save();
 
         $course = new Course();
@@ -71,7 +82,7 @@ class CoursesTableSeeder extends Seeder {
         $course->demo_date = '2015-6-4';
         $course->max_students = 20;
         $course->cost = 15000;
-        $course->course_type_id = 1;
+        $course->course_type_id = 3;
         $course->save();
 
         $course = new Course();
@@ -81,7 +92,7 @@ class CoursesTableSeeder extends Seeder {
         $course->demo_date = '2015-12-16';
         $course->max_students = 20;
         $course->cost = 15000;
-        $course->course_type_id = 2;
+        $course->course_type_id = 4;
         $course->save();
 
         $course = new Course();
@@ -91,7 +102,7 @@ class CoursesTableSeeder extends Seeder {
         $course->demo_date = '2016-9-8';
         $course->max_students = 20;
         $course->cost = 22000;
-        $course->course_type_id = 3;
+        $course->course_type_id = 5;
         $course->save();
     }
 }
