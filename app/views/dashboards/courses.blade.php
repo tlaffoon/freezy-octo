@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-7">
         
         <!-- Courses -->
         <h3 class="page-header">Current Courses  
@@ -42,18 +42,7 @@
 
                         <div class="btn-group btn-group-dashboard pull-right">
 
-                            <!-- Course Edit Modal Button Trigger -->
-                            <a href="#courseEditModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit" data-toggle="modal" data-target="#courseEditModal_{{ $course->id}}">
-                                <i class="fa fa-pencil-square-o"></i>
-                            </a>
-
-                            <!-- Include Course Edit Modal -->
-                            @include('partials.courses.modals.course-edit')
-                            
-                            <!-- Course Toggle Display Button -->
-                            <a id="{{$course->id}}" href="" class="btn btn-default course-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
-                                <i class="fa fa-chevron-down"></i>
-                            </a>
+                            @include('partials.courses.dashboard-buttons')
 
                         </div>
                     </h4>
@@ -86,18 +75,7 @@
 
                         <div class="btn-group btn-group-dashboard pull-right">
 
-                            <!-- Course Edit Modal Button Trigger -->
-                            <a href="#courseEditModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit" data-toggle="modal" data-target="#courseEditModal_{{ $course->id}}">
-                                <i class="fa fa-pencil-square-o"></i>
-                            </a>
-
-                            <!-- Include Course Edit Modal -->
-                            @include('partials.courses.modals.course-edit')
-                            
-                            <!-- Course Toggle Display Button -->
-                            <a id="{{$course->id}}" href="" class="btn btn-default course-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
-                                <i class="fa fa-chevron-down"></i>
-                            </a>
+                            @include('partials.courses.dashboard-buttons')
 
                         </div>
                     </h4>
@@ -122,7 +100,7 @@
     <!-- End Past Courses -->
     </div>
     
-    <div class="col-md-6">
+    <div class="col-md-5">
             <!-- Course Types -->
         <h3 class="page-header">Course Types
 
@@ -142,18 +120,7 @@
 
                     <div class="btn-group btn-group-dashboard pull-right">
 
-                        <!-- Course Type Edit Modal Button Trigger -->
-                        <a href="#courseTypeEditModal" class="btn btn-default" role="button" rel="tooltip" data-original-title="Edit" data-toggle="modal" data-target="#courseTypeEditModal_{{$courseType->id}}">
-                            <i class="fa fa-pencil-square-o"></i>
-                        </a>
-
-                        <!-- Include Course Type Edit Modal -->
-                        @include('partials.courses.modals.course-type-edit')
-
-                        <!-- Course Toggle Display Button -->
-                        <a id="{{$courseType->id}}" href="" class="btn btn-default courseType-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
-                            <i class="fa fa-chevron-down"></i>
-                        </a>
+                        @include('partials.courseTypes.dashboard-buttons')
 
                     </div>
                 </h4>

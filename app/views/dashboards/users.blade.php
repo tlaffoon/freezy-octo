@@ -37,7 +37,7 @@
 
                 <div id="student{{$student->id}}" class="col-md-12 dashboard-user-box img-rounded">
 
-<!--                     <a href="" class="deleteUser btn btn-danger pull-right" data-userid="{{$student->id}}" data-toggle="tooltip" data-placement="top" title="Delete Student">
+<!--                <a href="" class="deleteUser btn btn-danger pull-right" data-userid="{{$student->id}}" data-toggle="tooltip" data-placement="top" title="Delete Student">
                         <span class="glyphicon glyphicon-remove-sign"></span>
                     </a> -->
 
