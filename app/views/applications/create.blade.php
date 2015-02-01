@@ -59,7 +59,7 @@
                 {{ Form::select('financing_status', array('full' => 'Yes, I need to finance 100%', 'partial' => 'Yes, but only partial tuition.', 'unsure' => 'Maybe, still not sure.', 'none' => 'Nope, I am paying ahead of time.'), null, array('class' => 'form-group form-control'))}}
 
                 <!-- How did you hear about us? -->
-                {{ Form::label('referred_by', 'How did you hear about us?') }}
+                {{ Form::label('referred_by', 'How did you hear about Codeup?') }}
                 {{ Form::text('referred_by', Input::old('referred_by'), array('class' => 'form-group form-control')) }}
 
                 <!-- Background Information -->

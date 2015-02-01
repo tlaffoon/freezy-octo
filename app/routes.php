@@ -159,6 +159,9 @@ Route::post( '/dashboard/courses', array(
     'uses' => 'DashboardsController@showCoursesDashboard')
 );
 
+// Course Overview Route
+Route::get('/dashboard/courses/{id}', 'DashboardsController@showCourseOverview');
+
 
 
 /* ---------------- RESOURCES ---------------- */

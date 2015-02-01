@@ -1,5 +1,5 @@
     <!-- Course Inspect Button Trigger -->
-    <a href="{{ action('CoursesController@show', $course->id) }}" class="btn btn-default btn-sm" role="button" rel="tooltip" data-original-title="Inspect">
+    <a href="{{ action('DashboardsController@showCourseOverview', $course->id) }}" class="btn btn-default btn-sm" role="button" rel="tooltip" data-original-title="Inspect">
         <i class="fa fa-search"></i>
     </a>
 

@@ -38,6 +38,10 @@
 
     <style type="text/css">
 
+        .no-margin-left {
+            margin-left: 0px;
+        }
+
         .flash-message {
             margin-top: 10px;
         }

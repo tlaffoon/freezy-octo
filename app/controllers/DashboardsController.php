@@ -67,9 +67,23 @@ class DashboardsController extends \BaseController {
 			->with('courseTypes', $courseTypes)
 			->with('course_type_list', $course_type_list)
 			->with('notifications', $unreadNotifications);
-			// ->with('students', $students);
 	}
 
+	// Course Overview
+	public function showCourseOverview($id) {
+		
+		$user = User::find(Auth::id());
+		$course = Course::find($id);
+		$comments = Comment::where('commentable_id', '=', '2')->where('commentable_type', '=', 'course')->get();
+		// $course = Course::with('comments')->where('id', '=', $id)->get();
+		$unreadNotifications = $user->notifications()->unread()->get();
+
+		return View::make('courses.overview')
+			->with('user', $user)
+			->with('course', $course)
+			->with('comments', $comments)
+			->with('notifications', $unreadNotifications);
+	}
 
 	// Users Dashboard
 	public function showUsersDashboard()
