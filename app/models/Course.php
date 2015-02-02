@@ -13,6 +13,9 @@ class Course extends \BaseModel {
         'end_date' => 'required|date'
     ];
 
+    public function recaps() {
+        return $this->hasMany('Recap');
+    }
 
     public function applications() {
         return $this->hasMany('Application');
