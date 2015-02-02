@@ -253,7 +253,7 @@
             </div>
         </div>
 
-        @if (Auth::user()->role == 'staff')
+        @if (Auth::check() && Auth::user()->role == 'staff')
             <div class="row">
                 <div class="container">
                     <div class="col-md-12">
