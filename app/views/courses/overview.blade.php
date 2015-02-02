@@ -134,7 +134,11 @@
 
         @else 
 
-            <p> No comments found. </p>
+            <div class="col-sm-12 no-padding-left">
+                <div class="text-muted comment-author">
+                    No comments found.
+                </div>
+            </div>
         
         @endif 
     </div>
