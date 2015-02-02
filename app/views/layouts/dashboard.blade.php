@@ -38,8 +38,8 @@
 
     <style type="text/css">
 
-        .no-margin-left {
-            margin-left: 0px;
+        .no-padding-left {
+            padding-left: 0px;
         }
 
         .flash-message {
