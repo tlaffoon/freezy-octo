@@ -252,6 +252,18 @@
                 </div>
             </div>
         </div>
+
+        @if (Auth::user()->role == 'staff')
+            <div class="row">
+                <div class="container">
+                    <div class="col-md-12">
+                        <a href="/dashboard"> Back To Dashboard </a>
+                    </div>
+                </div>
+            </div>
+
+        @endif
+
         @yield('content')
     </div> <!-- /.page-content-wrapper -->
 

@@ -169,7 +169,7 @@
 
         <div id="page-wrapper" class="row">
 
-            <div class="col-md-12 flash-message">
+            <div class="col-md-12 flash-message row">
                 @if(Session::has('message'))
                 <div class="alert bg-success">
                     <button class="close" data-dismiss="alert">×</button>
