@@ -30,6 +30,7 @@ class AddUsersTable extends Migration
             $table->string('address');
 
             $table->string('role')->default('student');
+            $table->string('status')->default('unassigned');
             $table->integer('assigned_course_id')->unsigned();
 
             $table->boolean('financing')->default(0);
