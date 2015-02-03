@@ -209,7 +209,16 @@ class UsersController extends \BaseController {
 
 		$rules = array(
 				'password'				=>	'required|alpha_num|between:6,12|confirmed',
-				'password_confirmation'	=>	'required|alpha_num|between:6,12'
+				'password_confirmation'	=>	'required|alpha_num|between:6,12',		
+				//validation to make sure zip is only numeric and 5 characters long
+				//also if any of the address fields is filled in, the rest are also 
+				//required to be filled in
+				'phone'					=>	'digits:10',
+				'city' 					=>	'required_with: street, state, zip|alpha',
+				'street' 				=>	'required_with:city, state, zip|alpha',
+				'state' 				=>	'required_with:city, street, zip|alpha',
+				'zip'					=>	'digits:5',
+				'image'					=>	'image'
 		);
 
 		$validator = Validator::make(Input::all(), $rules);
