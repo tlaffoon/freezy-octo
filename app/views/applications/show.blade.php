@@ -35,13 +35,13 @@
                         </a>
 
                         <!-- Include Modal For Contact Info -->
-                        @include('partials.applications.modals.contact')
+                        @include('applications.modals.contact')
 
                         <!-- Include Modal For Send Email -->
-                        @include('partials.applications.modals.message')
+                        @include('applications.modals.message')
 
                         <!-- Include Modal For Comments -->
-                        @include('partials.applications.modals.add-comment')
+                        @include('applications.modals.add-comment')
                         
                     </div>
 
@@ -78,7 +78,7 @@
                 
                 <div class="col-md-4">
                     <!-- Comments -->
-                    @include('partials.comments-box')
+                    @include('applications.partials.comments-box')
 
                 </div>
 

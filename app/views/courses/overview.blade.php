@@ -101,7 +101,7 @@
             </h4>
 
             <!-- Include Course Edit Modal -->
-            @include('partials.courses.modals.add-comment')
+            @include('courses.modals.add-comment')
 
         </div>
 

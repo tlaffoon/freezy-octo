@@ -14,16 +14,16 @@
 
 <div class="col-md-6">
     <!-- Pending Applications -->
-    @include('partials.applications.pending-list')
+    @include('applications.partials.pending-list')
 </div>
 
 
 <div class="col-md-6">
     <!-- Approved Applications -->
-    @include('partials.applications.approved-list')
+    @include('applications.partials.approved-list')
 
     <!-- Denied Applications -->
-    @include('partials.applications.denied-list')
+    @include('applications.partials.denied-list')
 </div>
 
 @stop

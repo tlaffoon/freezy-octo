@@ -29,7 +29,7 @@
                 <div class="col-md-12 dashboard-user-header img-rounded">
                     <h4> {{ $student->fullname }}
                         
-                        @include('partials.users.dashboard-buttons')
+                        @include('users.partials.dashboard-buttons')
                     
                     </h4>
 
@@ -70,13 +70,13 @@
                 </div>
 
                 <!-- Include Modal For Contact Info -->
-                @include('partials.users.modals.contact')
+                @include('users.modals.contact')
 
                 <!-- Include Modal For Send Email -->
-                @include('partials.users.modals.message')
+                @include('users.modals.message')
 
                 <!-- Include Modal For Add Comments -->
-                @include('partials.users.modals.add-comment')
+                @include('users.modals.add-comment')
                     
             @endforeach
         

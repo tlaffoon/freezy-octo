@@ -26,7 +26,7 @@
                             </a>
 
                             <!-- Include Buttons For Application Administration -->
-                            @include('partials.applications.dashboard-buttons')
+                            @include('applications.partials.dashboard-buttons')
 
                         </h4>
                     </div>
@@ -56,13 +56,13 @@
                     <!-- End Individual Application Block -->
 
                     <!-- Include Modal For Contact Info -->
-                    @include('partials.applications.modals.contact')
+                    @include('applications.modals.contact')
 
                     <!-- Include Modal For Send Email -->
-                    @include('partials.applications.modals.message')
+                    @include('applications.modals.message')
 
                     <!-- Include Modal For Comments -->
-                    @include('partials.applications.modals.add-comment')
+                    @include('applications.modals.add-comment')
 
                     @endforeach
                 @endif

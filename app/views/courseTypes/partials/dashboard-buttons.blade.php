@@ -9,7 +9,7 @@
         </a>
 
         <!-- Include Course Type Edit Modal -->
-        @include('partials.courses.modals.course-type-edit')
+        @include('courseTypes.modals.courseType-edit')
 
         <!-- Course Toggle Display Button -->
         <a id="{{$courseType->id}}" href="" class="btn btn-default btn-sm courseType-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">
