@@ -1,6 +1,6 @@
 <!-- Applications -->
-<h3 class="page-header">Pending Applications
-    <!-- <div class="pull-right"><small>{{ count($pendingApplications) }}</small></div> -->
+<h3 class="page-header">Recently Denied
+    <!-- <div class="pull-right"><small>{{ count($deniedApplications) }}</div> -->
 </h3>
 
 <div class="panel panel-default">
@@ -8,24 +8,22 @@
         <tr>
             <td>
                 <!-- Display if no applications present. -->
-                @if (!$pendingApplications)
-                    <h4> There are no pending applications. </h4>
+                @if (!$deniedApplications)
+
+                    <h4> There are no denied applications. </h4>
+
                 @else
-                    @foreach ($pendingApplications as $application)
-                    
+
+                    @foreach ($deniedApplications as $application)
                     <!-- Begin Individual Application Block -->
                     <div class="col-md-12 dashboard-application-header">
                         <h4>
-
-                            <!-- Display Gender Icon -->
-                            @if($application->user->gender == 'male')
-                                <i class="fa fa-mars"></i>
-                            @elseif($application->user->gender == 'female')
-                                <i class="fa fa-venus"></i>
-                            @endif
-
-                            <!-- Display User Info & Cohort -->
-                            {{ $application->user->fullname }} | {{ $application->course->designation }}
+                            <a href="{{{ action('UsersController@show', $application->user->id) }}}">
+                                {{ $application->user->fullname }}
+                            </a> | 
+                            <a href="{{{ action('CoursesController@show', $application->course->id) }}}">
+                                {{ $application->course->designation }}
+                            </a>
 
                             <!-- Include Buttons For Application Administration -->
                             @include('partials.applications.dashboard-buttons')
@@ -34,9 +32,9 @@
                     </div>
 
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
+                        
 
-                        <!-- Approve/Deny -->
-                        @include('partials.applications.approve-deny-buttons')
+                        <button class="btn btn-default btn-danger disabled pull-right"> Denied </button>
 
                         <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
                         <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
@@ -65,7 +63,6 @@
 
                     <!-- Include Modal For Comments -->
                     @include('partials.applications.modals.add-comment')
-
 
                     @endforeach
                 @endif
