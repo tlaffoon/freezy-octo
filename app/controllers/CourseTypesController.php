@@ -85,7 +85,21 @@ class CourseTypesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$validator = Validator::make(Input::all(), CourseType::$rules);
+
+		if ($validator->fails())
+		{
+			Session::flash('alert', 'There were errors submitting your form.  Did you include all fields?');
+		    return Redirect::back()->withInput()->withErrors($validator);
+		} else {
+			$courseType = CourseType::find($id);
+			$courseType->name = Input::get('name');
+			$courseType->description = Input::get('description');
+			$courseType->duration = Input::get('duration');
+			$courseType->save();
+		}
+
+		return Redirect::action('DashboardsController@showCoursesDashboard');
 	}
 
 
