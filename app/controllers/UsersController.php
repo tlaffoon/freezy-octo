@@ -265,6 +265,10 @@ class UsersController extends \BaseController {
 		$user->assigned_course_id = Input::get('assigned_course_id');
 		$user->save();
 
+		$application = Application::find(Input::get('application_id'));
+		$application->status = 'assigned';
+		$application->save();
+
 		Session::flash('message', 'Cohort Assigned.');
 
 		return Redirect::back();

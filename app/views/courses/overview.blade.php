@@ -77,15 +77,10 @@
         <div class="daily-recap img-rounded">
 
             <h4>Daily Recap
-                <small class="text-muted pull-right">Author on 2015-01-01</small>
+                <small class="text-muted pull-right">{{{ $recap->author->first }}} on {{{ $recap->created_at }}}</small>
             </h4>
 
-            <p class="daily-recap-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="daily-recap-body">{{{ $recap->body }}}</p>
             
             <a href="#" class="recap-index-link">View All Daily Recaps</a>
 
@@ -134,7 +129,11 @@
 
         @else 
 
-            <p> No comments found. </p>
+            <div class="col-sm-12 no-padding-left">
+                <div class="text-muted comment-author">
+                    No comments found.
+                </div>
+            </div>
         
         @endif 
     </div>

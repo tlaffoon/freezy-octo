@@ -37,7 +37,7 @@
                                   
                                     {{ Form::select('assigned_course_id', $course_list, null, array('class' => 'form-group form-control')) }}
                                     
-                                    {{ Form::hidden('user_id', $application->user->id) }}
+                                    {{ Form::hidden('application_id', $application->id) }}
 
                                     {{ Form::submit('Assign', array('class' => 'btn btn-default btn-success pull-right')) }}
 

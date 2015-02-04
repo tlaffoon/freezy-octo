@@ -78,6 +78,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    return $this->morphMany('Comment', 'commentable');
 	}
 
+	public function recaps() {
+		return $this->hasMany('Recap');
+	}
+
 	public function notifications()
 	{
 	    return $this->hasMany('Notification');
