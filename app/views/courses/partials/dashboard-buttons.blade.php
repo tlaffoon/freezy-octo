@@ -9,7 +9,7 @@
     </a>
 
     <!-- Include Course Edit Modal -->
-    @include('partials.courses.modals.course-edit')
+    @include('courses.modals.course-edit')
     
     <!-- Make Comment Modal Button Trigger -->
     <a href="#commentModal" class="btn btn-default btn-sm" role="button" rel="tooltip" data-original-title="Add Comment" data-toggle="modal" data-target="#commentModal_{{ $course->id}}">
@@ -17,7 +17,7 @@
     </a>
 
     <!-- Include Course Edit Modal -->
-    @include('partials.courses.modals.add-comment')
+    @include('courses.modals.add-comment')
 
     <!-- Course Toggle Display Button -->
     <a id="{{$course->id}}" href="" class="btn btn-default btn-sm course-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">

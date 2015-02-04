@@ -1,4 +1,4 @@
-        <!-- Course Inspect Button Trigger -->
+        <!-- Course Type Inspect Button Trigger -->
         <a href="{{ action('CourseTypesController@show', $courseType->id) }}" class="btn btn-default btn-sm" role="button" rel="tooltip" data-original-title="Inspect">
             <i class="fa fa-search"></i>
         </a>
@@ -9,7 +9,7 @@
         </a>
 
         <!-- Include Course Type Edit Modal -->
-        @include('partials.courseTypes.modals.courseType-edit')
+        @include('courseTypes.modals.courseType-edit')
 
         <!-- Course Toggle Display Button -->
         <a id="{{$courseType->id}}" href="" class="btn btn-default btn-sm courseType-btn-display" data-toggle="tooltip" data-placement="top" title="Toggle">

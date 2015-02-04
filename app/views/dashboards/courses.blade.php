@@ -32,7 +32,7 @@
         </h3>
 
         <!-- Include Course Create Modal -->
-        @include('partials.courses.modals.course-create')
+        @include('courses.modals.course-create')
         
         @foreach ($courses as $course)
             @if ($course->status == 'active')
@@ -42,7 +42,7 @@
 
                         <div class="btn-group btn-group-dashboard pull-right">
 
-                            @include('partials.courses.dashboard-buttons')
+                            @include('courses.partials.dashboard-buttons')
 
                         </div>
                     </h4>
@@ -75,7 +75,7 @@
 
                         <div class="btn-group btn-group-dashboard pull-right">
 
-                            @include('partials.courses.dashboard-buttons')
+                            @include('courses.partials.dashboard-buttons')
 
                         </div>
                     </h4>
@@ -112,7 +112,7 @@
         </h3>
 
         <!-- Course Type Create Modal -->
-        @include('partials.courses.modals.course-type-create')
+        @include('courseTypes.modals.courseType-create')
 
         @foreach ($courseTypes as $courseType)
             <div class="col-md-12 dashboard-course-header img-rounded">
@@ -120,7 +120,7 @@
 
                     <div class="btn-group btn-group-dashboard pull-right">
 
-                        @include('partials.courseTypes.dashboard-buttons')
+                        @include('courseTypes.partials.dashboard-buttons')
 
                     </div>
                 </h4>

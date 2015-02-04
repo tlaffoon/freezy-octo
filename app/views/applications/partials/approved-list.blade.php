@@ -1,6 +1,5 @@
-<!-- Applications -->
-<h3 class="page-header">Recently Denied
-    <!-- <div class="pull-right"><small>{{ count($deniedApplications) }}</div> -->
+<h3 class="page-header">Recently Approved
+    <!-- <div class="pull-right"><small>{{ count($approvedApplications) }}</div> -->
 </h3>
 
 <div class="panel panel-default">
@@ -8,27 +7,49 @@
         <tr>
             <td>
                 <!-- Display if no applications present. -->
-                @if (!$deniedApplications)
+                @if (!$approvedApplications)
 
-                    <h4> There are no denied applications. </h4>
+                    <h4> There are no approved applications. </h4>
 
                 @else
 
-                    @foreach ($deniedApplications as $application)
+                    @foreach ($approvedApplications as $application)
                     <!-- Begin Individual Application Block -->
                     <div class="col-md-12 dashboard-application-header">
-                        <h4>{{ $application->user->fullname }} | {{ $application->course->designation }}
+                        <h4>
+                            <a href="{{{ action('UsersController@show', $application->user->id) }}}">
+                                {{ $application->user->fullname }}
+                            </a> | 
+                            <a href="{{{ action('CoursesController@show', $application->course->id) }}}">
+                                {{ $application->course->designation }}
+                            </a>
 
                             <!-- Include Buttons For Application Administration -->
-                            @include('partials.applications.dashboard-buttons')
+                            @include('applications.partials.dashboard-buttons')
 
                         </h4>
                     </div>
 
                     <div id="application_{{$application->id}}" class="col-md-12 dashboard-application-box">
                         
+                        <div class="col-sm-6 pull-right">
 
-                        <button class="btn btn-default btn-danger disabled pull-right"> Denied </button>
+                            
+
+                            <!-- Assign Student to Cohort Dropdown -->
+                            <p>Assign Student to Cohort?</p>
+
+                                {{ Form::model($user, array('url' => array('/assignCourse', $application->user->id), 'class'=>'form-inline', 'role'=>'form', 'method' => 'POST')) }}
+                                  
+                                    {{ Form::select('assigned_course_id', $course_list, null, array('class' => 'form-group form-control')) }}
+                                    
+                                    {{ Form::hidden('application_id', $application->id) }}
+
+                                    {{ Form::submit('Assign', array('class' => 'btn btn-default btn-success pull-right')) }}
+
+                                {{ Form::close() }}
+
+                        </div>
 
                         <p> <strong> Applying to: </strong>  {{ $application->course->designation }}                      </p>
                         <p> <strong> Submitted at: </strong> {{ $application->created_at }}</p>
@@ -50,18 +71,19 @@
                     <!-- End Individual Application Block -->
 
                     <!-- Include Modal For Contact Info -->
-                    @include('partials.applications.modals.contact')
+                    @include('applications.modals.contact')
 
                     <!-- Include Modal For Send Email -->
-                    @include('partials.applications.modals.message')
+                    @include('applications.modals.message')
 
                     <!-- Include Modal For Comments -->
-                    @include('partials.applications.modals.add-comment')
+                    @include('applications.modals.add-comment')
 
                     @endforeach
+
                 @endif
             </td>
         </tr>
     </table>
 </div> <!-- End Panel -->
-<!-- End Applications -->
+<!-- End Applications
